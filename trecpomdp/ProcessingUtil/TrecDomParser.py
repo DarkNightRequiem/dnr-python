@@ -10,7 +10,9 @@ import datetime as dt
 
 class TrecDomParser:
 
-    def __init__(self, path):
+    def __init__(self, path, year):
+        # 日志所属的年份,不同年份对应的处理方式稍有不同
+        self.year = year
         # 要解析的文件路径
         self.path = path
         # 文件中的DomTree
@@ -19,6 +21,8 @@ class TrecDomParser:
         self.collection = self.domTree.documentElement
         # 所有的<session>
         self.sessions = self.collection.getElementsByTagName("session")
+        #
+        self.topicDict = []
 
         self.tagNameList = ['sessiontrack2012', 'sessiontrack2013',
                             'session',
@@ -43,20 +47,41 @@ class TrecDomParser:
     def divideAccordingTopic(self):
         """
         将某年的sessiontrack数据按照topic划分
-        :return: 二维字典,第一维key是topic编号，第二维key是starttime
+        :return: 字典，key是tpoic编号，value是该topic下按时间顺序排好的session列表
         """
+        # 依据不同年份处理数据将每个topic中的session 按照开始时间进行排序
+
         sortedDict = {}
         for session in self.sessions:
             topic = session.getElementsByTagName("topic")
-            st=session.getAttribute("starttime")[0:-7]
-            starttime = dt.datetime.strptime(st, "%H:%M:%S")
+            if self.year == 12:
+                st = session.getAttribute("starttime")[0:-7]
+            elif self.year == 13:
+                st = float(session.getAttribute("starttime"))
             topicId = topic[0].getAttribute("num")
             if topicId not in sortedDict.keys():
-                sortedDict[topicId] = {}
-            if starttime not in sortedDict[topicId]:
-                sortedDict[topicId][starttime] = session
-        # TODO：对字典中的session按照starttime排序
-        for i in range(sortedDict.__len__()):
-            s=sortedDict[str(i+1)]
-        print("grouped sessions according to topics")
-        return sortedDict
+                sortedDict[topicId] = []
+            sortedDict[topicId].append((st, session))
+
+        for k in sortedDict.keys():
+            temp = list(sortedDict[k])
+            for j in range(temp.__len__()):
+                if j == (temp.__len__() - 1):
+                    break
+                if self.year==12:
+                    curKey = dt.datetime.strptime(temp[j][0], "%H:%M:%S")
+                    nextKey = dt.datetime.strptime(temp[j + 1][0], "%H:%M:%S")
+                elif self.year==13:
+                    curKey = temp[j][0]
+                    nextKey =temp[j + 1][0]
+                if nextKey < curKey:
+                    x = temp[j]
+                    temp[j] = temp[j + 1]
+                    temp[j + 1] = x
+            sortedDict[k] = temp
+        if self.year == 12:
+            print("[2012] grouped sessions according to topics")
+        elif self.year==13:
+            print("[2013] grouped sessions according to topics")
+        self.topicDict = sortedDict
+        return
