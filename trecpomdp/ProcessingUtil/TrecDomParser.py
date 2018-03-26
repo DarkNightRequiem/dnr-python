@@ -55,7 +55,9 @@ class TrecDomParser:
         for session in self.sessions:
             topic = session.getElementsByTagName("topic")
             if self.year == 12:
-                st = session.getAttribute("starttime")[0:-7]
+                tt = session.getAttribute("starttime")[0:-7]
+                # 转化为秒数
+                st = dt.datetime.strptime(tt, "%H:%M:%S").time()
             elif self.year == 13:
                 st = float(session.getAttribute("starttime"))
             topicId = topic[0].getAttribute("num")
@@ -68,12 +70,8 @@ class TrecDomParser:
             for j in range(temp.__len__()):
                 if j == (temp.__len__() - 1):
                     break
-                if self.year==12:
-                    curKey = dt.datetime.strptime(temp[j][0], "%H:%M:%S")
-                    nextKey = dt.datetime.strptime(temp[j + 1][0], "%H:%M:%S")
-                elif self.year==13:
-                    curKey = temp[j][0]
-                    nextKey =temp[j + 1][0]
+                curKey = temp[j][0]
+                nextKey = temp[j + 1][0]
                 if nextKey < curKey:
                     x = temp[j]
                     temp[j] = temp[j + 1]
@@ -81,7 +79,7 @@ class TrecDomParser:
             sortedDict[k] = temp
         if self.year == 12:
             print("[2012] grouped sessions according to topics")
-        elif self.year==13:
+        elif self.year == 13:
             print("[2013] grouped sessions according to topics")
         self.topicDict = sortedDict
         return
