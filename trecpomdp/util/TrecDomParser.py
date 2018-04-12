@@ -9,7 +9,6 @@ import datetime as dt
 # 使用dom解析xml文件
 
 class TrecDomParser:
-
     def __init__(self, path, year):
         # 日志所属的年份,不同年份对应的处理方式稍有不同
         self.year = year
@@ -23,26 +22,62 @@ class TrecDomParser:
         self.sessions = self.collection.getElementsByTagName("session")
         #
         self.topicDict = []
+        #
+        self.longSessions = []
 
-        self.tagNameList = ['sessiontrack2012', 'sessiontrack2013',
-                            'session',
-                            'topic',
-                            'subject',
-                            'desc',
-                            'narr',
-                            'interaction',
-                            'query',
-                            'results',
-                            'result',
-                            'url',
-                            'clueweb09id', 'clueweb12id',
-                            'title',
-                            'snippet'
-                            'clicked',
-                            'click',
-                            'rank',
-                            'currentquery',
-                            'query']
+    @staticmethod
+    def concatSessions(s1=list, s2=list):
+        """
+        连接两个sessions
+        :return: 连接后的sessions
+        """
+        s1.extend(s2)
+        return s1
+
+    def getLongSessions(self, length):
+        """
+        获取query数>= length 的sessions
+        :param length: session length
+        :return:
+        """
+        for session in self.sessions:
+            interactionNum = list(session.getElementsByTagName("interaction")).__len__()
+            curQuery = list(session.getElementsByTagName("currentquery")).__len__()
+            if (interactionNum + curQuery) >= 4:
+                self.longSessions.append(session)
+        return self.longSessions
+
+    def getLongSessionsSorted(self, length):
+        """
+        获取query数>= length 的sessions 并按照时间从小到大排序
+        :param length: session length
+        :return:
+        """
+        for session in self.sessions:
+            interactionNum = list(session.getElementsByTagName("interaction")).__len__()
+            curQuery = list(session.getElementsByTagName("currentquery")).__len__()
+            if (interactionNum + curQuery) >= 4:
+                self.longSessions.append(session)
+        if self.year == 12:
+            for i in range(self.longSessions.__len__()):
+                for j in range(i + 1, self.longSessions.__len__()):
+                    k = self.longSessions[i]
+                    tt = self.longSessions[i].getAttribute("starttime")[0:-7]
+                    st1 = dt.datetime.strptime(tt, "%H:%M:%S").time()
+                    tt = self.longSessions[j].getAttribute("starttime")[0:-7]
+                    st2 = dt.datetime.strptime(tt, "%H:%M:%S").time()
+                    if st1 > st2:
+                        self.longSessions[i], self.longSessions[j] = self.longSessions[j], self.longSessions[i]
+        elif self.year == 13:
+            for i in range(self.longSessions.__len__()):
+                for j in range(i + 1, self.longSessions.__len__()):
+                    it1 = self.longSessions[i].getElementsByTagName("interaction")
+                    st1 = float(it1[0].getAttribute("starttime"))
+                    it2 = self.longSessions[j].getElementsByTagName("interaction")
+                    st2 = float(it2[0].getAttribute("starttime"))
+                    if st1 > st2:
+                        self.longSessions[i], self.longSessions[j] = self.longSessions[j], self.longSessions[i]
+        return self.longSessions
 
     def divideAccordingTopic(self):
         """

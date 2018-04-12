@@ -1,0 +1,60 @@
+Session Log的层级结构
+        self.tagNameList = ['sessiontrack2012', 'sessiontrack2013',
+                            'session',
+                                'topic',
+                                    'subject',
+                                    'desc',
+                                    'narr',
+                            'interaction',
+                                'query',
+                                'results',
+                                    'result',
+                                    'url',
+                                    'clueweb09id', 'clueweb12id',
+                                    'title',
+                                    'snippet'
+                                'clicked',
+                                     'click',
+                                        'rank',
+                            'currentquery',
+                                'query']
+
+      <session num="" starttime="">
+          <session num="1" starttime="09:54:08.725624">
+      <topic num="1" product="factual" goal="specific" tasktype="known-item">
+         <subject num="1">403b</subject>
+         <desc>You are writing a summary article about US tax code 403(b) retirement plans. Find as many relevant documents as you can that would help you in writing the summary. Aspects might include eligibility for a 403(b), tax benefits of 403(b) plans, the types of institutions that offer them to employees, withdrawal rules, contribution limits, instructions for rolling over into another retirement plan, and so on.</desc>
+         <narr>You are writing a summary article about US tax code 403(b) retirement plans. Find as many relevant documents as you can that would help you in writing the summary. Aspects might include eligibility for a 403(b), tax benefits of 403(b) plans, the types of institutions that offer them to employees, withdrawal rules, contribution limits, instructions for rolling over into another retirement plan, and so on.</narr>
+      </topic>
+      <interaction num="1" starttime="09:54:27.674484">
+         <query>US tax code 403 (b)</query>
+         <results>
+            <result rank="1">
+               <url>http://en.wikipedia.org/wiki/403(b)</url>
+               <clueweb09id>clueweb09-enwp00-09-05733</clueweb09id>
+               <title>403(b) - Wikipedia, the free encyclopedia</title>
+               <snippet>The Employee Retirement Income Security Act (ERISA) does not require 403(b) plans to be technically qualified plans, i.e., plans governed by US Tax Code 401(a), but have ...</snippet>
+            </result>
+            <result rank="2">
+               <url>http://en.wikipedia.org/wiki/Internal_Revenue_Code</url>
+               <clueweb09id>clueweb09-enwp01-56-23264</clueweb09id>
+               <title>Internal Revenue Code - Wikipedia, the free encyclopedia</title>
+               <snippet>... United States Statutes at Large and as title 26 of the United States Code. Subsequent permanent tax laws ... paragraph (b) (403(b)): employer-sponsored retirement plan at ...</snippet>
+            </result>
+            <result rank="3">
+               <url>http://www.403bwise.com/faqs/index.html</url>
+               <clueweb09id>clueweb09-en0005-98-00107</clueweb09id>
+               <title>403(b)wise : 403(b) FAQs</title>
+               <snippet>The 403(b) is a tax deferred retirement plan available to employees of ... in a salary reduction 403(b) are restricted by section 403(b)(11) of the Internal Revenue Code.</snippet>
+            </result>
+         </results>
+         <clicked>
+            <click num="1" starttime="09:54:42.635247" endtime="09:54:43.722679">
+               <rank>2</rank>
+            </click>
+         </clicked>
+      </interaction>
+      <currentquery starttime="09:55:00.877477">
+         <query>US tax code 403 (b) eligibility</query>
+      </currentquery>
+   </session>

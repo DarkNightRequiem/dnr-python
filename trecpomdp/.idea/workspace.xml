@@ -14,8 +14,8 @@
       <file leaf-file-name="TrecDomParser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util/TrecDomParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-156">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="344">
+              <caret line="43" column="88" lean-forward="true" selection-start-line="43" selection-start-column="88" selection-end-line="43" selection-end-column="88" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -23,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="States.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metaunit/States.py">
+      <file leaf-file-name="SessionLogStructure" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/SessionLogStructure">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="728">
+              <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -36,18 +36,18 @@
       <file leaf-file-name="SsModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/SsModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="338">
+              <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pomdp/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -55,58 +55,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Actions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pomdp/Actions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SsAction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/SsAction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-174">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/Main.py">
+        <entry file="file://$PROJECT_DIR$/Main/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="21" column="58" lean-forward="false" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+            <state relative-caret-position="382">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pomdp/__init__.py">
+      <file leaf-file-name="MainShowQuerys.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Main/MainShowQuerys.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="474">
+              <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sessiontrack2012.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sessionlog/sessiontrack2012.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+              <folding>
+                <element signature="n#session#1;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#topic#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#currentquery#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#topic#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#1;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#2;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#currentquery#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#topic#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#results#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#click#0;n#clicked#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#click#1;n#clicked#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#1;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#session#5;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#0;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#interaction#1;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+                <element signature="n#currentquery#0;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sessiontrack2013.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sessionlog/sessiontrack2013.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Session.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
+      <file leaf-file-name="Observation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MetaUnit/Observation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -135,22 +160,25 @@
         <option value="$PROJECT_DIR$/MetaUnit/States.py" />
         <option value="$PROJECT_DIR$/Model/SessionModel.py" />
         <option value="$PROJECT_DIR$/Model/Model.py" />
-        <option value="$PROJECT_DIR$/Main/Main.py" />
         <option value="$PROJECT_DIR$/Model/SessionSearchModel.py" />
         <option value="$PROJECT_DIR$/pomdp/__init__.py" />
         <option value="$PROJECT_DIR$/main/Main.py" />
         <option value="$PROJECT_DIR$/pomdp/SessionSearchModel.py" />
-        <option value="$PROJECT_DIR$/pomdp/Model.py" />
         <option value="$PROJECT_DIR$/pomdp/sessionsearch/SessionSearchModel.py" />
         <option value="$PROJECT_DIR$/pomdp/DiscreteActions.py" />
         <option value="$PROJECT_DIR$/pomdp/Actions.py" />
-        <option value="$PROJECT_DIR$/pomdp/sessionsearch/SsAction.py" />
         <option value="$PROJECT_DIR$/pomdp/sessionsearch/SsModel.py" />
+        <option value="$PROJECT_DIR$/pomdp/Model.py" />
+        <option value="$PROJECT_DIR$/pomdp/sessionsearch/SsAction.py" />
+        <option value="$PROJECT_DIR$/util/SessionLogStructure" />
+        <option value="$PROJECT_DIR$/util/TrecDomParser.py" />
+        <option value="$PROJECT_DIR$/Main/Main.py" />
+        <option value="$PROJECT_DIR$/Main/MainShowQuerys.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
@@ -171,7 +199,7 @@
     </entry>
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -185,6 +213,43 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="trecpomdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trecpomdp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trecpomdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trecpomdp" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trecpomdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trecpomdp" type="462c0819:PsiDirectoryNode" />
+              <item name="MetaUnit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trecpomdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trecpomdp" type="462c0819:PsiDirectoryNode" />
+              <item name="pomdp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trecpomdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trecpomdp" type="462c0819:PsiDirectoryNode" />
+              <item name="sessionlog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trecpomdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trecpomdp" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -195,35 +260,12 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="trecpomdp" type="cbb8eebc:String" user="trecpomdp" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="trecpomdp" type="cbb8eebc:String" user="trecpomdp" />
-              <item name="metaunit" type="cbb8eebc:String" user="metaunit" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="trecpomdp" type="cbb8eebc:String" user="trecpomdp" />
-              <item name="pomdp" type="cbb8eebc:String" user="pomdp" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="trecpomdp" type="cbb8eebc:String" user="trecpomdp" />
-              <item name="pomdp" type="cbb8eebc:String" user="pomdp" />
-              <item name="sessionsearch" type="cbb8eebc:String" user="sessionsearch" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="trecpomdp" type="cbb8eebc:String" user="trecpomdp" />
               <item name="sessionlog" type="cbb8eebc:String" user="sessionlog" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,24 +293,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Main (1)">
-    <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="trecpomdp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.MainShowQuerys">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -286,13 +311,30 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="MainShowQuerys" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="trecpomdp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main/MainShowQuerys.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.Main" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Main (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.MainShowQuerys" />
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.Main (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.MainShowQuerys" />
         <item index="1" class="java.lang.String" itemvalue="Python.Main" />
       </list>
     </recent_temporary>
@@ -314,26 +356,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="952" y="0" width="976" height="1038" extended-state="0" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2672234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934713" sideWeight="0.5104167" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.49166667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.49166667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3984375" sideWeight="0.48958334" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38631347" sideWeight="0.48958334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -344,14 +385,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main/Main.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="71" />
+          <url>file://$PROJECT_DIR$/Main/Main.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main/Main.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="72" />
+          <url>file://$PROJECT_DIR$/Main/MainShowQuerys.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Main/MainShowQuerys.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Main/MainShowQuerys.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="118" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -361,27 +412,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="119" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="i" />
+        <watch expression="temp" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/metaunit/Observation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/SsModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="56" lean-forward="true" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pomdp/Model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -396,7 +436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -404,7 +443,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#session#1;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#topic#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#currentquery#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#topic#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#1;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#2;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#currentquery#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#topic#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#results#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#click#0;n#clicked#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#click#1;n#clicked#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#1;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#session#5;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#0;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#1;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#currentquery#0;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -412,11 +472,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="11" lean-forward="true" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Session.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -424,11 +483,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/Main.py">
+    <entry file="file://$PROJECT_DIR$/Main/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -439,31 +500,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Observation.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Observation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/States.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/States.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/Main.py">
+    <entry file="file://$PROJECT_DIR$/Main/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Session.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
@@ -489,15 +550,17 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/_strptime.py" />
-    <entry file="file://$PROJECT_DIR$/main/Main.py">
+    <entry file="file://$PROJECT_DIR$/Main/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Session.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -523,15 +586,17 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/_strptime.py" />
-    <entry file="file://$PROJECT_DIR$/main/Main.py">
+    <entry file="file://$PROJECT_DIR$/Main/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Session.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -558,11 +623,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/Main.py">
+    <entry file="file://$PROJECT_DIR$/Main/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -578,7 +645,7 @@
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/codecs.py" />
     <entry file="file://$USER_HOME$/Anaconda3/Lib/xml/dom/expatbuilder.py" />
-    <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Session.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
@@ -597,76 +664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Observation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sessionlog/sessiontrack2013.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sessionlog/sessiontrack2012.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/States.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/metaunit/Session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/TrecDomParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="21" column="58" lean-forward="false" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -674,7 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -682,32 +682,136 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/SsAction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-174">
+        <state relative-caret-position="1794">
+          <caret line="69" column="10" lean-forward="false" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetaUnit/States.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/SsModel.py">
+    <entry file="file://$PROJECT_DIR$/MetaUnit/Observation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pomdp/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pomdp/sessionsearch/SsModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/SessionLogStructure">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sessionlog/sessiontrack2013.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/TrecDomParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="43" column="88" lean-forward="true" selection-start-line="43" selection-start-column="88" selection-end-line="43" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sessionlog/sessiontrack2012.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="n#session#1;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#topic#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#currentquery#0;n#session#2;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#topic#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#1;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#2;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#currentquery#0;n#session#3;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#topic#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#results#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#click#0;n#clicked#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#click#1;n#clicked#0;n#interaction#0;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#1;n#session#4;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#session#5;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#0;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#interaction#1;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+            <element signature="n#currentquery#0;n#session#6;n#sessiontrack2012#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/MainShowQuerys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
