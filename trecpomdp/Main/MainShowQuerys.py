@@ -18,14 +18,17 @@ if __name__ == '__main__':
     longSessions = tdp.concatSessions(longSessions12, longSessions13)
     print("Combined Long Sessions Count: ", longSessions.__len__())
 
-    c=0
+    print("\n==================All Query in 2012&2013 Long Sessions=======================\n")
+    c = 0
     for session in longSessions:
         child = list(session.childNodes)
         for i in range(child.__len__()):
-            if i%2 != 0:
+            if (i % 2 != 0) and (i>=3):
                 temp = child[i]
-                c+=1
-                # TODO: 输出每个查询
-                print("---")
+                q = temp.getElementsByTagName("query")[0]
+                tx = q.childNodes[0].data
+                c += 1
+                print(tx)
 
-    print("qur=ery",c)
+
+    print("\n=========================================\n","Total: ", c)

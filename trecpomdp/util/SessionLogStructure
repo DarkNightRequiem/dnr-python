@@ -5,19 +5,19 @@ Session Log的层级结构
                                     'subject',
                                     'desc',
                                     'narr',
-                            'interaction',
-                                'query',
-                                'results',
-                                    'result',
-                                    'url',
-                                    'clueweb09id', 'clueweb12id',
-                                    'title',
-                                    'snippet'
-                                'clicked',
-                                     'click',
-                                        'rank',
-                            'currentquery',
-                                'query']
+                                'interaction',
+                                    'query',
+                                    'results',
+                                        'result',
+                                        'url',
+                                        'clueweb09id', 'clueweb12id',
+                                        'title',
+                                        'snippet'
+                                    'clicked',
+                                         'click',
+                                            'rank',
+                                'currentquery',
+                                    'query']
 
       <session num="" starttime="">
           <session num="1" starttime="09:54:08.725624">
