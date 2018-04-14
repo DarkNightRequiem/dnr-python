@@ -1,6 +1,9 @@
 from xml.dom.minidom import parse
 import xml.dom.minidom as minidom
 import datetime as dt
+from util.Click import Click
+from util.Interaction import Interaction
+from util.Result import Result
 
 
 # () 元组
@@ -33,6 +36,58 @@ class TrecDomParser:
         """
         s1.extend(s2)
         return s1
+
+    @staticmethod
+    def getTrainSamples(sessions):
+        """
+        获取训练样本
+        :param sessions: 样本源
+        :return:
+        """
+        itList=[]
+        for session in sessions:
+            tempDict={}
+
+            tempDict["topicID"]=session.getElementsByTagName("topic")[0].getAttribute("num")
+            tempDict["topic"]=session.getElementsByTagName("topic")[0].getElementsByTagName("desc")[0].childNodes[0].data
+
+            c=session.getElementsByTagName("interaction")
+            for ci in c:
+                tempDict["query"]=ci.getElementsByTagName("query")[0].childNodes[0].data
+
+                # results列表
+                ress=[]
+                results = ci.getElementsByTagName("results")
+                for i in range(results[0].childNodes.__len__()):
+                    # TODO: 这里的代码需要修改
+                    g=results[i].childNodes
+                    res=Result(results[i].getAttribute("rank"),
+                               results[i].getElementsByTagName("url")[0].childNodes[0].data,
+                               results[i].childNodes[3].data,
+                               results[i].getElementsByTagName("title")[0].childNodes[0].data,
+                               results[i].getElementsByTagName("snippet")[0].childNodes[0].data,
+                               )
+                    ress.append(res)
+                tempDict["results"]=ress
+
+                # clicked列表
+                clkd=[]
+                clcs=ci.getElementsByTagName("clicked")
+                for i in range(clcs.__len__()):
+                    clk=Click(clcs[i].getElementsByTagName("rank")[0].childNodes[0].data,
+                              clcs[i].getAttribute("starttime"),
+                              clcs[i].getAttribute("endtime")
+                              )
+                    clkd.append(clk)
+                tempDict["clicked"]=clkd
+
+            # currentquery 一个session中的最后一个查询
+            cq=session.getElementsByTagName("currentquery")[0].childNodes[0].data
+            print("current Query",cq)
+
+            interaction=Interaction(tempDict)
+            itList.append(interaction)
+        return itList
 
     def getLongSessions(self, length):
         """

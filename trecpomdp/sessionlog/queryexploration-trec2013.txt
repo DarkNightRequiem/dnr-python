@@ -1,0 +1,949 @@
+Session No.1		<topic num="1">
+US civil war causes
+#
+US civil war economic  causes 
+
+Session No.2		<topic num="2">
+scooter brands
+#
+scooter brands reliable
+#
+scooter
+scooter cheap
+scooter review
+scooter price
+scooter price
+#
+scooter stores
+where to buy scooters
+
+Session No.3		<topic num="6">
+heart attack causes
+heart attack causes nhs
+heart attack causes site:nhs.uk
+
+Session No.4		<topic num="6">
+heart attack details
+#
+heart attack
+#
+heart attack statistics
+
+Session No.5		<topic num="6">
+heart attack
+#
+heart attack treatment
+#
+heart disease
+
+Session No.6		<topic num="8">
+long-term care insurance
+long term care insurance
+#
+long term care insurance uk
+long term care insurance uk \u00a3
+long term care insurance "united kingdom" OR britain OR england
+#
+long term care insurance -usa
+
+Session No.7		<topic num="8">
+long-term care insurance
+long-term care insurance wiki
+define: long-term care insurance
+define: "long-term care insurance"
+#
+long-term care insurance review
+long-term care insurance comparisons -job
+#
+long-term care vs life insurance
+long-term care vs life insurance -job
+
+Session No.8		<topic num="11">
+us coinds
+us coins
+us coins wiki
+coins in us wiki
+
+Session No.9		<topic num="11">
+old us coins
+#
+collecting old us coins
+#
+selling old us coins
+selling old "usa coins"
+
+Session No.10		<topic num="12">
+quit smoking
+#
+quit smoking cold turkey
+
+Session No.11		<topic num="12">
+how to quit smoking 
+#
+quiting smoking side effecs
+quiting smoking side effects
+#
+quiting smoking using hypnosis
+#
+quiting smoking help
+
+Session No.12		<topic num="13">
+wiki kansas city tourism
+#
+kansas city hotels airport
+#
+kansas city chiefs fixtures
+
+Session No.13		<topic num="13">
+kansas city MO
+#
+kansas city airport hotels
+#
+kansas city casino
+#
+kansas city zoo
+#
+kansas city state parks
+#
+kansas city wikipedia
+#
+kansas city history
+#
+kansas city things to do
+
+Session No.14		<topic num="14">
+uk road trip idead
+uk road trip ideas
+#
+what to take on a road trip
+#
+what to take on a uk road trip
+
+Session No.15		<topic num="14">
+road trip FAQ
+#
+planning a road trip
+
+Session No.16		<topic num="15">
+further education for high school teacher online funding
+#
+training high school teacher free professional development
+
+Session No.17		<topic num="16">
+jp morgan data centers
+jp morgan data
+#
+jp morgan data centers investment
+#
+jp morgan largest data center
+#
+data center compare microsoft jp morgan
+
+Session No.18		<topic num="16">
+JP Morgan Chase data centers
+JP Morgan Chase "data centers"
+#
+location "JP Morgan Chase" "data centers"
+location "JP Morgan Chase" +"data centers"
+location "JP Morgan Chase" + center
+#
+JP Morgan Chase overview
+JP Morgan Chase annual report
+#
+"data centers"
+#
+financial "data centers"
+
+Session No.19		<topic num="16">
+JP Morgan Chase data centres
+#
+JP Morgan Chase data centres vs google
+#
+JP Morgan Chase computational scientist profile
+JP Morgan computational scientist profile
+#
+JP Morgan data center news
+
+Session No.20		<topic num="17">
+march madness
+#
+march madness 2012 winning tean
+march madness 2012 winning team
+#
+march madness 2012 runner up
+#
+march madness 2012 host city
+#
+march madness 2012 host stadium
+#
+march madness 2012 final four
+#
+march madness 2012 number teams
+#
+march madness slang
+march madness slang expression
+#
+march madness semi finals
+
+Session No.21		<topic num="17">
+"march madness"
+#
+"march madness" NCAA
+#
+"march madness" 
+#
+NCAA
+NCAA tournament
+NCAA tournament "march madness"
+NCAA tournament "march madness" wikipedia
+#
+NCAA tournament "march madness" 2012 championship runner-up
+won NCAA "march madness" 2012
+NCAA "march madness" 2012 results
+#
+NCAA "march madness" 2012 broadcast
+#
+NCAA "march madness" 2012 semifinals sport news
+
+Session No.22		<topic num="18">
+face transplants wiki
+#
+"Connie Culp"
+"Connie Culp" wikipedia
+"Connie Culp"
+#
+First "Face Transplant"
+#
+"Isabelle Dinoire"
+Isabelle Dinoire
+Isabelle Dino*
+Isabelle "face transplants"
+#
+"Richard Norris"
+#
+first "face transplant" surgery in the world
+first "full face transplant" Oscar
+first "full face transplant" 
+
+Session No.23		<topic num="21">
+dulles airport
+dulles airport location
+#
+dulles hotels
+dulles hotels
+dulles hotels
+dulles hotels
+#
+dulles metro stop
+
+Session No.24		<topic num="21">
+where is dulles airport?
+#
+dulles airport virginia
+#
+dulles airport virginia transport to other cities
+
+Session No.25		<topic num="22">
+Boston pops  and (salary OR manager OR conductor OR hall)
+#
+Boston pops  
+
+Session No.26		<topic num="22">
+Boston Pops
+Define: Boston Pops
+#
+Conductor of the boston pops orchestra
+Conductor 2012 of the boston pops orchestra
+Information regarding the Boston Pops Conductor
+#
+Information regarding the Boston Pops Manager
+
+Session No.27		<topic num="23">
+jeopardy
+jeopardy gameplay
+#
+jeopardy video
+
+Session No.28		<topic num="23">
+"jeopardy game show"
+#
+"jeopardy game show" history
+
+Session No.29		<topic num="23">
+jeopardy (game show)
+jeopardy (game show) wikipedia
+wikipedia jeopardy
+
+Session No.30		<topic num="24">
+churchill downs
+#
+churchill downs 2013
+
+Session No.31		<topic num="24">
+churchill downs racing information
+#
+churchill downs horse racing park
+"churchill downs" horse racing park
+"churchill downs" horse racing schedule
+#
+kentucky derby museum
+#
+churchilldowns.com
+churchilldowns
+#
+churchilldowns seating chart
+"churchill downs" racing seating chart
+
+Session No.32		<topic num="24">
+Churchill downs schedule
+Churchill downs race schedule 2013
+#
+Churchill downs seating
+#
+Churchill downs Kentucky derby museum
+
+Session No.33		<topic num="25">
+general schedule pay tables
+#
+general schedule pay tables 2013
+#
+general schedule pay tables federal wage system
+#
+general schedule pay tables "federal goverment"
+
+Session No.34		<topic num="26">
+internet phone services
+#
+internet phone services review
+guide internet phone services
+#
+voip providers
+
+Session No.35		<topic num="26">
+regular phones vs internet phones voip experiences cheapest
+internet phones voip experiences cheapest
+#
+internet phones voip reviews
+
+Session No.36		<topic num="26">
+VOIP
+#
+VOIP lietuva
+VOIP paslaugos lietuva
+#
+ip telefonijos paslaugos
+ip telefonija
+ip telefonija kaunas
+#
+ip telefonas
+#
+ip balso telefonija
+#
+voip telefonas
+
+Session No.37		<topic num="28">
+"State university of new york" bioinformatics
+#
+"State university of new york" 
+
+Session No.38		<topic num="28">
+SUNY colleges
+#
+SUNY albany hospital location
+"SUNY albany hospital" location
+"SUNY albany hospital" location
+albany university hospital location
+#
+SUNY plattsburgh athletics
+
+Session No.39		<topic num="28">
+suny colleges names
+#
+number of suny colleges
+#
+suny college bioinformatics degree
+#
+map suny albany hospital
+map "albany hospital" ny
+
+Session No.40		<topic num="29">
+gun control opinions
+#
+gun control us government
+#
+gun control current affairs
+gun control current affairs
+#
+gun violence us
+#
+law center to prevent gun violence
+
+Session No.41		<topic num="29">
+obama gun control
+gun control laws obama
+
+Session No.42		<topic num="30">
+most violent gun violence events
+#
+gun violence us campuses
+#
+most deadly type of gun in gun violence
+
+Session No.43		<topic num="30">
+gun violence in USA
+#
+gun violence on US college campus
+gun violence on US campus
+#
+types of gun used in violent events
+
+Session No.44		<topic num="31">
+healty recipes
+healthy meals
+#
+healthy nutrition for infants
+
+Session No.45		<topic num="32">
+red bull drink health concerns
+#
+red bull drink side effects ban
+red bull ban
+
+Session No.46		<topic num="32">
+Red Bull AND health
+#
+Red Bull
+red bull
+#
+red bull effects
+#
+red bull drink
+#
+red bull ingridients
+red bull ingredients
+#
+red bull in US
+
+Session No.47		<topic num="32">
+banned drinks
+#
+banned food
+#
+illegal beverages
+
+Session No.48		<topic num="33">
+patent filing
+patent filing
+#
+patent office
+#
+patent law
+patent law uk
+#
+patent lawyer
+#
+provisional patent
+
+Session No.49		<topic num="35">
+face transplant
+#
+finished the task
+
+Session No.50		<topic num="37">
+diet exercise for fitness
+fitness wiki
+#
+wikipedia
+#
+paleo diet
+#
+keto diet
+keto diet wikipedia
+#
+exercises for fitness
+#
+how to get fit safely
+
+Session No.51		<topic num="37">
+fitness regime
+#
+running a half marathon
+
+Session No.52		<topic num="38">
+venture capital
+#
+loans for entrepreneurship
+loans for entrepreneurship switzerland
+loans for business
+loans for business us government
+#
+renting a building business sillicon valley
+renting an office sillicon valley
+
+Session No.53		<topic num="39">
+how to get a pay raise
+tips pay raise
+tips pay raise
+
+Session No.54		<topic num="40">
+preventing employee fraud in recession
+recession employee fraud
+employee fraud best practice
+"employee fraud" "best practice"
+
+Session No.55		<topic num="41">
+employee evaluation
+evaluate employees
+evaluate employees
+
+Session No.56		<topic num="42">
+events ideas students community
+events ideas student association
+
+Session No.57		<topic num="43">
+developmental milestones infants
+developmental milestones infants 0-12 months
+#
+developmental milestones infants east asia
+developmental milestones east asia
+"developmental milestones in east asia"
+developmental milestones asian infants
+asian infants 
+asian infants milestones
+asian infants development
+asian babies development
+developmental milestones asia
+#
+are developmental milestones universal
+#
+asian developmental milestones 
+#
+chinese infant developmental milestones
+chinese infant milestones
+#
+infant milestones variations
+infant milestones cultural
+infant milestones differences
+#
+asian children milestones
+
+Session No.58		<topic num="45">
+policies for addressing economic problems in europe
+#
+'EUROPEAN UNION" "ECONOMIC CRISIS"
+#
+'EUROPEAN UNION" "ECONOMIC CRISIS" greece
+#
+'EUROPEAN UNION" "ECONOMIC CRISIS" portugal
+#
+'EUROPEAN UNION" "ECONOMIC CRISIS" spain
+
+Session No.59		<topic num="45">
+eurozone crisis responses
+#
+eurozone crisis leader actions
+
+Session No.60		<topic num="45">
+eurozone portugal leader actions
+#
+eurozone spain leader actions
+spain spanish leader crisis action
+#
+ireland spanish leader crisis action
+ireland irish leader crisis action
+#
+piigs leader crisis action
+#
+cyprus leader crisis action
+
+Session No.61		<topic num="47">
+round-trip v road-trip
+#
+round-trip advantages versus road-trip
+round-trip enjoyable versus road-trip
+round-trip enjoyable versus road-trip boring?
+
+Session No.62		<topic num="47">
+road trip
+#
+best road trips
+#
+best worst road trips
+#
+romantic road trips
+#
+enjoyable boring road trip
+enjoyable boring getaways
+#
+best getaways
+
+Session No.63		<topic num="48">
+good internet phone services
+internet phone
+#
+what's good about internet phoning
+"what's good about internet phoning"
+#
+phone
+#
+phone internet
+phone internet providers
+#
+good Voip
+Voip reviews
+
+Session No.64		<topic num="48">
+why is internet phone service great
+why internet phone service great
+
+Session No.65		<topic num="49">
+gun control
+#
+gun control laws
+#
+gun control outcomes
+#
+ban guns
+
+Session No.66		<topic num="49">
+gun control
+#
+gun control violence
+#
+does gun control reduce gun violence
+
+Session No.67		<topic num="50">
+god existence
+#
+naturalism
+naturalism theory
+naturalism theism
+
+Session No.68		<topic num="51">
+US healthcare social security worker
+US healthcare system
+us healthcare for employed
+how does healthcare work in the USA for employed people?
+
+Session No.69		<topic num="52">
+malaria impact on economy africa
+malaria economy africa
+malaria economy 
+#
+malaria donations 
+
+Session No.70		<topic num="52">
+HIV Africa charity medicine
+HIV Africa charity
+#
+HIV Africa charity donate
+AIDS Africa charity donate
+malaria Africa charity donate
+
+Session No.71		<topic num="54">
+teachers evaluation
+#
+teachers evaluation by students
+#
+teachers evaluation students peers
+#
+teachers evaluation peers
+#
+teachers evaluation peers students
+#
+teachers evaluation by students
+#
+teachers evaluation
+teachers evaluation wikipedia
+teachers assement
+teachers evaluation
+teachers excellence
+teache assement wikipedia
+
+Session No.72		<topic num="55">
+infants development culture
+infant development "cultural effects"
+infant OR child development intitle:culture
+#
+infant OR child development milestones
+infant OR child development milestones research
+infant OR child "development milestones" +research
+infant OR child "development milestones" site:ac.uk
+#
+Do infants age 0-12 months experience different developmental milestones depending on culture
+culture OR race infant OR child development stages OR milestones
+research culture OR race infant OR child development stages OR milestones
+infant OR child development "effect of culture"
+infant OR child development "cultural differences"
+"child development" "cultural differences"
+
+Session No.73		<topic num="55">
+babies development "cultural differences"
+infant different developmental milestones depending on culture
+developmental milestones infants "cultural differences"
+
+Session No.74		<topic num="55">
+infant development cultural differences
+#
+infant development western eastern cultures
+infant development milestone cultural effects
+infant development milestone "cultural differences"
+infant development milestone "cultural competence
+#
+infant development milestone developed and third world countries
+
+Session No.75		<topic num="58">
+legality alcohol marijuana
+legality alcohol marijuana history
+legality alcohol history
+legality alcohol history maijuana
+legality alcohol history marijuana
+#
+why is marijuana illegal?
+#
+is marijuana worse for your health than alcohol?
+
+Session No.76		<topic num="60">
+phone plan 
+"cell phone plan"
+#
+"cell phone plan :.uk"
+
+Session No.77		<topic num="62">
+tax junk food benefits
+#
+tax junk food benefits un
+tax junk food benefits UN evidence
+#
+high calorie food tax evidence based
+high calorie snack tax evidence based
+government intervention tax "junk food"
+
+Session No.78		<topic num="62">
+advantages of junk food
+#
+tax on junk food
+
+Session No.79		<topic num="62">
+food tax
+#
+food ban
+
+Session No.80		<topic num="63">
+the benefits of exploration space
+the benefits of "exploration space"
+
+Session No.81		<topic num="64">
+women  and minorities percentage setting 
+#
+should numbers of women and minorities in workplace be contolled
+
+Session No.82		<topic num="65">
+jobs from business phds
+#
+business phd
+
+Session No.83		<topic num="65">
+phd business jobs
+#
+phd business salaries
+#
+business phd funding
+#
+business phd vs masters
+#
+business phd duration
+#
+business phd income
+
+Session No.84		<topic num="67">
+travel spots room prices
+#
+travel spots room prices hawaii
+
+Session No.85		<topic num="69">
+Secondhand camera shop
+#
+Travel information Los Angeles
+Local Travel information Los Angeles
+Travel information Los Angeles
+
+Session No.86		<topic num="69">
+New York City
+#
+Chicago
+#
+Washington DC
+
+Session No.87		<topic num="69">
+best us destinations
+#
+distance new york boston
+#
+maps.bing.com
+maps
+bing maps
+#
+hartford tourism
+#
+bing maps
+hartford visitors
+hartford connecticut tourism
+#
+hartford boston travel
+boston tourism
+#
+nyc tourism
+#
+philadelphia nyc distance
+#
+bing maps
+philadelphia washington dc distance
+#
+bing maps
+philadelphia tourism
+#
+washington dc tourism
+#
+philadelphia nyc travel
+philadelphia nyc train
+philadelphia nyc bus
+
+Session No.88		<topic num="2">
+scooter comparison
+
+Session No.89		<topic num="3">
+ron howard filmography
+
+Session No.90		<topic num="3">
+Ron Howard, movies
+
+Session No.91		<topic num="4">
+paralegal career
+
+Session No.92		<topic num="7">
+weatherstripping
+
+Session No.93		<topic num="9">
++(Black OR african-american) history month events
+
+Session No.94		<topic num="9">
+Black history month
+
+Session No.95		<topic num="10">
+comparison hotels new york city
+
+Session No.96		<topic num="11">
+American Coins
+
+Session No.97		<topic num="12">
+methods and programs for quitting smoking
+
+Session No.98		<topic num="12">
+quit quitting smoking
+
+Session No.99		<topic num="13">
+Kansas attractions
+
+Session No.100		<topic num="15">
+further education for high school teachers
+
+Session No.101		<topic num="15">
+higher degrees for high school teacher
+
+Session No.102		<topic num="16">
+jp morgan chase data centers
+
+Session No.103		<topic num="18">
+"history of face transplants"
+
+Session No.104		<topic num="19">
+AMT tax IRS
+
+Session No.105		<topic num="20">
+uss abraham lincoln
+
+Session No.106		<topic num="21">
+guide dulles airport
+
+Session No.107		<topic num="21">
+Dulles airport
+
+Session No.108		<topic num="22">
+Boston pops official website
+
+Session No.109		<topic num="25">
+GS pay tables
+
+Session No.110		<topic num="27">
+Vanuatu
+
+Session No.111		<topic num="31">
+healthy nutrition, children, pregnant women, government programes
+
+Session No.112		<topic num="33">
+patent application
+
+Session No.113		<topic num="35">
+face transplants
+
+Session No.114		<topic num="35">
+face transplants
+
+Session No.115		<topic num="38">
+advice for technology start-up
+
+Session No.116		<topic num="38">
+how to succeed in new venture
+
+Session No.117		<topic num="38">
+innovation
+
+Session No.118		<topic num="41">
+evaluating employees
+
+Session No.119		<topic num="45">
+eurozone crisis economic actions
+
+Session No.120		<topic num="46">
+Philadelphia attractions
+
+Session No.121		<topic num="46">
+Philadelphia tourist attractions
+
+Session No.122		<topic num="47">
+tour bus
+
+Session No.123		<topic num="49">
+legality gun control
+
+Session No.124		<topic num="50">
+god does not exist
+
+Session No.125		<topic num="50">
+existence god naturalism theory
+
+Session No.126		<topic num="52">
+hiv aids prevention cure charities in africa
+
+Session No.127		<topic num="54">
+teacher evaluation peer versus students
+
+Session No.128		<topic num="56">
+EU economic indicators
+
+Session No.129		<topic num="56">
+What are the effects of the ongoing Eurozone crisis on national economic indicators such as unemployment, GDP, public debt, etc
+
+Session No.130		<topic num="59">
+Jp Morgan Chase
+
+Session No.131		<topic num="63">
+us space exploration costs
+
+Session No.132		<topic num="68">
+(euro OR eurozone) crisis
+
+Session No.133		<topic num="68">
+eurozone crisis
+

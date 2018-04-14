@@ -21,6 +21,9 @@ if __name__ == '__main__':
     longSessions = tdp.concatSessions(longSessions12, longSessions13)
     print("Combined Long Sessions Count: ", longSessions.__len__())
 
+    # 生成interaction列表
+    sampleList=tdp.getTrainSamples(longSessions)
+
     # 模型参数
     argDict = dict()
     argDict['stateNum'] = 4
