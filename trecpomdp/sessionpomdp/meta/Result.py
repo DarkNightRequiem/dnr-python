@@ -1,4 +1,4 @@
-from util.Element import Element
+from sessionpomdp.meta.Element import Element
 
 
 class Result(Element):
@@ -8,6 +8,7 @@ class Result(Element):
         self.webID = webID
         self.title = title
         self.snippet = snippet
+        # TODO: 计算relevance: R:relevant NR: Non-Relevant
 
     def printContent(self):
-        print("Result <rank=",self.rank," webID=",self.webID)
+        print("\t\trank: ",self.rank, "\twebID: ",self.webID,"\trelevance: ","ToCal")

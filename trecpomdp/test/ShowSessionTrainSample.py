@@ -1,6 +1,4 @@
 import os
-
-from pomdp.sessionsearch.SsModel import SessionSearchModel
 from sessionpomdp.util.TrecDomParser import TrecDomParser as tdp
 
 if __name__ == '__main__':
@@ -15,26 +13,14 @@ if __name__ == '__main__':
     # 预处理获取 Long Sessions
     sessionTrack12 = tdp(sessionLogPath2, 12)
     longSessions12 = sessionTrack12.getLongSessionsSorted(4)
-    print("Long Sessions in Track2012 Count: ", longSessions12.__len__())
     sample12=tdp.getTrainSamples(longSessions12,2012)
 
     sessionTrack13 = tdp(sessionLogPath3, 13)
     longSessions13 = sessionTrack13.getLongSessionsSorted(4)
-    print("Long Sessions in Track2013 Count: ", longSessions13.__len__())
     sample13=tdp.getTrainSamples(longSessions13,2013)
-
-    print("Combined Long Sessions Count: ", longSessions12.__len__()+longSessions13.__len__())
 
     # 生成interaction列表作为训练的样本
     sampleList=tdp.concat(sample12, sample13)
 
-    # 模型参数
-    argDict = dict()
-    argDict['stateNum'] = 4
-    argDict['actionNum'] = 2  # TODO: 通过数据预处理获得user agent的数量
-    argDict['actionNum'] = 2  # TODO: 通过数据预处理获得user agent的数量
-    argDict['discount'] = 0.95
-
-    env = SessionSearchModel(argDict)
-
-    print("sssss")
+    for samp in sampleList:
+        samp.printContent()

@@ -1,9 +1,10 @@
-from xml.dom.minidom import parse
-import xml.dom.minidom as minidom
 import datetime as dt
-from util.Click import Click
-from util.Interaction import Interaction
-from util.Result import Result
+import xml.dom.minidom as minidom
+
+from sessionpomdp.meta.Click import Click
+from sessionpomdp.meta.Interaction import Interaction
+
+from sessionpomdp.meta.Result import Result
 
 
 # () 元组
@@ -29,7 +30,7 @@ class TrecDomParser:
         self.longSessions = []
 
     @staticmethod
-    def concatSessions(s1=list, s2=list):
+    def concat(s1=list, s2=list):
         """
         连接两个sessions
         :return: 连接后的sessions
@@ -38,55 +39,84 @@ class TrecDomParser:
         return s1
 
     @staticmethod
-    def getTrainSamples(sessions):
+    def getTrainSamples(sessions,year):
         """
-        获取训练样本
+        获取训练样本，每个session的current query作为一个没有结果和点击的interaction
         :param sessions: 样本源
         :return:
         """
-        itList=[]
+        itList = []
         for session in sessions:
-            tempDict={}
+            topicID = session.getElementsByTagName("topic")[0].getAttribute("num")
+            topic = session.getElementsByTagName("topic")[0].getElementsByTagName("desc")[0].childNodes[0].data
 
-            tempDict["topicID"]=session.getElementsByTagName("topic")[0].getAttribute("num")
-            tempDict["topic"]=session.getElementsByTagName("topic")[0].getElementsByTagName("desc")[0].childNodes[0].data
-
-            c=session.getElementsByTagName("interaction")
+            c = session.getElementsByTagName("interaction")
             for ci in c:
-                tempDict["query"]=ci.getElementsByTagName("query")[0].childNodes[0].data
+                tempDict = {}
+                tempDict["topicID"] = topicID
+                tempDict["topic"] = topic
+                tempDict["year"]=year
+                q=str(ci.getElementsByTagName("query")[0].childNodes[0].data)
+                tempDict["query"] = q
 
                 # results列表
-                ress=[]
-                results = ci.getElementsByTagName("results")
-                for i in range(results[0].childNodes.__len__()):
-                    # TODO: 这里的代码需要修改
-                    g=results[i].childNodes
-                    res=Result(results[i].getAttribute("rank"),
-                               results[i].getElementsByTagName("url")[0].childNodes[0].data,
-                               results[i].childNodes[3].data,
-                               results[i].getElementsByTagName("title")[0].childNodes[0].data,
-                               results[i].getElementsByTagName("snippet")[0].childNodes[0].data,
-                               )
+                ress = []
+                results = ci.getElementsByTagName("results")[0].getElementsByTagName("result")
+                for i in range(results.__len__()):
+                    # 文档的rank
+                    rank = results[i].getAttribute("rank")
+                    # 文档的url
+                    url = results[i].getElementsByTagName("url")[0].childNodes[0].data
+                    # 文档的clueweb id
+                    webID = results[i].childNodes[3].childNodes[0].data
+
+                    title = results[i].getElementsByTagName("title")[0].childNodes
+                    if title.__len__() == 0:
+                        title = None
+                    else:
+                        title = results[i].getElementsByTagName("title")[0].childNodes[0].data
+
+                    snippet = results[i].getElementsByTagName("snippet")[0].childNodes
+                    if snippet.__len__() == 0:
+                        snippet = None
+                    else:
+                        snippet = results[i].getElementsByTagName("snippet")[0].childNodes[0].data
+                    res = Result(rank, url, webID, title, snippet)
                     ress.append(res)
-                tempDict["results"]=ress
+                tempDict["results"] = ress
 
                 # clicked列表
-                clkd=[]
-                clcs=ci.getElementsByTagName("clicked")
-                for i in range(clcs.__len__()):
-                    clk=Click(clcs[i].getElementsByTagName("rank")[0].childNodes[0].data,
-                              clcs[i].getAttribute("starttime"),
-                              clcs[i].getAttribute("endtime")
-                              )
-                    clkd.append(clk)
-                tempDict["clicked"]=clkd
+                clkd = None
+                clcs = ci.getElementsByTagName("clicked")
+                if clcs.__len__() != 0:
+                    clkd = []
+                    clcs = ci.getElementsByTagName("clicked")[0].getElementsByTagName("click")
+                    for i in range(clcs.__len__()):
+                        clk = Click(clcs[i].getElementsByTagName("rank")[0].childNodes[0].data,
+                                    clcs[i].getAttribute("starttime"),
+                                    clcs[i].getAttribute("endtime")
+                                    )
+                        clkd.append(clk)
+                if clcs.__len__()==0:
+                    clkd=None
+                tempDict["clicked"] = clkd
+                tempDict["isSessionEnd"]="No"
+                interaction = Interaction(tempDict)
+                itList.append(interaction)
 
             # currentquery 一个session中的最后一个查询
-            cq=session.getElementsByTagName("currentquery")[0].childNodes[0].data
-            print("current Query",cq)
+            cq = session.getElementsByTagName("currentquery")[0].getElementsByTagName("query")[0].childNodes[0].data
+            cqDict = {}
+            cqDict["year"]=year
+            cqDict["topicID"] = topicID
+            cqDict["topic"] = topic
+            cqDict["query"] = cq
+            cqDict["results"] = None
+            cqDict["clicked"] = None
+            cqDict["isSessionEnd"]="Yes"
+            endInteraction = Interaction(cqDict)
+            itList.append(endInteraction)
 
-            interaction=Interaction(tempDict)
-            itList.append(interaction)
         return itList
 
     def getLongSessions(self, length):
