@@ -15,7 +15,7 @@ class Interaction(Element):
         print("topicID:",self.topicID,
               "\nquery: ",self.query)
 
-        if self.isSessionEnd =="Yes":
+        if self.isSessionEnd :
             print("End of a session")
             print("=======================================================================\n")
             return

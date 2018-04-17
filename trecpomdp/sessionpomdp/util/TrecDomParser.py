@@ -11,7 +11,6 @@ from sessionpomdp.meta.Result import Result
 # [] 列表
 # {} 字典
 # 使用dom解析xml文件
-
 class TrecDomParser:
     def __init__(self, path, year):
         # 日志所属的年份,不同年份对应的处理方式稍有不同
@@ -81,7 +80,7 @@ class TrecDomParser:
                         snippet = None
                     else:
                         snippet = results[i].getElementsByTagName("snippet")[0].childNodes[0].data
-                    res = Result(rank, url, webID, title, snippet)
+                    res = Result(rank, url, webID, title, snippet,topicID)
                     ress.append(res)
                 tempDict["results"] = ress
 
@@ -100,7 +99,7 @@ class TrecDomParser:
                 if clcs.__len__()==0:
                     clkd=None
                 tempDict["clicked"] = clkd
-                tempDict["isSessionEnd"]="No"
+                tempDict["isSessionEnd"]=False
                 interaction = Interaction(tempDict)
                 itList.append(interaction)
 
@@ -113,7 +112,7 @@ class TrecDomParser:
             cqDict["query"] = cq
             cqDict["results"] = None
             cqDict["clicked"] = None
-            cqDict["isSessionEnd"]="Yes"
+            cqDict["isSessionEnd"]=True
             endInteraction = Interaction(cqDict)
             itList.append(endInteraction)
 
