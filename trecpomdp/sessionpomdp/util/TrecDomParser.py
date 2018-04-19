@@ -46,17 +46,21 @@ class TrecDomParser:
         """
         itList = []
         for session in sessions:
+            sessionID=session.getAttribute("num")
             topicID = session.getElementsByTagName("topic")[0].getAttribute("num")
             topic = session.getElementsByTagName("topic")[0].getElementsByTagName("desc")[0].childNodes[0].data
 
             c = session.getElementsByTagName("interaction")
             for ci in c:
                 tempDict = {}
+                tempDict["sessionID"]=sessionID
                 tempDict["topicID"] = topicID
                 tempDict["topic"] = topic
                 tempDict["year"]=year
                 q=str(ci.getElementsByTagName("query")[0].childNodes[0].data)
                 tempDict["query"] = q
+                # 每个interaction在各自的session中的位子
+                tempDict["position"]=ci.getAttribute("num")
 
                 # results列表
                 ress = []
@@ -107,12 +111,14 @@ class TrecDomParser:
             cq = session.getElementsByTagName("currentquery")[0].getElementsByTagName("query")[0].childNodes[0].data
             cqDict = {}
             cqDict["year"]=year
+            cqDict["sessionID"]=sessionID
             cqDict["topicID"] = topicID
             cqDict["topic"] = topic
             cqDict["query"] = cq
             cqDict["results"] = None
             cqDict["clicked"] = None
             cqDict["isSessionEnd"]=True
+            cqDict["position"]=-1
             endInteraction = Interaction(cqDict)
             itList.append(endInteraction)
 

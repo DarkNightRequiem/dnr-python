@@ -1,6 +1,5 @@
 import os
-from pomdp.sessionsearch.SsModel import SessionSearchModel
-from sessionpomdp.util.TrecDomParser import TrecDomParser as tdp
+
 
 if __name__ == '__main__':
     """

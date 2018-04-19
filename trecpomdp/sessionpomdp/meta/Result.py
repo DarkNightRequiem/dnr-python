@@ -24,6 +24,6 @@ class Result(Element):
             else:
                 return False
         else:
-            print("missing judgement: ", webID, "topid ID: ", topicID)
-            # 应为已经观察过一次输出结果，发现是官方没有的都是true.所以return true
+            # print("missing judgement: ", webID, "topid ID: ", topicID)
+            # 官方遗漏标注的数据发现都是有关的所以为true
             return True

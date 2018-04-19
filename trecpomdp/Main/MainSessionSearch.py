@@ -1,6 +1,6 @@
 import os
 
-from pomdp.sessionsearch.SsModel import SessionSearchModel
+from pomdp.sessionsearch.SessionSearchModel import SessionSearchModel
 from sessionpomdp.util.TrecDomParser import TrecDomParser as tdp
 
 if __name__ == '__main__':
@@ -27,6 +27,8 @@ if __name__ == '__main__':
 
     # 生成interaction列表作为训练的样本
     sampleList=tdp.concat(sample12, sample13)
+
+
 
     # 模型参数
     argDict = dict()

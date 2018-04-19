@@ -1,5 +1,5 @@
 from sessionpomdp.meta.Element import Element
-
+from sessionpomdp.util.explMap import explDict12,explDict13
 
 class Interaction(Element):
     def __init__(self, it):
@@ -10,9 +10,15 @@ class Interaction(Element):
         self.results = it["results"]
         self.clicked = it["clicked"]
         self.isSessionEnd=it["isSessionEnd"]
+        self.position=it["position"]
+        self.sessionID=it["sessionID"]
+
+    def getExplo(self,sessionID,position):
+        # TODO: 实现判断
+        pass
 
     def printContent(self):
-        print("topicID:",self.topicID,
+        print("topicID:",self.topicID,"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tposition: ",self.position,
               "\nquery: ",self.query)
 
         if self.isSessionEnd :
