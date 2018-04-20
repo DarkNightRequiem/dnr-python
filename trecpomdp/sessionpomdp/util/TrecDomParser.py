@@ -38,7 +38,7 @@ class TrecDomParser:
         return s1
 
     @staticmethod
-    def getTrainSamples(sessions,year):
+    def getInteractions(sessions, year):
         """
         获取训练样本，每个session的current query作为一个没有结果和点击的interaction
         :param sessions: 样本源
@@ -57,7 +57,7 @@ class TrecDomParser:
                 tempDict["topicID"] = topicID
                 tempDict["topic"] = topic
                 tempDict["year"]=year
-                q=str(ci.getElementsByTagName("query")[0].childNodes[0].data)
+                q=str(ci.getElementsByTagName("query")[0].childNodes[0].data).strip()
                 tempDict["query"] = q
                 # 每个interaction在各自的session中的位子
                 tempDict["position"]=ci.getAttribute("num")
@@ -114,11 +114,11 @@ class TrecDomParser:
             cqDict["sessionID"]=sessionID
             cqDict["topicID"] = topicID
             cqDict["topic"] = topic
-            cqDict["query"] = cq
+            cqDict["query"] = cq.strip()
             cqDict["results"] = None
             cqDict["clicked"] = None
             cqDict["isSessionEnd"]=True
-            cqDict["position"]=-1
+            cqDict["position"]=c.__len__()+1
             endInteraction = Interaction(cqDict)
             itList.append(endInteraction)
 
@@ -146,7 +146,8 @@ class TrecDomParser:
         for session in self.sessions:
             interactionNum = list(session.getElementsByTagName("interaction")).__len__()
             curQuery = list(session.getElementsByTagName("currentquery")).__len__()
-            if (interactionNum + curQuery) >= 4:
+            # if (interactionNum + curQuery) >= 4:
+            if interactionNum >= 4:
                 self.longSessions.append(session)
         if self.year == 12:
             for i in range(self.longSessions.__len__()):

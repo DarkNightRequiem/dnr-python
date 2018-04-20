@@ -1,10 +1,11 @@
 import os
 
-from pomdp.sessionsearch.SessionSearchModel import SessionSearchModel
+from sessionpomdp.modeling.Model import SessionSearchModel
 from sessionpomdp.util.TrecDomParser import TrecDomParser as tdp
 
 if __name__ == '__main__':
     # 在session track2012中有一个subject是"merck & co"在6140行左右，&是特殊字符解析或报错，我先简单替换成空格，分析无影响
+    # 分词工具 nltk spacy jieba lxml
 
     # 获取搜索日志所所在的目录
     projDir = os.path.dirname(os.path.realpath(__file__))
@@ -16,18 +17,19 @@ if __name__ == '__main__':
     sessionTrack12 = tdp(sessionLogPath2, 12)
     longSessions12 = sessionTrack12.getLongSessionsSorted(4)
     print("Long Sessions in Track2012 Count: ", longSessions12.__len__())
-    sample12=tdp.getTrainSamples(longSessions12,2012)
+    inter12=tdp.getInteractions(longSessions12, 2012)
 
     sessionTrack13 = tdp(sessionLogPath3, 13)
     longSessions13 = sessionTrack13.getLongSessionsSorted(4)
     print("Long Sessions in Track2013 Count: ", longSessions13.__len__())
-    sample13=tdp.getTrainSamples(longSessions13,2013)
+    inter13=tdp.getInteractions(longSessions13, 2013)
 
     print("Combined Long Sessions Count: ", longSessions12.__len__()+longSessions13.__len__())
 
-    # 生成interaction列表作为训练的样本
-    sampleList=tdp.concat(sample12, sample13)
-
+    # 生成interaction列表
+    interList=tdp.concat(inter12, inter13)
+    # 生成训练样本
+    # TODO : 根据上一步得到的interaction的列表计算训练样本
 
 
     # 模型参数

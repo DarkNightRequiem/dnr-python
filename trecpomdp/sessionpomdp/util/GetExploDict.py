@@ -1,5 +1,4 @@
 import os
-from sessionpomdp.util.TrecDomParser import TrecDomParser as tdp
 
 #
 # def getDict(sessions):
@@ -13,26 +12,6 @@ if __name__ == '__main__':
     This file is wrote to extract the mapping of query to explore dimension vale (manually annotated). 
     "If explMap.py" does not exist in sessionpomdp.util. Please run this file before you run "MainSessionSearch.py" 
     """
-    # # 获取搜索日志所所在的目录
-    # projDir = os.path.dirname(os.path.realpath(__file__))
-    # projDir = os.path.split(projDir)[0]
-    # sessionLogPath2 = os.path.join(projDir, 'sessionpomdp','sessionlog', 'sessiontrack2012.xml')
-    # sessionLogPath3 = os.path.join(projDir, 'sessionpomdp','sessionlog', 'sessiontrack2013.xml')
-    #
-    # # 获取 Long Sessions
-    # sessionTrack12 = tdp(sessionLogPath2, 12)
-    # longSessions12 = sessionTrack12.getLongSessionsSorted(4)
-    # print("Long Sessions in Track2012 Count: ", longSessions12.__len__())
-    #
-    # sessionTrack13 = tdp(sessionLogPath3, 13)
-    # longSessions13 = sessionTrack13.getLongSessionsSorted(4)
-    # print("Long Sessions in Track2013 Count: ", longSessions13.__len__())
-    #
-    # # 从session中抽取探索维度的dict
-    # dDict=getDict(longSessions12)
-
-
-
     # 获取搜索日志所所在的目录
     packDir = os.path.dirname(os.path.realpath(__file__))
     packDir = os.path.split(packDir)[0]
@@ -50,7 +29,7 @@ if __name__ == '__main__':
         # 表示下一行是否exploration的flag
         f = False
         sessionId = 0
-        count=1
+        count=0
         for i in range(lines.__len__()):
             line = lines[i].strip().replace("\n", "")
             if line == "#":
@@ -59,7 +38,7 @@ if __name__ == '__main__':
                 d = line.find(".")
                 sessionId = line[d + 1:line.__len__()]
                 anList2.append(" \'"+sessionId+"\': {\n")
-                count=1
+                count=0
                 continue
             elif line == "":
                 if i != lines.__len__() - 1:
@@ -96,7 +75,7 @@ if __name__ == '__main__':
         # 表示下一行是否exploration的flag
         f = False
         sessionId = 0
-        count = 1
+        count = 0
         for i in range(lines.__len__()):
             line = lines[i].strip().replace("\n", "")
             if line == "#":
@@ -105,7 +84,7 @@ if __name__ == '__main__':
                 d = line.find(".")
                 sessionId = line[d + 1:line.__len__()]
                 anList3.append(" \'"+sessionId+"\': {\n")
-                count=1
+                count=0
                 continue
             elif line == "":
                 if i != lines.__len__() - 1:
