@@ -12,12 +12,13 @@ if __name__ == '__main__':
     sessionLogPath3 = os.path.join(projDir, 'sessionpomdp','sessionlog', 'sessiontrack2013.xml')
 
     # 预处理获取 Long Sessions
+    longSessionLength = 9
     sessionTrack12 = tdp(sessionLogPath2, 12)
-    longSessions12 = sessionTrack12.getLongSessionsSorted(4)
+    longSessions12 = sessionTrack12.getLongSessionsSorted(longSessionLength,False)
     sample12=tdp.getInteractions(longSessions12, 2012)
 
     sessionTrack13 = tdp(sessionLogPath3, 13)
-    longSessions13 = sessionTrack13.getLongSessionsSorted(4)
+    longSessions13 = sessionTrack13.getLongSessionsSorted(longSessionLength,False)
     sample13=tdp.getInteractions(longSessions13, 2013)
 
     # 生成interaction列表作为训练的样本

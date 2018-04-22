@@ -137,17 +137,20 @@ class TrecDomParser:
                 self.longSessions.append(session)
         return self.longSessions
 
-    def getLongSessionsSorted(self, length):
+    def getLongSessionsSorted(self, length,flag):
         """
         获取query数>= length 的sessions 并按照时间从小到大排序
-        :param length: session length
+        :param length: session length flag: 是否要将current query记录到session length的长度计算中
         :return:
         """
         for session in self.sessions:
             interactionNum = list(session.getElementsByTagName("interaction")).__len__()
             curQuery = list(session.getElementsByTagName("currentquery")).__len__()
-            # if (interactionNum + curQuery) >= 4:
-            if interactionNum >= 4:
+            if flag:
+                le=interactionNum+curQuery
+            else:
+                le=interactionNum
+            if length <= le:
                 self.longSessions.append(session)
         if self.year == 12:
             for i in range(self.longSessions.__len__()):

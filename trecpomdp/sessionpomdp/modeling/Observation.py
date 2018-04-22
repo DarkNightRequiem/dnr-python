@@ -1,8 +1,8 @@
 class Observation:
     def __init__(self,rlv,expl):
-        # 相关性维度 Relevant: True Non-Relevant: False
+        # 相关性维度 Relevant: True    Non-Relevant: False
         self.rlv=rlv
-        # 探索维度 Exploration: True Exploitation: False
+        # 探索维度 Exploration: True   Exploitation: False
         self.expl=expl
 
     def setRlv(self,rlv):

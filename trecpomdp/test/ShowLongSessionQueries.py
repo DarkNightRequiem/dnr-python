@@ -10,11 +10,12 @@ if __name__ == '__main__':
     sessionLogPath3 = os.path.join(projDir,'sessionpomdp','sessionlog', 'sessiontrack2013.xml')
 
     # 预处理获取 Long Sessions
+    longSessionLength = 4
     sessionTrack12 = tdp(sessionLogPath2, 12)
     sessionTrack13 = tdp(sessionLogPath3, 13)
-    longSessions12 = sessionTrack12.getLongSessionsSorted(4)
+    longSessions12 = sessionTrack12.getLongSessionsSorted(longSessionLength,False)
     print("Long Sessions in Track2012 Count: ", longSessions12.__len__())
-    longSessions13 = sessionTrack13.getLongSessionsSorted(4)
+    longSessions13 = sessionTrack13.getLongSessionsSorted(longSessionLength,False)
     print("Long Sessions in Track2013 Count: ", longSessions13.__len__())
     longSessions = tdp.concat(longSessions12, longSessions13)
     print("Combined Long Sessions Count: ", longSessions.__len__())

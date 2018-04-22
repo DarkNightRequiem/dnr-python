@@ -1,4 +1,3 @@
-
 class UserAction:
     """
     User Domain-Level Actions
@@ -25,3 +24,20 @@ class EngineAction:
     """
     RETURNED_DOCUMENT = 11
 
+
+class Action:
+    def __init__(self, aList, rList, kList):
+        # Add
+        self.aList = aList
+        # Remove
+        self.rList = rList
+        # Keep
+        self.kList = kList
+        # 各种动作是否存在的标志 False为不存在
+        self.af=self.rf=self.kf=False
+        if aList.__len__()>0:
+            self.af=True
+        if rList.__len__()>0:
+            self.rf=True
+        if kList.__len__()>0:
+            self.kf=True

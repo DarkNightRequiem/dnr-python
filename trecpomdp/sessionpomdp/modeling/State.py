@@ -1,11 +1,18 @@
 # Non-Relevant & Exploration
-IDX_S_NRR = 0
+IDX_NRR = 0
 # Non-Relevant & Exploitation
-IDX_S_NRT = 1
+IDX_NRT = 1
 # Relevant & Exploration
-IDX_S_RR = 2
+IDX_RR = 2
 # Relevant & Exploitation
-IDX_S_RT = 3
+IDX_RT = 3
+
+# Code of Non-Relevant Rrelevant
+IDX_NON_REL=0
+IDX_REL=1
+# Code of Exploration Exploitation
+IDX_EXPR=0
+IDX_EXPL=1
 
 
 class State:
