@@ -2,7 +2,7 @@ from sessionpomdp.meta.Element import Element
 
 
 class TrainMata(Element):
-    def __init__(self, id, state, action, observation, clickPreCount, preSat, preNsat,preClickTrueRelevant):
+    def __init__(self, id, state, action, observation, clickPreCount, preSat, preNsat, preClickTrueRelevant, preClickTrueNonRel):
         # 单个训练元的id: year-sessionID-topicID
         self.id = id
 
@@ -26,6 +26,9 @@ class TrainMata(Element):
 
         # t-1 有SAT点击并且这些SAT点击确实relevant的个数
         self.preClickTrueRelevant=preClickTrueRelevant
+
+        # t-1 只有非SAT点击并且这些非SAT点击确实不相关
+        self.preClickTrueNonRelevant=preClickTrueNonRel
 
     def printContent(self):
         pass

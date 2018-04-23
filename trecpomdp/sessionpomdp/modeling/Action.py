@@ -1,3 +1,7 @@
+IDX_ADD=0
+IDX_RMV=1
+IDX_KEP=2
+
 class UserAction:
     """
     User Domain-Level Actions

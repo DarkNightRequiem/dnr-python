@@ -45,7 +45,7 @@ class Extractor:
                     s.setExpl(True)
                     a = None
                     o = None
-                    trainMetaList.append(TrainMata(id, s, a, o, 0, 0, 0, 0))
+                    trainMetaList.append(TrainMata(id, s, a, o, 0, 0, 0, 0,0))
                     continue
                 elif itList[i].isSessionEnd:
                     # 一个session的最后一个interaction making worthless
@@ -104,11 +104,16 @@ class Extractor:
                     else:
                         preTrueRel=0
 
+                    # ---计算t-1时刻true non relevant click
+                    if Extractor.isPreTrueRelevant(itList[i-1].results,itList[i-1].clicked):
+                        preTrueNonRel=1
+                    else:
+                        preTrueNonRel=0
                     # ---生成训练元数据并加入列表
                     trainMetaList.append(TrainMata(id, s, a, o,
                                                    itList[i - 1].clickedSAT + itList[i - 1].clickedNonSAT,
                                                    itList[i - 1].clickedSAT,
-                                                   itList[i - 1].clickedNonSAT,preTrueRel))
+                                                   itList[i - 1].clickedNonSAT,preTrueRel,preTrueNonRel))
 
         return trainMetaList
 
@@ -144,7 +149,6 @@ class Extractor:
 
     @staticmethod
     def isInPreResults(xList, preResults):
-        # TODO: 完善网页爬取并且进行判断
         if preResults is None or xList is None:
             return False
         f = True
@@ -170,6 +174,23 @@ class Extractor:
             for res in preResults:
                 if rank == res.rank:
                     if res.relevance:
+                        f = True
+        return f
+
+    @staticmethod
+    def isPreTrueNonRelevant(preResults, preClick):
+        if preResults is None or preClick is None:
+            return True
+        f = False
+        ranks = []
+        for cl in preClick:
+            if not cl.isSAT and cl.rank not in ranks:
+                ranks.append(cl.rank)
+
+        for rank in ranks:
+            for res in preResults:
+                if rank == res.rank:
+                    if not res.relevance:
                         f = True
         return f
 
