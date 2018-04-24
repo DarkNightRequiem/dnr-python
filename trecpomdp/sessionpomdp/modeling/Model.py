@@ -43,18 +43,37 @@ class SessionSearchModel:
         # 计算状态转移函数
         self.T=self.getTransitionMatirx()
 
-        # TODO: 计算初始的belief state
         # 初始化belief space
         self.space = self.getInitBeliefSpace()
 
     def getInitBeliefSpace(self):
         bp = np.zeros(self.stateNum, dtype=np.float)
-        # TODO: 根据论文修改
-        bp[COD_S_NRR] = 1
-        bp[COD_S_NRT] = 0
-        bp[COD_S_RR] = 0
-        bp[COD_S_RT] = 0
-        print("\n...(-To Be Modified-)Initial Belief Space:", bp)
+        countNR=countR=countER=countEL=0
+        for meta in self.trainMetaList:
+            code=meta.state.COD
+            if code==COD_S_NRR:
+                countNR+=1
+                countER+=1
+            elif code== COD_S_NRT:
+                countNR+=1
+                countEL+=1
+            elif code==COD_S_RR:
+                countR+=1
+                countER+=1
+            elif code==COD_S_RT:
+                countR+=1
+                countEL+=1
+        p_NR=countNR/self.trainMetaList.__len__()
+        p_R=countR/self.trainMetaList.__len__()
+        p_ER=countER/self.trainMetaList.__len__()
+        p_EL=countEL/self.trainMetaList.__len__()
+
+        bp[COD_S_NRR] = p_NR*p_ER
+        bp[COD_S_NRT] = p_NR*p_EL
+        bp[COD_S_RR] = p_R*p_ER
+        bp[COD_S_RT] = p_R*p_EL
+
+        print("\nInitial Belief Space:", bp)
         return bp
 
     def getObservationFunction_REL(self):
