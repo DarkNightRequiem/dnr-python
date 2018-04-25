@@ -240,3 +240,13 @@ class SessionSearchModel:
         print("Model Trasition [actionNum][stateNum][stateNum]:")
         pp.pprint(transition)
         return transition
+
+    def updateBeleifSpace(self,O,T):
+        """
+        belief update 函数
+        :param O:
+        :param T:
+        :return:
+        """
+        # TODO: 实现
+        pass
