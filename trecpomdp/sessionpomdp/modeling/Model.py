@@ -1,8 +1,9 @@
 from __future__ import division
 import pprint as pp
 import numpy as np
-from sessionpomdp.modeling.State import COD_S_NRR, COD_S_NRT, COD_S_RR, COD_S_RT, IDX_EXPR, IDX_EXPL, IDX_NON_REL, IDX_REL
-from sessionpomdp.modeling.Action import IDX_ADD,IDX_RMV,IDX_KEP
+from sessionpomdp.modeling.State import COD_S_NRR, COD_S_NRT, COD_S_RR, COD_S_RT, IDX_EXPR, IDX_EXPL, IDX_NON_REL, \
+    IDX_REL
+from sessionpomdp.modeling.Action import IDX_ADD, IDX_RMV, IDX_KEP, IDX_APR
 
 """
 iteration： 数据进行一次前向-后向的训练（也就是更新一次参数）
@@ -41,37 +42,37 @@ class SessionSearchModel:
         self.oKEP = self.getJointObservationFunction()
 
         # 计算状态转移函数
-        self.T=self.getTransitionMatirx()
+        self.T = self.getTransitionMatirx()
 
         # 初始化belief space
         self.space = self.getInitBeliefSpace()
 
     def getInitBeliefSpace(self):
         bp = np.zeros(self.stateNum, dtype=np.float)
-        countNR=countR=countER=countEL=0
+        countNR = countR = countER = countEL = 0
         for meta in self.trainMetaList:
-            code=meta.state.COD
-            if code==COD_S_NRR:
-                countNR+=1
-                countER+=1
-            elif code== COD_S_NRT:
-                countNR+=1
-                countEL+=1
-            elif code==COD_S_RR:
-                countR+=1
-                countER+=1
-            elif code==COD_S_RT:
-                countR+=1
-                countEL+=1
-        p_NR=countNR/self.trainMetaList.__len__()
-        p_R=countR/self.trainMetaList.__len__()
-        p_ER=countER/self.trainMetaList.__len__()
-        p_EL=countEL/self.trainMetaList.__len__()
+            code = meta.state.COD
+            if code == COD_S_NRR:
+                countNR += 1
+                countER += 1
+            elif code == COD_S_NRT:
+                countNR += 1
+                countEL += 1
+            elif code == COD_S_RR:
+                countR += 1
+                countER += 1
+            elif code == COD_S_RT:
+                countR += 1
+                countEL += 1
+        p_NR = countNR / self.trainMetaList.__len__()
+        p_R = countR / self.trainMetaList.__len__()
+        p_ER = countER / self.trainMetaList.__len__()
+        p_EL = countEL / self.trainMetaList.__len__()
 
-        bp[COD_S_NRR] = p_NR*p_ER
-        bp[COD_S_NRT] = p_NR*p_EL
-        bp[COD_S_RR] = p_R*p_ER
-        bp[COD_S_RT] = p_R*p_EL
+        bp[COD_S_NRR] = p_NR * p_ER
+        bp[COD_S_NRT] = p_NR * p_EL
+        bp[COD_S_RR] = p_R * p_ER
+        bp[COD_S_RT] = p_R * p_EL
 
         print("\nInitial Belief Space:", bp)
         return bp
@@ -111,8 +112,8 @@ class SessionSearchModel:
         # s=Rel w=N-Rel => p_r_n * p_nsat
         O_r_n = 1 - O_r_r  # p_r_n * p_nsat
 
-        res=np.array([[O_n_n, O_n_r],
-                         [O_r_n, O_r_r]])
+        res = np.array([[O_n_n, O_n_r],
+                        [O_r_n, O_r_r]])
 
         print("Observation Function-[Relevance Dimension]:")
         pp.pprint(res)
@@ -126,6 +127,7 @@ class SessionSearchModel:
         total_add_el = true_add_el = total_add_er = true_add_er = 0
         total_rmv_el = true_rmv_el = total_rmv_er = true_rmv_er = 0
         total_kep_el = true_kep_el = total_kep_er = true_kep_er = 0
+        total_apr_el = true_apr_el = total_apr_er = true_apr_er = 0
 
         for meta in self.trainMetaList:
             if meta.observation is None:
@@ -141,6 +143,8 @@ class SessionSearchModel:
                         total_rmv_el += 1
                     if meta.action.kf:
                         total_kep_el += 1
+                    if meta.action.arf:
+                        total_apr_el += 1
 
                 if not meta.state.expl:
                     # 实际上也是 exploitation
@@ -152,6 +156,8 @@ class SessionSearchModel:
                             true_rmv_el += 1
                         if meta.action.kf:
                             true_kep_el += 1
+                        if meta.action.arf:
+                            true_apr_el += 1
 
             else:
                 # 观测是exploration
@@ -163,6 +169,8 @@ class SessionSearchModel:
                         total_rmv_er += 1
                     if meta.action.kf:
                         total_kep_er += 1
+                    if meta.action.arf:
+                        total_apr_er += 1
 
                 if meta.state.expl:
                     # 实际上也是exploration
@@ -174,18 +182,33 @@ class SessionSearchModel:
                             true_rmv_er += 1
                         if meta.action.kf:
                             true_kep_er += 1
+                        if meta.action.arf:
+                            true_apr_er += 1
 
         p_el_el = trueExploitation / observedExploitation
         p_er_el = 1 - p_el_el
         p_er_er = trueExploration / observedExploration
         p_el_er = 1 - p_er_er
 
-        p_el_add = true_add_el / total_add_el
-        p_er_add = true_add_er / total_add_er
-        p_el_rmv = true_rmv_el / total_rmv_el
-        p_er_rmv = true_rmv_er / total_rmv_er
-        p_el_kep = true_kep_el / total_kep_el
-        p_er_kep = true_kep_er / total_kep_er
+        if true_add_el==0 or total_add_el==0:
+            p_el_add=0
+        else:
+            p_el_add = true_add_el / total_add_el
+            p_er_add = true_add_er / total_add_er
+        if true_rmv_el==0 or total_rmv_el==0:
+            p_el_rmv=0
+        else:
+            p_el_rmv = true_rmv_el / total_rmv_el
+            p_er_rmv = true_rmv_er / total_rmv_er
+        if true_kep_el==0 or total_rmv_el==0:
+            p_el_kep=0
+        else:
+            p_el_kep = true_kep_el / total_kep_el
+            p_er_kep = true_kep_er / total_kep_er
+        if true_apr_el==0 or total_apr_el==0:
+            p_el_apr=0
+        else:
+            p_el_apr = true_apr_el / total_apr_el
 
         # 计算ADD观测
         O_EXPL_ADD = np.array([[p_el_el * p_el_add, 1 - p_el_el * p_el_add],
@@ -195,14 +218,19 @@ class SessionSearchModel:
                                [1 - p_el_el * p_el_rmv, p_el_el * p_el_rmv]])
 
         # 计算KEEP观测
-        O_EXPL_KEP = np.array([[p_el_el*p_el_kep, 1-p_el_el*p_el_kep],
-                                    [1-p_el_el*p_el_kep, p_el_el*p_el_kep]])
+        O_EXPL_KEP = np.array([[p_el_el * p_el_kep, 1 - p_el_el * p_el_kep],
+                               [1 - p_el_el * p_el_kep, p_el_el * p_el_kep]])
+
+        # 计算KEEP观测
+        O_EXPL_APR = np.array([[p_el_el * p_el_apr, 1 - p_el_el * p_el_apr],
+                               [1 - p_el_el * p_el_apr, p_el_el * p_el_apr]])
 
         print("===================================================\n"
               "Observation Function-[Explore Dimension]-ADD-RMV-KEP:")
         pp.pprint(O_EXPL_ADD)
         pp.pprint(O_EXPL_RMV)
         pp.pprint(O_EXPL_KEP)
+        pp.pprint(O_EXPL_APR)
         return O_EXPL_ADD, O_EXPL_RMV, O_EXPL_KEP
 
     def getJointObservationFunction(self):
@@ -213,35 +241,41 @@ class SessionSearchModel:
 
     def getTransitionMatirx(self):
         # 初始化构建
-        transition=np.zeros((self.actionNum,self.stateNum,self.stateNum))
-        countTable=np.zeros((self.stateNum,self.actionNum,self.stateNum))
+        transition = np.zeros((self.actionNum, self.stateNum, self.stateNum))
+        countTable = np.zeros((self.stateNum, self.actionNum, self.stateNum))
 
         # 构建 countTable
-        for i in range(self.trainMetaList.__len__()-1):
-            metaNow=self.trainMetaList[i]
-            metaNext=self.trainMetaList[i+1]
+        for i in range(self.trainMetaList.__len__() - 1):
+            metaNow = self.trainMetaList[i]
+            metaNext = self.trainMetaList[i + 1]
             if metaNext.action is None:
                 continue
             if metaNext.action.af:
-                countTable[metaNow.state.COD][IDX_ADD][metaNext.state.COD]+=1
+                countTable[metaNow.state.COD][IDX_ADD][metaNext.state.COD] += 1
             if metaNext.action.rf:
-                countTable[metaNow.state.COD][IDX_RMV][metaNext.state.COD]+=1
+                countTable[metaNow.state.COD][IDX_RMV][metaNext.state.COD] += 1
             if metaNext.action.kf:
-                countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD]+=1
+                countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD] += 1
+            if metaNext.action.arf:
+                countTable[metaNow.state.COD][IDX_APR][metaNext.state.COD]+=1
 
         # pp.pprint(countTable)
 
         # 生成Transition
+        # np.seterr(divide='ignore')
         for i in range(self.actionNum):
             for j in range(self.stateNum):
                 for k in range(self.stateNum):
-                    transition[i][j][k]=countTable[j][i][k]/np.sum(countTable[j][i])
+                    if np.sum(countTable[j][i])==0:
+                        transition[i][j][k]=0
+                    else:
+                        transition[i][j][k] = countTable[j][i][k] / np.sum(countTable[j][i])
 
         print("Model Trasition [actionNum][stateNum][stateNum]:")
         pp.pprint(transition)
         return transition
 
-    def updateBeleifSpace(self,O,T):
+    def updateBeleifSpace(self, O, T):
         """
         belief update 函数
         :param O:

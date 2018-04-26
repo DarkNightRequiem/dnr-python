@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # 模型参数
     argDict = dict()
     argDict['stateNum'] = 4
-    argDict['actionNum'] = 3  # TODO: 通过数据预处理获得user agent的数量
+    argDict['actionNum'] = 4
     argDict['discount'] = 0.95
     argDict['trainMetaList']=trainMetaList
 

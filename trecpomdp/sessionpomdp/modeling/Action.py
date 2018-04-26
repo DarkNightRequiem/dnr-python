@@ -1,36 +1,21 @@
-IDX_ADD=0
-IDX_RMV=1
-IDX_KEP=2
-
-class UserAction:
-    """
-    User Domain-Level Actions
-    """
-    ADD_TERMS = 4
-    REMOVE_TERMS = 5
-    KEEP_TERMS = 6
-    """
-    User Communications-Level Actions
-    """
-    CLICKED_DOCUMENTS = 7
-
-
-class EngineAction:
-    """
-    Engine Domain-Level Actions
-    """
-    INCREASE_WEIGHT = 8
-    DECREASE_WEIGHT = 9
-    KEEP_WEIGHT = 10
-
-    """
-    Engine Communications-Level Actions 
-    """
-    RETURNED_DOCUMENT = 11
+# index for purely add action
+IDX_ADD = 0
+# index for purely remove action
+IDX_RMV = 1
+# index for purely keeping action
+IDX_KEP = 2
+# index for add and  remove action
+IDX_APR=3
 
 
 class Action:
     def __init__(self, aList, rList, kList):
+        """
+        总共有四种动作 A R K AR
+        :param aList: 添加的词的列表
+        :param rList: 减少的词的列表
+        :param kList: 不变的词的列表
+        """
         # Add
         self.aList = aList
         # Remove
@@ -38,10 +23,12 @@ class Action:
         # Keep
         self.kList = kList
         # 各种动作是否存在的标志 False为不存在
-        self.af=self.rf=self.kf=False
-        if aList.__len__()>0:
-            self.af=True
-        if rList.__len__()>0:
-            self.rf=True
-        if kList.__len__()>0:
-            self.kf=True
+        self.af = self.rf = self.kf = self.arf = False
+        if aList.__len__() > 0 and rList.__len__() > 0:
+            self.arf = True
+        if aList.__len__() > 0 >= rList.__len__():
+            self.af = True
+        if rList.__len__() > 0 >= aList.__len__():
+            self.rf = True
+        if kList.__len__() > 0:
+            self.kf = True
