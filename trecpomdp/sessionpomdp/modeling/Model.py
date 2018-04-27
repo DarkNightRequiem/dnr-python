@@ -3,7 +3,7 @@ import pprint as pp
 import numpy as np
 from sessionpomdp.modeling.State import COD_S_NRR, COD_S_NRT, COD_S_RR, COD_S_RT, IDX_EXPR, IDX_EXPL, IDX_NON_REL, \
     IDX_REL
-from sessionpomdp.modeling.Action import IDX_ADD, IDX_RMV, IDX_KEP, IDX_APR
+from sessionpomdp.modeling.Action import IDX_ADD, IDX_RMV, IDX_KEP, IDX_APR,IDX_CLK
 
 """
 iteration： 数据进行一次前向-后向的训练（也就是更新一次参数）
@@ -34,12 +34,14 @@ class SessionSearchModel:
         # 计算探索性维度 观测函数
         self.O_EXPL_ADD, \
         self.O_EXPL_RMV, \
-        self.O_EXPL_KEP = self.getObservationFunction_EXPL()
+        self.O_EXPL_KEP, \
+        self.O_EXPL_APR = self.getObservationFunction_EXPL()
 
         # 计算两个维度联合的观测函数(这种矩阵暂时没用,并且只有在两个维度相互独立的情况下才存在)
         self.oADD, \
         self.oRMV, \
-        self.oKEP = self.getJointObservationFunction()
+        self.oKEP,\
+        self.oAPR= self.getJointObservationFunction()
 
         # 计算状态转移函数
         self.T = self.getTransitionMatirx()
@@ -48,6 +50,9 @@ class SessionSearchModel:
         self.space = self.getInitBeliefSpace()
 
     def getInitBeliefSpace(self):
+        """
+        计算初始的belief space 对所有的session
+        """
         bp = np.zeros(self.stateNum, dtype=np.float)
         countNR = countR = countER = countEL = 0
         for meta in self.trainMetaList:
@@ -74,10 +79,16 @@ class SessionSearchModel:
         bp[COD_S_RR] = p_R * p_ER
         bp[COD_S_RT] = p_R * p_EL
 
-        print("\nInitial Belief Space:", bp)
+        print("===================================================\n"
+              "Initial Belief Space:"
+              "\n===================================================")
+        print(bp)
         return bp
 
     def getObservationFunction_REL(self):
+        """
+        计算相关性维度的Observation Function
+        """
         # t-1时刻存在SAT点击的Interation的个数
         totalPreSat_Inter = 0
         # t-1时刻不存在SAT点击的Intaraction的个数
@@ -85,8 +96,8 @@ class SessionSearchModel:
 
         # t-1的结果中至少有SAT点击并且这些点击确实relevant的Interaction的个数
         trueRelevant = 0
-        # # t-1中只有非SAT点击并且这些非SAT点击确实不相关
-        # trueNonRelevant=0
+        # t-1中只有非SAT点击并且这些非SAT点击确实不相关
+        trueNonRelevant = 0
 
         id = self.trainMetaList[0].id
 
@@ -98,28 +109,35 @@ class SessionSearchModel:
                 totalPreNsat_Inter += 1
 
             trueRelevant += meta.preClickTrueRelevant
-            # trueNonRelevant+=meta.preClickTrueNonRelevant
+            trueNonRelevant += meta.preClickTrueNonRelevant
 
         p_sat = totalPreSat_Inter / self.trainMetaList.__len__()
+        p_nsat = totalPreNsat_Inter / self.trainMetaList.__len__()
         p_r_r = trueRelevant / totalPreSat_Inter
+        p_n_n = trueNonRelevant / totalPreNsat_Inter
 
         # s=Rel w=Rel  => p_r_r * p_sat
         O_r_r = p_r_r * p_sat
-        # s=N-Rel w=Rel => p_n_r * p_sat
-        O_n_r = 1 - O_r_r
         # s=N-Rel w=N-Rel => p_n_n * p_nsat
-        O_n_n = O_r_r  # p_n_n * p_nsat
+        O_n_n = p_n_n * p_nsat
+        # s=N-Rel w=Rel => p_n_r * p_sat
+        O_n_r = 1 - O_n_n
         # s=Rel w=N-Rel => p_r_n * p_nsat
-        O_r_n = 1 - O_r_r  # p_r_n * p_nsat
+        O_r_n = 1 - O_r_r
 
         res = np.array([[O_n_n, O_n_r],
                         [O_r_n, O_r_r]])
 
-        print("Observation Function-[Relevance Dimension]:")
+        print("===================================================\n"
+              "Observation Function-[Relevance Dimension]:"
+              "\n===================================================")
         pp.pprint(res)
         return res
 
     def getObservationFunction_EXPL(self):
+        """
+        计算探索性维度的Observation Function
+        """
         trueExploitation = 0
         observedExploitation = 0
         trueExploration = 0
@@ -186,60 +204,75 @@ class SessionSearchModel:
                             true_apr_er += 1
 
         p_el_el = trueExploitation / observedExploitation
-        p_er_el = 1 - p_el_el
+        # p_er_el = 1 - p_el_el
         p_er_er = trueExploration / observedExploration
-        p_el_er = 1 - p_er_er
+        # p_el_er = 1 - p_er_er
 
-        if true_add_el==0 or total_add_el==0:
-            p_el_add=0
+        p_er_add = p_er_rmv = p_er_kep = p_er_apr = 0
+
+        if true_add_el == 0 or total_add_el == 0:
+            p_el_add = 0
         else:
             p_el_add = true_add_el / total_add_el
-            p_er_add = true_add_er / total_add_er
-        if true_rmv_el==0 or total_rmv_el==0:
-            p_el_rmv=0
+            if total_add_er != 0:
+                p_er_add = true_add_er / total_add_er
+
+        if true_rmv_el == 0 or total_rmv_el == 0:
+            p_el_rmv = 0
         else:
             p_el_rmv = true_rmv_el / total_rmv_el
-            p_er_rmv = true_rmv_er / total_rmv_er
-        if true_kep_el==0 or total_rmv_el==0:
-            p_el_kep=0
+            if total_rmv_er != 0:
+                p_er_rmv = true_rmv_er / total_rmv_er
+
+        if true_kep_el == 0 or total_rmv_el == 0:
+            p_el_kep = 0
         else:
             p_el_kep = true_kep_el / total_kep_el
-            p_er_kep = true_kep_er / total_kep_er
-        if true_apr_el==0 or total_apr_el==0:
-            p_el_apr=0
+            if total_kep_er != 0:
+                p_er_kep = true_kep_er / total_kep_er
+
+        if true_apr_el == 0 or total_apr_el == 0:
+            p_el_apr = 0
         else:
             p_el_apr = true_apr_el / total_apr_el
+            if total_apr_er != 0:
+                p_er_apr = true_apr_er / total_apr_er
 
         # 计算ADD观测
-        O_EXPL_ADD = np.array([[p_el_el * p_el_add, 1 - p_el_el * p_el_add],
+        O_EXPL_ADD = np.array([[p_er_er * p_er_add, 1 - p_er_er * p_er_add],
                                [1 - p_el_el * p_el_add, p_el_el * p_el_add]])
         # 计算REMOVE观测
-        O_EXPL_RMV = np.array([[p_el_el * p_el_rmv, 1 - p_el_el * p_el_rmv],
+        O_EXPL_RMV = np.array([[p_er_er * p_er_rmv, 1 - p_er_er * p_er_rmv],
                                [1 - p_el_el * p_el_rmv, p_el_el * p_el_rmv]])
 
         # 计算KEEP观测
-        O_EXPL_KEP = np.array([[p_el_el * p_el_kep, 1 - p_el_el * p_el_kep],
+        O_EXPL_KEP = np.array([[p_er_er * p_er_kep, 1 - p_er_er * p_er_kep],
                                [1 - p_el_el * p_el_kep, p_el_el * p_el_kep]])
 
         # 计算KEEP观测
-        O_EXPL_APR = np.array([[p_el_el * p_el_apr, 1 - p_el_el * p_el_apr],
+        O_EXPL_APR = np.array([[p_er_er * p_er_apr, 1 - p_er_er * p_er_apr],
                                [1 - p_el_el * p_el_apr, p_el_el * p_el_apr]])
 
         print("===================================================\n"
-              "Observation Function-[Explore Dimension]-ADD-RMV-KEP:")
+              "Observation Function-[Explore Dimension]:"
+              "\n===================================================")
         pp.pprint(O_EXPL_ADD)
         pp.pprint(O_EXPL_RMV)
         pp.pprint(O_EXPL_KEP)
         pp.pprint(O_EXPL_APR)
-        return O_EXPL_ADD, O_EXPL_RMV, O_EXPL_KEP
+        return O_EXPL_ADD, O_EXPL_RMV, O_EXPL_KEP, O_EXPL_APR
 
     def getJointObservationFunction(self):
         O_ADD = self.O_Rel * self.O_EXPL_ADD
         O_RMV = self.O_Rel * self.O_EXPL_RMV
         O_KEP = self.O_Rel * self.O_EXPL_KEP
-        return O_ADD, O_RMV, O_KEP
+        O_APR=self.O_Rel* self.O_EXPL_APR
+        return O_ADD, O_RMV, O_KEP,O_APR
 
     def getTransitionMatirx(self):
+        """
+        构建状态转移函数
+        """
         # 初始化构建
         transition = np.zeros((self.actionNum, self.stateNum, self.stateNum))
         countTable = np.zeros((self.stateNum, self.actionNum, self.stateNum))
@@ -257,7 +290,9 @@ class SessionSearchModel:
             if metaNext.action.kf:
                 countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD] += 1
             if metaNext.action.arf:
-                countTable[metaNow.state.COD][IDX_APR][metaNext.state.COD]+=1
+                countTable[metaNow.state.COD][IDX_APR][metaNext.state.COD] += 1
+            if metaNext.clickCount>0:
+                countTable[metaNow.state.COD][IDX_CLK][metaNext.state.COD]+=1
 
         # pp.pprint(countTable)
 
@@ -266,12 +301,14 @@ class SessionSearchModel:
         for i in range(self.actionNum):
             for j in range(self.stateNum):
                 for k in range(self.stateNum):
-                    if np.sum(countTable[j][i])==0:
-                        transition[i][j][k]=0
+                    if np.sum(countTable[j][i]) == 0:
+                        transition[i][j][k] = 0
                     else:
                         transition[i][j][k] = countTable[j][i][k] / np.sum(countTable[j][i])
 
-        print("Model Trasition [actionNum][stateNum][stateNum]:")
+        print("===================================================\n"
+              "Model Trasition [actionNum][stateNum][stateNum]:"
+              "\n===================================================")
         pp.pprint(transition)
         return transition
 

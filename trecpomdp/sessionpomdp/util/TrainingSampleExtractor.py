@@ -48,7 +48,7 @@ class Extractor:
                     trainMetaList.append(TrainMata(id, s, a, o, 0, 0, 0, 0,0))
                     continue
                 elif itList[i].isSessionEnd:
-                    # 一个session的最后一个interaction making worthless
+                    # 一个session的最后一个interaction 没有意义
                     continue
                 else:
                     # ---计算Action (query change)

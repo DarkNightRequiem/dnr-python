@@ -5,13 +5,15 @@ IDX_RMV = 1
 # index for purely keeping action
 IDX_KEP = 2
 # index for add and  remove action
-IDX_APR=3
+IDX_APR = 3
+# index for user click action
+IDX_CLK = 4
 
 
 class Action:
     def __init__(self, aList, rList, kList):
         """
-        总共有四种动作 A R K AR
+        总共有四种domain-level的动作 A R K AR（这里不用考虑message-level的动作）
         :param aList: 添加的词的列表
         :param rList: 减少的词的列表
         :param kList: 不变的词的列表
@@ -30,5 +32,6 @@ class Action:
             self.af = True
         if rList.__len__() > 0 >= aList.__len__():
             self.rf = True
+        # if kList.__len__() > 0>=rList.__len__()>=aList.__len__():
         if kList.__len__() > 0:
             self.kf = True

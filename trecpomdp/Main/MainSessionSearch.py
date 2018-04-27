@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # 模型参数
     argDict = dict()
     argDict['stateNum'] = 4
-    argDict['actionNum'] = 4
+    argDict['actionNum'] = 5 # add remove add&remove keep click
     argDict['discount'] = 0.95
     argDict['trainMetaList']=trainMetaList
 
