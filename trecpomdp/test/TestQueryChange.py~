@@ -31,9 +31,7 @@ if __name__ == '__main__':
 
     print("A: ",aList,"\n","R: ",rList,"\n","K: ",kList)
 
-    print("That is ok")
-	
-	
+    print(None)
 
 
 
