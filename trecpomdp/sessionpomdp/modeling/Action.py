@@ -32,6 +32,6 @@ class Action:
             self.af = True
         if rList.__len__() > 0 >= aList.__len__():
             self.rf = True
-        # if kList.__len__() > 0>=rList.__len__()>=aList.__len__():
-        if kList.__len__() > 0:
+        if kList.__len__() > 0 >= rList.__len__() >= aList.__len__():
+            # if kList.__len__() > 0:
             self.kf = True

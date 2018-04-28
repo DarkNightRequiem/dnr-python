@@ -1,6 +1,6 @@
 if __name__ == '__main__':
-    qPre= "dulles hotels"
-    qNow= "dulles hotels"
+    qPre= "nickname for france football team in world cup 1998"
+    qNow= "stadium final world cup 1998"
 
     # 去掉首尾的空格并将一些特殊字符去掉
     q1=qPre.strip().replace("\"", "").replace(".", "").replace(";", "").replace("&", "").replace(":", "")
@@ -32,12 +32,6 @@ if __name__ == '__main__':
     print("A: ",aList,"\n","R: ",rList,"\n","K: ",kList)
 
     print("That is ok")
-	
-	
-
-
-
-
 
 
 
