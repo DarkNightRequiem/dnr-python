@@ -1,3 +1,9 @@
+"""
+@Project: Reimplementation of Win-Win Search POMDP Modeling
+@Author: EricWang
+@Version: 1.0
+@URL: https://github.com/DarkNightRequiem/session-search-py
+"""
 import os
 
 from sessionpomdp.modeling.Model import SessionSearchModel
@@ -40,10 +46,17 @@ if __name__ == '__main__':
     # 模型参数
     argDict = dict()
     argDict['stateNum'] = 4
-    argDict['actionNum'] = 5 # add remove add&remove keep click
+    argDict['actionNum'] = 3  # add rmv click
     argDict['discount'] = 0.95
     argDict['trainMetaList']=trainMetaList
 
+    # 生成模型
     env = SessionSearchModel(argDict)
 
-    print("\n--------POMDP DONE--------")
+    # 训练
+    env.train()
+
+    # 输出最新的belief space
+    env.printCurrentBeliefSpace()
+
+    # print("\n--------POMDP DONE--------")

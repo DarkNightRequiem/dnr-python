@@ -1,9 +1,9 @@
 from __future__ import division
 import pprint as pp
 import numpy as np
-from sessionpomdp.modeling.State import COD_S_NRR, COD_S_NRT, COD_S_RR, COD_S_RT, IDX_EXPR, IDX_EXPL, IDX_NON_REL, \
-    IDX_REL
-from sessionpomdp.modeling.Action import IDX_ADD, IDX_RMV, IDX_KEP, IDX_APR,IDX_CLK
+import itertools
+from sessionpomdp.modeling.State import COD_S_NRR, COD_S_NRT, COD_S_RR, COD_S_RT
+from sessionpomdp.modeling.Action import IDX_ADD, IDX_RMV, IDX_KEP, IDX_APR, IDX_CLK
 
 """
 iteration： 数据进行一次前向-后向的训练（也就是更新一次参数）
@@ -34,20 +34,20 @@ class SessionSearchModel:
         # 计算探索性维度 观测函数
         self.O_EXPL_ADD, \
         self.O_EXPL_RMV, \
-        self.O_EXPL_KEP, \
-        self.O_EXPL_APR = self.getObservationFunction_EXPL()
+        self.O_EXPL_KEP = self.getObservationFunction_EXPL()
 
         # 计算两个维度联合的观测函数(这种矩阵暂时没用,并且只有在两个维度相互独立的情况下才存在)
         self.oADD, \
-        self.oRMV, \
-        self.oKEP,\
-        self.oAPR= self.getJointObservationFunction()
+        self.oRMV = self.getJointObservationFunction()
 
         # 计算状态转移函数
         self.T = self.getTransitionMatirx()
 
         # 初始化belief space
-        self.space = self.getInitBeliefSpace()
+        self.initBelief = self.getInitBeliefSpace()
+
+        # 用于记录所有的session的belief space的更新记录
+        self.beliefDict={}
 
     def getInitBeliefSpace(self):
         """
@@ -161,8 +161,6 @@ class SessionSearchModel:
                         total_rmv_el += 1
                     if meta.action.kf:
                         total_kep_el += 1
-                    if meta.action.arf:
-                        total_apr_el += 1
 
                 if not meta.state.expl:
                     # 实际上也是 exploitation
@@ -174,8 +172,6 @@ class SessionSearchModel:
                             true_rmv_el += 1
                         if meta.action.kf:
                             true_kep_el += 1
-                        if meta.action.arf:
-                            true_apr_el += 1
 
             else:
                 # 观测是exploration
@@ -187,8 +183,6 @@ class SessionSearchModel:
                         total_rmv_er += 1
                     if meta.action.kf:
                         total_kep_er += 1
-                    if meta.action.arf:
-                        total_apr_er += 1
 
                 if meta.state.expl:
                     # 实际上也是exploration
@@ -200,8 +194,6 @@ class SessionSearchModel:
                             true_rmv_er += 1
                         if meta.action.kf:
                             true_kep_er += 1
-                        if meta.action.arf:
-                            true_apr_er += 1
 
         p_el_el = trueExploitation / observedExploitation
         # p_er_el = 1 - p_el_el
@@ -231,13 +223,6 @@ class SessionSearchModel:
             if total_kep_er != 0:
                 p_er_kep = true_kep_er / total_kep_er
 
-        if true_apr_el == 0 or total_apr_el == 0:
-            p_el_apr = 0
-        else:
-            p_el_apr = true_apr_el / total_apr_el
-            if total_apr_er != 0:
-                p_er_apr = true_apr_er / total_apr_er
-
         # 计算ADD观测
         O_EXPL_ADD = np.array([[p_er_er * p_er_add, 1 - p_er_er * p_er_add],
                                [1 - p_el_el * p_el_add, p_el_el * p_el_add]])
@@ -249,25 +234,33 @@ class SessionSearchModel:
         O_EXPL_KEP = np.array([[p_er_er * p_er_kep, 1 - p_er_er * p_er_kep],
                                [1 - p_el_el * p_el_kep, p_el_el * p_el_kep]])
 
-        # 计算KEEP观测
-        O_EXPL_APR = np.array([[p_er_er * p_er_apr, 1 - p_er_er * p_er_apr],
-                               [1 - p_el_el * p_el_apr, p_el_el * p_el_apr]])
+        # # 计算APR观测
+        # O_EXPL_APR = np.array([[p_er_er * p_er_apr, 1 - p_er_er * p_er_apr],
+        #                        [1 - p_el_el * p_el_apr, p_el_el * p_el_apr]])
 
         print("===================================================\n"
               "Observation Function-[Explore Dimension]:"
               "\n===================================================")
         pp.pprint(O_EXPL_ADD)
         pp.pprint(O_EXPL_RMV)
-        pp.pprint(O_EXPL_KEP)
-        pp.pprint(O_EXPL_APR)
-        return O_EXPL_ADD, O_EXPL_RMV, O_EXPL_KEP, O_EXPL_APR
+        return O_EXPL_ADD, O_EXPL_RMV, O_EXPL_KEP
 
     def getJointObservationFunction(self):
-        O_ADD = self.O_Rel * self.O_EXPL_ADD
-        O_RMV = self.O_Rel * self.O_EXPL_RMV
-        O_KEP = self.O_Rel * self.O_EXPL_KEP
-        O_APR=self.O_Rel* self.O_EXPL_APR
-        return O_ADD, O_RMV, O_KEP,O_APR
+        # 求两个维度的笛卡儿积（直积）(因为两个维度相互独立)
+        add = list(itertools.product(self.O_Rel, self.O_EXPL_ADD))
+        rmv = list(itertools.product(self.O_Rel, self.O_EXPL_RMV))
+
+        add = np.reshape(add, (self.stateNum, self.stateNum))
+        rmv = np.reshape(rmv, (self.stateNum, self.stateNum))
+
+        for i in range(self.stateNum):
+            s1 = np.sum(add[i])
+            s2 = np.sum(rmv[i])
+            for j in range(self.stateNum):
+                add[i][j] /= s1
+                rmv[i][j] /= s2
+
+        return add, rmv
 
     def getTransitionMatirx(self):
         """
@@ -287,12 +280,10 @@ class SessionSearchModel:
                 countTable[metaNow.state.COD][IDX_ADD][metaNext.state.COD] += 1
             if metaNext.action.rf:
                 countTable[metaNow.state.COD][IDX_RMV][metaNext.state.COD] += 1
-            if metaNext.action.kf:
-                countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD] += 1
-            if metaNext.action.arf:
-                countTable[metaNow.state.COD][IDX_APR][metaNext.state.COD] += 1
-            if metaNext.clickCount>0:
-                countTable[metaNow.state.COD][IDX_CLK][metaNext.state.COD]+=1
+            if metaNext.clickCount > 0:
+                countTable[metaNow.state.COD][IDX_CLK][metaNext.state.COD] += 1
+            # if metaNext.action.kf:
+            #     countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD] += 1
 
         # pp.pprint(countTable)
 
@@ -312,12 +303,59 @@ class SessionSearchModel:
         pp.pprint(transition)
         return transition
 
-    def updateBeleifSpace(self, O, T):
+    def train(self):
         """
-        belief update 函数
-        :param O:
-        :param T:
+        训练模型
         :return:
         """
-        # TODO: 实现
-        pass
+        id = self.trainMetaList[0].id
+        for i in range(self.trainMetaList.__len__()):
+            meta = self.trainMetaList[i]
+            if meta.id != id or i == 0:
+                # 新的session
+                id = meta.id
+                # 设置初始的belief states
+                record = [self.initBelief]
+                if id not in self.beliefDict.keys():
+                    self.beliefDict[id] = record
+            else:
+                l = list(self.beliefDict[id])
+
+                # 依据explore维度的观测函数进行第一次update
+                b1A = self.update(l[l.__len__() - 1], IDX_CLK, self.oADD)
+                b1R=self.update(l[l.__len__() - 1], IDX_CLK, self.oRMV)
+                # 依据relevance维度的观测函数进行第二次更新
+                b2A = self.update(b1A, IDX_ADD, self.oADD)
+                b2R = self.update(b1R, IDX_RMV, self.oRMV)
+
+                new = (b2A + b2R)/(np.sum(b2A)+np.sum(b2R))
+                self.beliefDict[id].append(new)
+
+    def update(self, pre, IDX_X, O):
+        """
+        belief update 函数
+        :param pre: 上一次的belief sapce
+        :param now: 要进行更新的space
+        :param IDX_X: 要更新的Action
+        :param O : 对应的观测函数
+        """
+        # 新的belief space
+        now = np.zeros(self.stateNum)
+        denominator = 0
+        for j in range(self.stateNum):
+            for i in range(self.stateNum):
+                now[j] += self.T[IDX_X][i][j] * pre[i]
+            # now[j] *= np.sum(O[j])
+            denominator += now[j]
+
+        for j in range(self.stateNum):
+            now[j] = now[j] / denominator
+
+        return now
+
+    def printCurrentBeliefSpace(self):
+        print("===================================================\n"
+            "Updated,[Year-Session-Topic]: belief space"
+              "\n===================================================")
+        for k in self.beliefDict.keys():
+            print(k,":",self.beliefDict[k][self.beliefDict[k].__len__()-1])

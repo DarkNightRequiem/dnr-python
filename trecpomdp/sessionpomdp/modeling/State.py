@@ -7,12 +7,12 @@ COD_S_RR = 2
 # Relevant & Exploitation
 COD_S_RT = 3
 
-# Code of Non-Relevant Rrelevant
-IDX_NON_REL = 0
-IDX_REL = 1
-# Code of Exploration Exploitation
-IDX_EXPR = 0
-IDX_EXPL = 1
+# # Code of Non-Relevant Rrelevant
+# IDX_NON_REL = 0
+# IDX_REL = 1
+# # Code of Exploration Exploitation
+# IDX_EXPR = 0
+# IDX_EXPL = 1
 
 
 class State:
