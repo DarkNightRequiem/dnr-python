@@ -4,6 +4,7 @@ import numpy as np
 import itertools
 from sessionpomdp.modeling.State import COD_S_NRR, COD_S_NRT, COD_S_RR, COD_S_RT
 from sessionpomdp.modeling.Action import IDX_ADD, IDX_RMV, IDX_KEP, IDX_APR, IDX_CLK
+from sessionpomdp.modeling.Observation import COD_O_NRR, COD_O_NRT, COD_O_RR, COD_O_RT
 
 """
 iteration： 数据进行一次前向-后向的训练（也就是更新一次参数）
@@ -47,7 +48,7 @@ class SessionSearchModel:
         self.initBelief = self.getInitBeliefSpace()
 
         # 用于记录所有的session的belief space的更新记录
-        self.beliefDict={}
+        self.beliefDict = {}
 
     def getInitBeliefSpace(self):
         """
@@ -80,7 +81,7 @@ class SessionSearchModel:
         bp[COD_S_RT] = p_R * p_EL
 
         print("===================================================\n"
-              "Initial Belief Space:"
+              "Initial Belief Space:[NRR NRT RR RT]"
               "\n===================================================")
         print(bp)
         return bp
@@ -282,8 +283,8 @@ class SessionSearchModel:
                 countTable[metaNow.state.COD][IDX_RMV][metaNext.state.COD] += 1
             if metaNext.clickCount > 0:
                 countTable[metaNow.state.COD][IDX_CLK][metaNext.state.COD] += 1
-            # if metaNext.action.kf:
-            #     countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD] += 1
+            # if not metaNext.action.af and not metaNext.action.rf:
+            #      countTable[metaNow.state.COD][IDX_KEP][metaNext.state.COD] += 1
 
         # pp.pprint(countTable)
 
@@ -320,18 +321,30 @@ class SessionSearchModel:
                     self.beliefDict[id] = record
             else:
                 l = list(self.beliefDict[id])
+                COD_O = meta.observation.COD
+                b1A = b1R = b1A = b2R = None
+                b2A = np.zeros(self.stateNum)
+                b2R = np.zeros(self.stateNum)
 
                 # 依据explore维度的观测函数进行第一次update
-                b1A = self.update(l[l.__len__() - 1], IDX_CLK, self.oADD)
-                b1R=self.update(l[l.__len__() - 1], IDX_CLK, self.oRMV)
+                if meta.action.af:
+                    b1A = self.update(l[l.__len__() - 1], IDX_CLK, self.oADD, COD_O)
+                if meta.action.rf:
+                    b1R = self.update(l[l.__len__() - 1], IDX_CLK, self.oRMV, COD_O)
                 # 依据relevance维度的观测函数进行第二次更新
-                b2A = self.update(b1A, IDX_ADD, self.oADD)
-                b2R = self.update(b1R, IDX_RMV, self.oRMV)
+                if b1A is not None:
+                    b2A = self.update(b1A, IDX_ADD, self.oADD, COD_O)
+                if b1R is not None:
+                    b2R = self.update(b1R, IDX_RMV, self.oRMV, COD_O)
 
-                new = (b2A + b2R)/(np.sum(b2A)+np.sum(b2R))
+                if np.sum(b2A) != 0 or np.sum(b2R) != 0:
+                    new = (b2A + b2R) / (np.sum(b2A) + np.sum(b2R))
+                else:
+                    new = l[l.__len__() - 1]
+
                 self.beliefDict[id].append(new)
 
-    def update(self, pre, IDX_X, O):
+    def update(self, pre, IDX_X, O, COD_O):
         """
         belief update 函数
         :param pre: 上一次的belief sapce
@@ -345,7 +358,7 @@ class SessionSearchModel:
         for j in range(self.stateNum):
             for i in range(self.stateNum):
                 now[j] += self.T[IDX_X][i][j] * pre[i]
-            # now[j] *= np.sum(O[j])
+            now[j] *= O[j][COD_O]
             denominator += now[j]
 
         for j in range(self.stateNum):
@@ -355,7 +368,7 @@ class SessionSearchModel:
 
     def printCurrentBeliefSpace(self):
         print("===================================================\n"
-            "Updated,[Year-Session-Topic]: belief space"
+              "Updated Belief Space [Year-Session-Topic]: [NRR NRT RR RT]"
               "\n===================================================")
         for k in self.beliefDict.keys():
-            print(k,":",self.beliefDict[k][self.beliefDict[k].__len__()-1])
+            print(k, ":", self.beliefDict[k][self.beliefDict[k].__len__() - 1])

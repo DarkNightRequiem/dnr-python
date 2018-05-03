@@ -8,6 +8,11 @@ import os
 
 from sessionpomdp.modeling.Model import SessionSearchModel
 from sessionpomdp.util.TrecDomParser import TrecDomParser as tdp
+from sessionpomdp.meta.TrainMeta import TrainMata
+from sessionpomdp.modeling.State import State
+from sessionpomdp.modeling.Action import Action
+from sessionpomdp.modeling.Observation import Observation
+
 from sessionpomdp.util.TrainingSampleExtractor import Extractor
 
 if __name__ == '__main__':
@@ -43,6 +48,8 @@ if __name__ == '__main__':
     # 生成训练样本
     trainMetaList=Extractor.getTrainingSample(interList)
 
+
+
     # 模型参数
     argDict = dict()
     argDict['stateNum'] = 4
@@ -53,10 +60,80 @@ if __name__ == '__main__':
     # 生成模型
     env = SessionSearchModel(argDict)
 
+
+    """
+    ---------------------------------
+    """
+    d=[]
+
+    s = State(False, True)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(False, True)
+    m1 = TrainMata("1-2-3", s, a, o, 0, 0, 0, 0, 0)
+    d.append(m1)
+
+    s = State(True, True)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, True)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, True)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, True)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, True)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, True)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, False)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, False)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, False)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, False)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, False)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, False)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, False)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, False)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, False)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, False)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1, 1)
+    d.append(m1)
+
+    s = State(True, False)
+    a = Action(["dd", "ddd"], [], [])
+    o = Observation(True, False)
+    m1 = TrainMata("1-2-3", s, a, o, 1, 1, 1, 1,1)
+    d.append(m1)
+
+
     # 训练
+    env.trainMetaList=d
     env.train()
 
     # 输出最新的belief space
     env.printCurrentBeliefSpace()
 
     # print("\n--------POMDP DONE--------")
+
+

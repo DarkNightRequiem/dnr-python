@@ -22,7 +22,7 @@ class State:
         # 探索维度 Exploration: True Exploitation: False
         self.expl = expl
         # 维度联合代号
-        self.COD = COD_S_NRR
+        self.updateCOD()
 
     def setRlv(self, rlv):
         self.rlv = rlv
@@ -41,3 +41,13 @@ class State:
             self.COD = COD_S_RR
         elif self.rlv and (not self.expl):
             self.COD = COD_S_RT
+
+    def printState(self):
+        if self.COD==COD_S_NRR:
+            print("State: NRR",end=" ")
+        elif self.COD==COD_S_NRT:
+            print("State: NRT",end=" ")
+        elif self.COD==COD_S_RR:
+            print("State: RR",end=" ")
+        elif self.COD==COD_S_RT:
+            print("State: RT",end=" ")

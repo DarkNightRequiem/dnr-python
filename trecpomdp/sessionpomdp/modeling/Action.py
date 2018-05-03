@@ -9,9 +9,6 @@ IDX_APR = 3
 # index for purely keeping action
 IDX_KEP = 4
 
-
-
-
 class Action:
     def __init__(self, aList, rList, kList):
         """
