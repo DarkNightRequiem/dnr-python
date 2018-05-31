@@ -1,0 +1,8 @@
+# 编译日志相关配置
+compile.log:
+  dir: 'D:/redirectremove/uwp_coding_uploads'
+
+# 浏览日志相关配置
+search.log:
+  dir: 'D:/redirectremove/log'
+
