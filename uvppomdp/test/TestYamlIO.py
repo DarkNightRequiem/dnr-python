@@ -22,12 +22,12 @@ if __name__== '__main__':
     cfg=yaml.load(open(cfgFile,"rb"))
 
     # 编译日志目录
-    cmplDir=cfg.get("compile.log")["dir"]
-    cmplFiles=os.listdir(cmplDir)
+    cmpl_dir=cfg.get("compile.log")["dir"]
+    cmpl_files=os.listdir(cmpl_dir)
 
     # 浏览日志目录
-    brwsDir=cfg.get("search.log")["dir"]
-    brwsFiles=os.listdir(brwsDir)
+    brws_dir=cfg.get("search.log")["dir"]
+    brws_files=os.listdir(brws_dir)
 
-    print(cmplDir)
-    print(brwsDir)
+    print(cmpl_dir)
+    print(brws_dir)
