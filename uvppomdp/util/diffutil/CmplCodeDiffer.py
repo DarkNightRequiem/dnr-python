@@ -59,6 +59,10 @@ class CmplCodeDiffer(BasicUtil):
         :return:
         """
         # TODO: 实现和完善
+        for f1 in cmpl_file_from:
+            for f2 in cmpl_file_to:
+                # TODO: 对比文件内容
+                print("ddd")
 
 
 code_differ = CmplCodeDiffer()
