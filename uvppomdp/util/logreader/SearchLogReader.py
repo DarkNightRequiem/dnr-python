@@ -1,7 +1,5 @@
 import os
-import platform
-import yaml
-from util.logutil.BasicUtil import BasicUtil
+from util.BasicUtil import BasicUtil
 
 
 class SearchLogReader(BasicUtil):
@@ -15,6 +13,5 @@ class SearchLogReader(BasicUtil):
         self.files=os.listdir(self.dir)
 
 
-# if __name__ == '__main__':
-#     clr=BrowseLogReader()
-#     print("dd")
+# 利用模块的导入机制实现单例模式
+srchl_reader=SearchLogReader()

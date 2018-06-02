@@ -1,10 +1,9 @@
 import os
-import platform
-import yaml
 import chardet
 import zipfile
-from util.logutil.BasicUtil import BasicUtil
+from util.BasicUtil import BasicUtil
 from util.meta.ComplieFile import CompileFile
+from util.ColorfulLogger import logger
 
 
 class ComplieLogReader(BasicUtil):
@@ -41,7 +40,11 @@ class ComplieLogReader(BasicUtil):
                 else:
                     # 读取文件内容
                     file_bytes = zip.read(entry.filename)
-                    encode = (chardet.detect(file_bytes))["encoding"]
+
+                    # 查看文件编码
+                    encode = (chardet.detect(file_bytes))["encoding"] \
+                        if (chardet.detect(file_bytes))["encoding"] is not None \
+                        else "utf-8"
 
                     contents.append(
                         CompileFile(
@@ -52,11 +55,13 @@ class ComplieLogReader(BasicUtil):
 
         except zipfile.BadZipFile:
             # 文件损坏
-            print("\033[32;0mBroken File:",name)
+            # print("\033[32;0mBroken File:",name)
+            logger.error(str(self.__class__),"Broken File: "+ name)
             return None
         except TypeError:
             # 无法解析文件编码
-            print("\033[32;0mUnKnown File Encoding: ",name)
+            # print("\033[32;0mUnKnown File Encoding: ",name)
+            logger.error(str(self.__class__), "UnKnown File Encoding: " + name)
             return None
 
         return contents
@@ -75,4 +80,8 @@ class ComplieLogReader(BasicUtil):
                 cmpllog_dict[filename]=contents
 
         return cmpllog_dict
+
+
+# 利用模块的导入机制实现单例模式
+cmpl_reader=ComplieLogReader()
 
