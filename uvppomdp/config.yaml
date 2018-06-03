@@ -1,7 +1,7 @@
 # 编译日志相关配置
 compile.log:
-  dir: 'D:/redirectremove/uwp_coding_uploads'
-  # dir: 'D:/redirectremove/test'
+  # dir: 'D:/redirectremove/uwp_coding_uploads'
+  dir: 'D:/redirectremove/test'
   diff.path: 'D:/redirectremove/diff_results'
 
 # 浏览日志相关配置

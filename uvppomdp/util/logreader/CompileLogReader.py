@@ -20,9 +20,9 @@ class ComplieLogReader(BasicUtil):
         """
         用于读取单个zip文件的内容，文件需要位于dir中
         :param name: 文件名
-        :return: 单个压缩文件中的所有内容列表
+        :return: 单个压缩文件中的所有内容字典
         """
-        contents=[]
+        contents={}
         try:
             zip = zipfile.ZipFile(self.dir + "/" + name, "r")
 
@@ -46,13 +46,8 @@ class ComplieLogReader(BasicUtil):
                         if (chardet.detect(file_bytes))["encoding"] is not None \
                         else "utf-8"
 
-                    contents.append(
-                        CompileFile(
-                            entry.filename,
-                            zip.read(entry.filename).decode(encode)
-                        )
-                    )
-
+                    # 加入字典
+                    contents[entry.filename]=zip.read(entry.filename).decode(encode)
         except zipfile.BadZipFile:
             # 文件损坏
             # print("\033[32;0mBroken File:",name)
@@ -69,17 +64,25 @@ class ComplieLogReader(BasicUtil):
     def readall(self):
         """
         读取配置文件中指定目录下的所有zip文件内容
-        :return: 字典形式的所有文件内容
+        注意：文件存放目录中排序方式需要按名称排序
+        :return: 字典形式的所有文件内容列表
         """
-        cmpllog_dict={}
+        cmpllogs=[]
 
         for filename in self.files_names:
+            # 读取文件内容
             contents=self.read(filename)
 
+            # 读取成功加入列表
             if contents is not None:
-                cmpllog_dict[filename]=contents
+                cmpllogs.append(
+                    CompileFile(
+                        filename,
+                        contents
+                    )
+                )
 
-        return cmpllog_dict
+        return cmpllogs
 
 
 # 利用模块的导入机制实现单例模式
