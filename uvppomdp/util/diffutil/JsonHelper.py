@@ -1,8 +1,15 @@
 import json
+from util.BasicUtil import BasicUtil
 
 
-class JsonHelper:
+class JsonHelper(BasicUtil):
     def __init__(self):
-        pass
+        BasicUtil.__init__(self)
 
-    # TODO:实现
+        # 垃圾内容
+        self.junks=['\r','\n','\r\n']
+
+
+
+
+json_helper=JsonHelper()
