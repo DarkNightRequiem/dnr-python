@@ -1,23 +1,28 @@
 import difflib
 import os
 import json
+import re
 from util.BasicUtil import BasicUtil
 
 
-class CmplCodeDiffer(BasicUtil):
+class NaiveCmplCodeDiffer(BasicUtil):
     def __init__(self):
         BasicUtil.__init__(self)
 
-        # 比较结果输出的目录
-        self.output_path = self.cfg.get("compile.log")["diff.path"]
+        # 简单比较结果输出的目录
+        self.output_path = self.cfg.get("compile.log").get("diff.dir")["naive"]
         if not os.path.exists(self.output_path):
             os.mkdir(self.output_path)
 
-        # 序列比较器
+        # 序列适配器
         self.matcher = difflib.SequenceMatcher()
 
-        # 垃圾内容
-        self.junks=['\r','\n','\r\n']
+        # 垃圾内容正则模式
+        self.junk_patterns = [
+            re.compile(r"\s*[\s{}]\s*"),
+            re.compile(r""),
+            re.compile(r"//*")
+        ]
 
     def diffcode(self, from_content, to_content):
         """
@@ -51,27 +56,48 @@ class CmplCodeDiffer(BasicUtil):
                     for i in range(opcode[3], opcode[4]):
                         dict_perfile["add"].append(to_content[i])
 
-        if dict_perfile.get("add").__len__()==0 and \
-                dict_perfile.get("rmv").__len__():
+            # 清洗处理后返回比较结果
+            return self.clean_diff_result(dict_perfile)
+
+    def clean_diff_result(self, dict_perfile):
+        """
+        对某个编译日志中的单个文件的比较结果进行清理
+        :param dict_perfile: 某个编译日志中的单个文件的比较结果
+        """
+        if dict_perfile.get("add").__len__() == 0 and dict_perfile.get("rmv").__len__():
+            # 没有变化
             return None
-        else:
-            # 清除值为空的内容
-            redundants = []
-            for key in dict_perfile.keys():
-                if dict_perfile[key].__len__() == 0:
-                    redundants.append(key)
-            for key in redundants:
-                del dict_perfile[key]
 
-            # 清理垃圾内容
-            for key in dict_perfile.keys():
-                newlist = []
-                for item in dict_perfile[key]:
-                    if item not in self.junks:
-                        newlist.append(item)
-                dict_perfile[key] = newlist
+        # 清除值为空的内容
+        redundants = []
+        for key in dict_perfile.keys():
+            if dict_perfile[key].__len__() == 0:
+                redundants.append(key)
+        for key in redundants:
+            del dict_perfile[key]
 
-            return dict_perfile
+        # 清理垃圾内容
+        for key in dict_perfile.keys():
+            newlist = []
+            for item in dict_perfile[key]:
+                if not self.isjunk(item):
+                    newlist.append(item)
+            dict_perfile[key] = newlist
+
+        # 排除净内容为空的比较结果
+        if dict_perfile.__len__() == 0:
+            return None
+
+        return dict_perfile
+
+    def isjunk(self, line):
+        """
+        用于判断行内容是否是垃圾内容
+        """
+        for jp in self.junk_patterns:
+            if re.sub(jp, "", line) == "":
+                return True
+        return False
 
     def diffall(self, cmplfile_list):
         """
@@ -84,50 +110,50 @@ class CmplCodeDiffer(BasicUtil):
             tofiles = cmplfile_list[i]
 
             # 建立字典
-            diff_dict={}
-            diff_dict["from"]=fromfiles.filename
-            diff_dict["to"]=tofiles.filename
+            diff_dict = {}
+            diff_dict["from"] = fromfiles.filename
+            diff_dict["to"] = tofiles.filename
 
             for key in fromfiles.contents.keys():
                 if tofiles.has_path(key):
                     # 新旧编译日志中都有的文件
                     dict_perfile = self.diffcode(
-                        fromfiles.get_content(key).splitlines(1),
-                        tofiles.get_content(key).splitlines(1)
+                        fromfiles.get_content(key).splitlines(),
+                        tofiles.get_content(key).splitlines()
                     )
                 else:
                     # 只有旧的编译日志中有的文件
                     dict_perfile = self.diffcode(
-                        fromfiles.get_content(key).splitlines(1),
+                        fromfiles.get_content(key).splitlines(),
                         ""
                     )
 
                 if dict_perfile is not None:
-                    diff_dict[key]=dict_perfile
+                    diff_dict[key] = dict_perfile
                 else:
-                    diff_dict[key]={}
+                    diff_dict[key] = {}
 
             for key in tofiles.contents.keys():
                 if not fromfiles.has_path(key):
                     # 只有新的编译日志中有的文件
                     dict_perfile = self.diffcode(
                         "",
-                        tofiles.get_content(key).splitlines(1)
+                        tofiles.get_content(key).splitlines()
                     )
 
                     if dict_perfile is not None:
-                        diff_dict[key]=dict_perfile
+                        diff_dict[key] = dict_perfile
                     else:
                         diff_dict[key] = {}
 
             # 转换为json字符串
-            diff_json=json.dumps(diff_dict,indent=4)
+            diff_json = json.dumps(diff_dict, indent=4)
 
             # 写入文件
             with open(
                     os.path.join(
                         self.output_path,
-                        diff_dict["from"].replace(".zip","")+"="+diff_dict["to"].replace(".zip","")+".json"
+                        diff_dict["from"].replace(".zip", "") + "=" + diff_dict["to"].replace(".zip", "") + ".json"
                     ),
                     "w",
                     encoding="utf-8"
@@ -136,7 +162,8 @@ class CmplCodeDiffer(BasicUtil):
             fo.close()
 
 
-code_differ = CmplCodeDiffer()
+navie_differ = NaiveCmplCodeDiffer()
+
 
 # 对比结果信息头
 # diff_result_header = self.generate_header(from_content, to_content)

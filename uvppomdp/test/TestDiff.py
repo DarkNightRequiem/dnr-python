@@ -1,6 +1,6 @@
 import difflib
 from util.logreader.CompileLogReader import cmpl_reader
-from util.diffutil.CmplCodeDiffer import code_differ
+from util.diffutil.NaiveCmplCodeDiffer import navie_differ
 
 if __name__=='__main__':
     # 测试读取指定文件
@@ -11,6 +11,6 @@ if __name__=='__main__':
     cmplfile_list=cmpl_reader.readall()
 
     # 测试code diff
-    code_differ.diffall(cmplfile_list)
+    navie_differ.diffall(cmplfile_list)
 
     print("ddd")

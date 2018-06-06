@@ -1,10 +1,18 @@
 # 编译日志相关配置
 compile.log:
-  # dir: 'D:/redirectremove/uwp_coding_uploads'
-  dir: 'D:/redirectremove/test'
-  diff.path: 'D:/redirectremove/diff_results'
+  dir: 'D:/redirectremove/uwp_coding_uploads'
+  diff.dir:
+    # 简单代码比较结果存放目录（后继结果的基础）
+    naive: 'D:/redirectremove/naive_diff_results'
+    # 基于方法的代码比较结果目录
+    method: 'UNKNOWN'
+
 
 # 浏览日志相关配置
 search.log:
   dir: 'D:/redirectremove/log'
+
+# uwp使用的api文件
+uwp.api:
+  path: 'D:/redirectremove/uwp_api/api.json'
 
