@@ -5,7 +5,7 @@ compile.log:
     # 简单代码比较结果存放目录（后继结果的基础）
     naive: 'D:/redirectremove/naive_diff_results'
     # 基于方法的代码比较结果目录
-    method: 'UNKNOWN'
+    method: 'D:/redirectremove/mb_diff_results'
 
 
 # 浏览日志相关配置

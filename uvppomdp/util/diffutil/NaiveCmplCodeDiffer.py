@@ -56,8 +56,8 @@ class NaiveCmplCodeDiffer(BasicUtil):
                     for i in range(opcode[3], opcode[4]):
                         dict_perfile["add"].append(to_content[i])
 
-            # 清洗处理后返回比较结果
-            return self.clean_diff_result(dict_perfile)
+        # 清洗处理后返回比较结果
+        return self.clean_diff_result(dict_perfile)
 
     def clean_diff_result(self, dict_perfile):
         """
@@ -103,39 +103,35 @@ class NaiveCmplCodeDiffer(BasicUtil):
         """
         对给列表中的相邻的文件两两进行对比，列表元素必须是CompileFile类型。
         """
-        for i in range(1, cmplfile_list.__len__()):
+        for i in range(0, cmplfile_list.__len__()-1):
             # 旧编译文件
-            fromfiles = cmplfile_list[i - 1]
+            fromfiles = cmplfile_list[i]
             # 新编译文件
-            tofiles = cmplfile_list[i]
+            tofiles = cmplfile_list[i+1]
 
             # 建立字典
             diff_dict = {}
-            diff_dict["from"] = fromfiles.filename
-            diff_dict["to"] = tofiles.filename
 
-            for key in fromfiles.contents.keys():
-                if tofiles.has_path(key):
-                    # 新旧编译日志中都有的文件
+            if i==0 :
+                diff_dict["from"] = "_"
+                diff_dict["to"] = fromfiles.filename
+
+                for key in fromfiles.contents.keys():
                     dict_perfile = self.diffcode(
-                        fromfiles.get_content(key).splitlines(),
-                        tofiles.get_content(key).splitlines()
-                    )
-                else:
-                    # 只有旧的编译日志中有的文件
-                    dict_perfile = self.diffcode(
-                        fromfiles.get_content(key).splitlines(),
-                        ""
+                        "",
+                        fromfiles.get_content(key).splitlines()
                     )
 
-                if dict_perfile is not None:
-                    diff_dict[key] = dict_perfile
-                else:
-                    diff_dict[key] = {}
+                    if dict_perfile is not None:
+                        diff_dict[key] = dict_perfile
+                    else:
+                        diff_dict[key] = {}
 
-            for key in tofiles.contents.keys():
-                if not fromfiles.has_path(key):
-                    # 只有新的编译日志中有的文件
+            elif fromfiles.id != tofiles.id:
+                diff_dict["from"] = "_"
+                diff_dict["to"] = tofiles.filename
+
+                for key in tofiles.contents.keys():
                     dict_perfile = self.diffcode(
                         "",
                         tofiles.get_content(key).splitlines()
@@ -145,6 +141,42 @@ class NaiveCmplCodeDiffer(BasicUtil):
                         diff_dict[key] = dict_perfile
                     else:
                         diff_dict[key] = {}
+
+            else:
+                diff_dict["from"] = fromfiles.filename
+                diff_dict["to"] = tofiles.filename
+
+                for key in fromfiles.contents.keys():
+                    if tofiles.has_path(key):
+                        # 新旧编译日志中都有的文件
+                        dict_perfile = self.diffcode(
+                            fromfiles.get_content(key).splitlines(),
+                            tofiles.get_content(key).splitlines()
+                        )
+                    else:
+                        # 只有旧的编译日志中有的文件
+                        dict_perfile = self.diffcode(
+                            fromfiles.get_content(key).splitlines(),
+                            ""
+                        )
+
+                    if dict_perfile is not None:
+                        diff_dict[key] = dict_perfile
+                    else:
+                        diff_dict[key] = {}
+
+                for key in tofiles.contents.keys():
+                    if not fromfiles.has_path(key):
+                        # 只有新的编译日志中有的文件
+                        dict_perfile = self.diffcode(
+                            "",
+                            tofiles.get_content(key).splitlines()
+                        )
+
+                        if dict_perfile is not None:
+                            diff_dict[key] = dict_perfile
+                        else:
+                            diff_dict[key] = {}
 
             # 转换为json字符串
             diff_json = json.dumps(diff_dict, indent=4)

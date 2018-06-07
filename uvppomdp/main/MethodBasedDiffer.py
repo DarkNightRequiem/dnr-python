@@ -13,6 +13,6 @@ if __name__=='__main__':
     if not os.path.exists(method_based_differ.naive_dir):
         logger.warning(str(method_based_differ.__class__),"Please run NaiveDiffer.py first")
     else:
-        method_based_differ.method_based_diff()
+        method_based_differ.mbdiff()
         print("[MethodBasedDiffer] Accomplished Differing")
 
