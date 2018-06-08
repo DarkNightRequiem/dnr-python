@@ -103,6 +103,31 @@ class NaiveCmplCodeDiffer(BasicUtil):
         """
         对给列表中的相邻的文件两两进行对比，列表元素必须是CompileFile类型。
         """
+        # 先单独处理第一个文件
+        fromfiles = cmplfile_list[0]
+        diff_dict = {}
+
+        diff_dict["from"] = fromfiles.id + "-0"
+        diff_dict["to"] = fromfiles.filename
+
+        for key in fromfiles.contents.keys():
+            dict_perfile = self.diffcode(
+                "",
+                fromfiles.get_content(key).splitlines()
+            )
+
+            if dict_perfile is not None:
+                diff_dict[key] = dict_perfile
+            else:
+                diff_dict[key] = {}
+
+        # 写入文件
+        self.wirte(
+            diff_dict,
+            json.dumps(diff_dict, indent=4)
+        )
+
+        # 处理剩下的文件
         for i in range(0, cmplfile_list.__len__()-1):
             # 旧编译文件
             fromfiles = cmplfile_list[i]
@@ -112,23 +137,8 @@ class NaiveCmplCodeDiffer(BasicUtil):
             # 建立字典
             diff_dict = {}
 
-            if i==0 :
-                diff_dict["from"] = "_"
-                diff_dict["to"] = fromfiles.filename
-
-                for key in fromfiles.contents.keys():
-                    dict_perfile = self.diffcode(
-                        "",
-                        fromfiles.get_content(key).splitlines()
-                    )
-
-                    if dict_perfile is not None:
-                        diff_dict[key] = dict_perfile
-                    else:
-                        diff_dict[key] = {}
-
-            elif fromfiles.id != tofiles.id:
-                diff_dict["from"] = "_"
+            if fromfiles.id != tofiles.id:
+                diff_dict["from"] = tofiles.id+"-0"
                 diff_dict["to"] = tofiles.filename
 
                 for key in tofiles.contents.keys():
@@ -178,20 +188,27 @@ class NaiveCmplCodeDiffer(BasicUtil):
                         else:
                             diff_dict[key] = {}
 
-            # 转换为json字符串
-            diff_json = json.dumps(diff_dict, indent=4)
-
             # 写入文件
-            with open(
-                    os.path.join(
-                        self.output_path,
-                        diff_dict["from"].replace(".zip", "") + "=" + diff_dict["to"].replace(".zip", "") + ".json"
-                    ),
-                    "w",
-                    encoding="utf-8"
-            ) as fo:
-                fo.write(diff_json)
-            fo.close()
+            self.wirte(
+                diff_dict,
+                # 转换为json字符串
+                json.dumps(diff_dict, indent=4)
+            )
+
+    def wirte(self,diff_dict,diff_json):
+        """
+        将比较结果写入到json文件中
+        """
+        with open(
+                os.path.join(
+                    self.output_path,
+                    diff_dict["from"].replace(".zip", "") + "=" + diff_dict["to"].replace(".zip", "") + ".json"
+                ),
+                "w",
+                encoding="utf-8"
+        ) as fo:
+            fo.write(diff_json)
+        fo.close()
 
 
 navie_differ = NaiveCmplCodeDiffer()
