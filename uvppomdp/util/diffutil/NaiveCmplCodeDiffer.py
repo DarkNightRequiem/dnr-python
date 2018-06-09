@@ -21,7 +21,7 @@ class NaiveCmplCodeDiffer(BasicUtil):
         self.junk_patterns = [
             re.compile(r"\s*[\s{}]\s*"),
             re.compile(r""),
-            re.compile(r"//*")
+            re.compile(r"(\s*)(/+)([^/]*)")
         ]
 
     def diffcode(self, from_content, to_content):

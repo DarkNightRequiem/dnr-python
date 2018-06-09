@@ -12,6 +12,10 @@ class MbCheckPoint:
         self.to_id = None
         self.to_date = None
 
+        # 上一个文件的信息
+        self.pre_empty= False
+        self.pre_id=None
+
         # 全局时间点记录器
         self.record = None
         # 全局数据缓冲区
@@ -21,35 +25,41 @@ class MbCheckPoint:
         """
         更新时间点记录器
         """
-        if self.record is None:
-            # 还未设置过时间点记录
-            self.record = [self.from_date, self.to_date]
-            buffer = self.release_buffer()
-            return buffer
+        # 是否需要释放缓冲区
+        need_pop=False
 
-        elif "0" == self.record[0]:
-            # 最新记录是该学生的首次提交
+        if self.is_border or "0" == self.record[0]:
+            # 新的学生 或 上次空记录时间是新的学生
             self.record = [self.from_date, self.to_date]
+            self.pre_id=self.to_id
+            need_pop = True if not self.is_empty else False
 
-        elif (not self.is_empty) and (self.from_date == self.record[1]):
+        elif not self.is_empty:
             # 当前文件有记录变化
-            self.record[1] = self.to_date
-            buffer =self.release_buffer()
-            return buffer
+            need_pop = True
+
+            if self.pre_empty:
+                # 上个文件无记录变化
+                self.record[1]=self.to_date
+            elif not self.pre_empty:
+                # 上个文件有记录变化
+                self.record=[self.from_date, self.to_date]
 
         elif self.is_empty:
-            # 当前和其之前的文件都没有记录变化
-            self.record[1] = self.to_date
+            # 当前文件无记录变化
+            need_pop = False
 
-        else:
-            # 释放现有缓冲区并重新时间记录
-            buffer = self.release_buffer()
-            self.record=[self.from_date, self.to_date]
-            return buffer
+            if self.pre_empty:
+                # 上个文件无记录变化
+                self.record[1] = self.to_date
+            elif not self.pre_empty:
+                # 上个文件有记录变化
+                self.record = [self.from_date, self.to_date]
 
-        return None
+        self.pre_empty=self.is_empty
+        return need_pop
 
-    def release_buffer(self):
+    def pop_data(self):
         """
         将当前缓冲区中的文件清空并返回内容
         :return: 上次清空后至此次调用缓冲区所积累的内容
@@ -72,6 +82,9 @@ class MbCheckPoint:
 
         self.record = None
         self.buffer = None
+
+        self.pre_empty=False
+        self.pre_id=None
 
     def setinfo(self, filename, data):
         """
@@ -104,7 +117,9 @@ class MbCheckPoint:
         for key in data.keys():
             if key not in ['from', 'to']:
                 if data[key].__len__() > 0:
-                    flag = False
+                    for subkey in data[key].keys():
+                        if data[key][subkey].__len__()>0:
+                            flag=False
 
         return flag
 
