@@ -19,7 +19,7 @@ class MbCheckPoint:
         # 全局时间点记录器
         self.record = None
         # 全局数据缓冲区
-        self.buffer = None
+        self.seg_data = None
 
     def update(self):
         """
@@ -28,10 +28,9 @@ class MbCheckPoint:
         # 是否需要释放缓冲区
         need_pop=False
 
-        if self.is_border or "0" == self.record[0]:
+        if self.is_border or ((self.record is not None) and ("0" == self.record[0])):
             # 新的学生 或 上次空记录时间是新的学生
             self.record = [self.from_date, self.to_date]
-            self.pre_id=self.to_id
             need_pop = True if not self.is_empty else False
 
         elif not self.is_empty:
@@ -64,13 +63,13 @@ class MbCheckPoint:
         将当前缓冲区中的文件清空并返回内容
         :return: 上次清空后至此次调用缓冲区所积累的内容
         """
-        bf = self.buffer
-        self.buffer = None
+        bf = self.seg_data
+        self.seg_data = None
         return bf
 
     def reset(self):
         """
-        重置时间点记录器
+        重置检查点
         """
         self.filename = None
 
@@ -81,7 +80,7 @@ class MbCheckPoint:
         self.to_date = None
 
         self.record = None
-        self.buffer = None
+        self.seg_data = None
 
         self.pre_empty=False
         self.pre_id=None
@@ -102,10 +101,13 @@ class MbCheckPoint:
         self.is_empty = self.isempty(data)
         self.is_border = self.isborder()
 
-        if self.buffer is None:
-            self.buffer = []
+        if self.seg_data is None:
+            self.seg_data = []
         if not self.is_empty:
-            self.buffer.append(data)
+            self.seg_data.append(data)
+
+        if not self.is_border:
+            self.pre_id=self.from_id
 
     def isempty(self, data):
         """

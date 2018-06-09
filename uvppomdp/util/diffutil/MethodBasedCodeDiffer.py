@@ -43,11 +43,13 @@ class MethodBasedCodeDiffer(BasicUtil):
             # 更新检查点时间记录
             need_pop=checkpoint.update()
 
-            if checkpoint.is_border:
+            if checkpoint.is_border and i != 0:
                 # 释放写入缓冲区
                 data=self.release_writebuffer()
                 # 写入上个学生的对比结果
-                self.write_to_file(checkpoint.pre_id,data)
+                self.write_to_file(checkpoint.pre_id, data)
+                # 重置检查点
+                checkpoint.reset()
 
             elif need_pop:
                 # 弹出检查点记录并生成对比记录
@@ -58,17 +60,42 @@ class MethodBasedCodeDiffer(BasicUtil):
                 # 添加到写入缓冲区
                 self.wirtebuffer.append(entry)
 
-    def gen_entry(self,buffer,record):
+    def gen_entry(self, period_data, record):
         """
         生成写入缓冲项
         """
         entry={
             "from": record[0],
             "to":record[1],
+            "addmth":[],
+            "rmvmth":[]
         }
-        # TODO： buffer提取方法去掉文件名
-        # entry.update(buffer)
+
+        for data in period_data:
+            for key in data.keys():
+                if (key in ["from","to"]) or (data[key].__len__==0):
+                    continue
+                else:
+                    for subkey in data[key].keys():
+                        if data[key][subkey].__len__ >0:
+                            if subkey=="add":
+                                # TODO: 从各行中抽取方法
+                                entry["addmth"].append(
+                                    self.extract_methods(
+                                        data[key][subkey]
+                                    )
+                                )
+                            elif subkey=="rmv":
+                                entry["addmth"].append(
+                                    self.extract_methods(
+                                        data[key][subkey]
+                                    )
+                                )
+
         return entry
+
+    def extract_methods(self,lines):
+        return ["d","h","g"]
 
     def write_to_file(self,stuid,data):
         """
@@ -82,8 +109,9 @@ class MethodBasedCodeDiffer(BasicUtil):
         释放写入缓冲区并返回写入缓冲区中存放的数据
         :return: 写入缓冲区中的数据
         """
-        # TODO: 实现
-        return "data"
+        buffer=self.wirtebuffer
+        self.wirtebuffer=[]
+        return buffer
 
 
 method_based_differ = MethodBasedCodeDiffer()
