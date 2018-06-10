@@ -1,30 +1,38 @@
 import sys
 from antlr4 import *
+from jpype import *
 from util.antlr4.recognizers.CSharpLexer import CSharpLexer
-from util.antlr4.recognizers.CSharpParser import CSharpParser
-from util.antlr4.recognizers.CSharpPreprocessorParser import CSharpPreprocessorParser
-from util.antlr4.recognizers.CSharpParserListener import CSharpParserListener
+# from util.antlr4.recognizers.CSharpParser import CSharpParser
+# from util.antlr4.recognizers.CSharpParserListener import CSharpParserListener
 
 
-class KeyPrinter(CSharpParserListener):
-    def exitKey(self, ctx):
-        print("Oh, a key!")
+# class KeyPrinter(CSharpParserListener):
+#     def exitKey(self, ctx):
+#         print("Oh, a key!")
 
 
 if __name__ == '__main__':
     # 直接通过路径读取
-    path="C:\\Users\\Administrator\\Desktop\\App.xaml.cs"
-    input_stream=FileStream(path)
-    lexer=CSharpLexer(input_stream)
-    stream=CommonTokenStream(lexer)
+    # path="C:\\Users\\Eric.Apollo\\Desktop\\App.xaml.cs"
+    # input_stream=FileStream(path)
 
-    parser=CSharpParser(stream)
+    # 开启虚拟机
+    # startJVM('C:\\Program Files\\Java\\jre1.8.0_91\\bin\\server\\jvm.dll')
+    startJVM(getDefaultJVMPath())
 
-    tree = parser.buildParseTrees()
-    printer=KeyPrinter()
+    # lexer=CSharpLexer(input_stream)
+    # stream=CommonTokenStream(lexer)
 
-    walker=ParseTreeWalker()
-    walker.walk(printer, tree)
+    # parser=CSharpParser(stream)
+    #
+    # tree = parser.buildParseTrees()
+    # printer=KeyPrinter()
+    #
+    # walker=ParseTreeWalker()
+    # walker.walk(printer, tree)
+
+    # 关闭JVM
+    shutdownJVM()
 
 
     print("ll")

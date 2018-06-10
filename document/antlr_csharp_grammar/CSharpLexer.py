@@ -1,14 +1,10 @@
 # Generated from CSharpLexer.g4 by ANTLR 4.7.1
 from antlr4 import *
 from io import StringIO
-from typing import TextIO
+from typing.io import TextIO
 import sys
 
-from jpype import *
-import jpype
-
-Stack = JClass("java.util.Stack")
-
+import java.util.Stack;
 
 def serializedATN():
     with StringIO() as buf:
@@ -1070,9 +1066,10 @@ def serializedATN():
 
 
 class CSharpLexer(Lexer):
+
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
+    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
 
     COMMENTS_CHANNEL = 2
     DIRECTIVE = 3
@@ -1275,163 +1272,159 @@ class CSharpLexer(Lexer):
     TEXT = 191
     DOUBLE_CURLY_CLOSE_INSIDE = 192
 
-    channelNames = [u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN", u"COMMENTS_CHANNEL",
-                    u"DIRECTIVE"]
+    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN", u"COMMENTS_CHANNEL", 
+                                                          u"DIRECTIVE" ]
 
-    modeNames = ["DEFAULT_MODE", "INTERPOLATION_STRING", "INTERPOLATION_FORMAT",
-                 "DIRECTIVE_MODE", "DIRECTIVE_TEXT"]
+    modeNames = [ "DEFAULT_MODE", "INTERPOLATION_STRING", "INTERPOLATION_FORMAT", 
+                  "DIRECTIVE_MODE", "DIRECTIVE_TEXT" ]
 
-    literalNames = ["<INVALID>",
-                    "'\u00EF\u00BB\u00BF'", "'#'", "'abstract'", "'add'", "'alias'",
-                    "'__arglist'", "'as'", "'ascending'", "'async'", "'await'",
-                    "'base'", "'bool'", "'break'", "'by'", "'byte'", "'case'", "'catch'",
-                    "'char'", "'checked'", "'class'", "'const'", "'continue'", "'decimal'",
-                    "'default'", "'delegate'", "'descending'", "'do'", "'double'",
-                    "'dynamic'", "'else'", "'enum'", "'equals'", "'event'", "'explicit'",
-                    "'extern'", "'false'", "'finally'", "'fixed'", "'float'", "'for'",
-                    "'foreach'", "'from'", "'get'", "'goto'", "'group'", "'if'",
-                    "'implicit'", "'in'", "'int'", "'interface'", "'internal'",
-                    "'into'", "'is'", "'join'", "'let'", "'lock'", "'long'", "'nameof'",
-                    "'namespace'", "'new'", "'null'", "'object'", "'on'", "'operator'",
-                    "'orderby'", "'out'", "'override'", "'params'", "'partial'",
-                    "'private'", "'protected'", "'public'", "'readonly'", "'ref'",
-                    "'remove'", "'return'", "'sbyte'", "'sealed'", "'select'", "'set'",
-                    "'short'", "'sizeof'", "'stackalloc'", "'static'", "'string'",
-                    "'struct'", "'switch'", "'this'", "'throw'", "'true'", "'try'",
-                    "'typeof'", "'uint'", "'ulong'", "'unchecked'", "'unsafe'",
-                    "'ushort'", "'using'", "'var'", "'virtual'", "'void'", "'volatile'",
-                    "'when'", "'where'", "'while'", "'yield'", "'{'", "'}'", "'['",
-                    "']'", "'('", "')'", "'.'", "','", "':'", "';'", "'+'", "'-'",
-                    "'*'", "'/'", "'%'", "'&'", "'|'", "'^'", "'!'", "'~'", "'='",
-                    "'<'", "'>'", "'?'", "'::'", "'??'", "'++'", "'--'", "'&&'",
-                    "'||'", "'->'", "'=='", "'!='", "'<='", "'>='", "'+='", "'-='",
-                    "'*='", "'/='", "'%='", "'&='", "'|='", "'^='", "'<<'", "'<<='",
-                    "'{{'", "'define'", "'undef'", "'elif'", "'endif'", "'line'",
-                    "'hidden'", "'}}'"]
+    literalNames = [ "<INVALID>",
+            "'\u00EF\u00BB\u00BF'", "'#'", "'abstract'", "'add'", "'alias'", 
+            "'__arglist'", "'as'", "'ascending'", "'async'", "'await'", 
+            "'base'", "'bool'", "'break'", "'by'", "'byte'", "'case'", "'catch'", 
+            "'char'", "'checked'", "'class'", "'const'", "'continue'", "'decimal'", 
+            "'default'", "'delegate'", "'descending'", "'do'", "'double'", 
+            "'dynamic'", "'else'", "'enum'", "'equals'", "'event'", "'explicit'", 
+            "'extern'", "'false'", "'finally'", "'fixed'", "'float'", "'for'", 
+            "'foreach'", "'from'", "'get'", "'goto'", "'group'", "'if'", 
+            "'implicit'", "'in'", "'int'", "'interface'", "'internal'", 
+            "'into'", "'is'", "'join'", "'let'", "'lock'", "'long'", "'nameof'", 
+            "'namespace'", "'new'", "'null'", "'object'", "'on'", "'operator'", 
+            "'orderby'", "'out'", "'override'", "'params'", "'partial'", 
+            "'private'", "'protected'", "'public'", "'readonly'", "'ref'", 
+            "'remove'", "'return'", "'sbyte'", "'sealed'", "'select'", "'set'", 
+            "'short'", "'sizeof'", "'stackalloc'", "'static'", "'string'", 
+            "'struct'", "'switch'", "'this'", "'throw'", "'true'", "'try'", 
+            "'typeof'", "'uint'", "'ulong'", "'unchecked'", "'unsafe'", 
+            "'ushort'", "'using'", "'var'", "'virtual'", "'void'", "'volatile'", 
+            "'when'", "'where'", "'while'", "'yield'", "'{'", "'}'", "'['", 
+            "']'", "'('", "')'", "'.'", "','", "':'", "';'", "'+'", "'-'", 
+            "'*'", "'/'", "'%'", "'&'", "'|'", "'^'", "'!'", "'~'", "'='", 
+            "'<'", "'>'", "'?'", "'::'", "'??'", "'++'", "'--'", "'&&'", 
+            "'||'", "'->'", "'=='", "'!='", "'<='", "'>='", "'+='", "'-='", 
+            "'*='", "'/='", "'%='", "'&='", "'|='", "'^='", "'<<'", "'<<='", 
+            "'{{'", "'define'", "'undef'", "'elif'", "'endif'", "'line'", 
+            "'hidden'", "'}}'" ]
 
-    symbolicNames = ["<INVALID>",
-                     "BYTE_ORDER_MARK", "SINGLE_LINE_DOC_COMMENT", "DELIMITED_DOC_COMMENT",
-                     "SINGLE_LINE_COMMENT", "DELIMITED_COMMENT", "WHITESPACES", "SHARP",
-                     "ABSTRACT", "ADD", "ALIAS", "ARGLIST", "AS", "ASCENDING", "ASYNC",
-                     "AWAIT", "BASE", "BOOL", "BREAK", "BY", "BYTE", "CASE", "CATCH",
-                     "CHAR", "CHECKED", "CLASS", "CONST", "CONTINUE", "DECIMAL",
-                     "DEFAULT", "DELEGATE", "DESCENDING", "DO", "DOUBLE", "DYNAMIC",
-                     "ELSE", "ENUM", "EQUALS", "EVENT", "EXPLICIT", "EXTERN", "FALSE",
-                     "FINALLY", "FIXED", "FLOAT", "FOR", "FOREACH", "FROM", "GET",
-                     "GOTO", "GROUP", "IF", "IMPLICIT", "IN", "INT", "INTERFACE",
-                     "INTERNAL", "INTO", "IS", "JOIN", "LET", "LOCK", "LONG", "NAMEOF",
-                     "NAMESPACE", "NEW", "NULL", "OBJECT", "ON", "OPERATOR", "ORDERBY",
-                     "OUT", "OVERRIDE", "PARAMS", "PARTIAL", "PRIVATE", "PROTECTED",
-                     "PUBLIC", "READONLY", "REF", "REMOVE", "RETURN", "SBYTE", "SEALED",
-                     "SELECT", "SET", "SHORT", "SIZEOF", "STACKALLOC", "STATIC",
-                     "STRING", "STRUCT", "SWITCH", "THIS", "THROW", "TRUE", "TRY",
-                     "TYPEOF", "UINT", "ULONG", "UNCHECKED", "UNSAFE", "USHORT",
-                     "USING", "VAR", "VIRTUAL", "VOID", "VOLATILE", "WHEN", "WHERE",
-                     "WHILE", "YIELD", "IDENTIFIER", "LITERAL_ACCESS", "INTEGER_LITERAL",
-                     "HEX_INTEGER_LITERAL", "REAL_LITERAL", "CHARACTER_LITERAL",
-                     "REGULAR_STRING", "VERBATIUM_STRING", "INTERPOLATED_REGULAR_STRING_START",
-                     "INTERPOLATED_VERBATIUM_STRING_START", "OPEN_BRACE", "CLOSE_BRACE",
-                     "OPEN_BRACKET", "CLOSE_BRACKET", "OPEN_PARENS", "CLOSE_PARENS",
-                     "DOT", "COMMA", "COLON", "SEMICOLON", "PLUS", "MINUS", "STAR",
-                     "DIV", "PERCENT", "AMP", "BITWISE_OR", "CARET", "BANG", "TILDE",
-                     "ASSIGNMENT", "LT", "GT", "INTERR", "DOUBLE_COLON", "OP_COALESCING",
-                     "OP_INC", "OP_DEC", "OP_AND", "OP_OR", "OP_PTR", "OP_EQ", "OP_NE",
-                     "OP_LE", "OP_GE", "OP_ADD_ASSIGNMENT", "OP_SUB_ASSIGNMENT",
-                     "OP_MULT_ASSIGNMENT", "OP_DIV_ASSIGNMENT", "OP_MOD_ASSIGNMENT",
-                     "OP_AND_ASSIGNMENT", "OP_OR_ASSIGNMENT", "OP_XOR_ASSIGNMENT",
-                     "OP_LEFT_SHIFT", "OP_LEFT_SHIFT_ASSIGNMENT", "DOUBLE_CURLY_INSIDE",
-                     "OPEN_BRACE_INSIDE", "REGULAR_CHAR_INSIDE", "VERBATIUM_DOUBLE_QUOTE_INSIDE",
-                     "DOUBLE_QUOTE_INSIDE", "REGULAR_STRING_INSIDE", "VERBATIUM_INSIDE_STRING",
-                     "CLOSE_BRACE_INSIDE", "FORMAT_STRING", "DIRECTIVE_WHITESPACES",
-                     "DIGITS", "DEFINE", "UNDEF", "ELIF", "ENDIF", "LINE", "ERROR",
-                     "WARNING", "REGION", "ENDREGION", "PRAGMA", "DIRECTIVE_HIDDEN",
-                     "CONDITIONAL_SYMBOL", "DIRECTIVE_NEW_LINE", "TEXT", "DOUBLE_CURLY_CLOSE_INSIDE"]
+    symbolicNames = [ "<INVALID>",
+            "BYTE_ORDER_MARK", "SINGLE_LINE_DOC_COMMENT", "DELIMITED_DOC_COMMENT", 
+            "SINGLE_LINE_COMMENT", "DELIMITED_COMMENT", "WHITESPACES", "SHARP", 
+            "ABSTRACT", "ADD", "ALIAS", "ARGLIST", "AS", "ASCENDING", "ASYNC", 
+            "AWAIT", "BASE", "BOOL", "BREAK", "BY", "BYTE", "CASE", "CATCH", 
+            "CHAR", "CHECKED", "CLASS", "CONST", "CONTINUE", "DECIMAL", 
+            "DEFAULT", "DELEGATE", "DESCENDING", "DO", "DOUBLE", "DYNAMIC", 
+            "ELSE", "ENUM", "EQUALS", "EVENT", "EXPLICIT", "EXTERN", "FALSE", 
+            "FINALLY", "FIXED", "FLOAT", "FOR", "FOREACH", "FROM", "GET", 
+            "GOTO", "GROUP", "IF", "IMPLICIT", "IN", "INT", "INTERFACE", 
+            "INTERNAL", "INTO", "IS", "JOIN", "LET", "LOCK", "LONG", "NAMEOF", 
+            "NAMESPACE", "NEW", "NULL", "OBJECT", "ON", "OPERATOR", "ORDERBY", 
+            "OUT", "OVERRIDE", "PARAMS", "PARTIAL", "PRIVATE", "PROTECTED", 
+            "PUBLIC", "READONLY", "REF", "REMOVE", "RETURN", "SBYTE", "SEALED", 
+            "SELECT", "SET", "SHORT", "SIZEOF", "STACKALLOC", "STATIC", 
+            "STRING", "STRUCT", "SWITCH", "THIS", "THROW", "TRUE", "TRY", 
+            "TYPEOF", "UINT", "ULONG", "UNCHECKED", "UNSAFE", "USHORT", 
+            "USING", "VAR", "VIRTUAL", "VOID", "VOLATILE", "WHEN", "WHERE", 
+            "WHILE", "YIELD", "IDENTIFIER", "LITERAL_ACCESS", "INTEGER_LITERAL", 
+            "HEX_INTEGER_LITERAL", "REAL_LITERAL", "CHARACTER_LITERAL", 
+            "REGULAR_STRING", "VERBATIUM_STRING", "INTERPOLATED_REGULAR_STRING_START", 
+            "INTERPOLATED_VERBATIUM_STRING_START", "OPEN_BRACE", "CLOSE_BRACE", 
+            "OPEN_BRACKET", "CLOSE_BRACKET", "OPEN_PARENS", "CLOSE_PARENS", 
+            "DOT", "COMMA", "COLON", "SEMICOLON", "PLUS", "MINUS", "STAR", 
+            "DIV", "PERCENT", "AMP", "BITWISE_OR", "CARET", "BANG", "TILDE", 
+            "ASSIGNMENT", "LT", "GT", "INTERR", "DOUBLE_COLON", "OP_COALESCING", 
+            "OP_INC", "OP_DEC", "OP_AND", "OP_OR", "OP_PTR", "OP_EQ", "OP_NE", 
+            "OP_LE", "OP_GE", "OP_ADD_ASSIGNMENT", "OP_SUB_ASSIGNMENT", 
+            "OP_MULT_ASSIGNMENT", "OP_DIV_ASSIGNMENT", "OP_MOD_ASSIGNMENT", 
+            "OP_AND_ASSIGNMENT", "OP_OR_ASSIGNMENT", "OP_XOR_ASSIGNMENT", 
+            "OP_LEFT_SHIFT", "OP_LEFT_SHIFT_ASSIGNMENT", "DOUBLE_CURLY_INSIDE", 
+            "OPEN_BRACE_INSIDE", "REGULAR_CHAR_INSIDE", "VERBATIUM_DOUBLE_QUOTE_INSIDE", 
+            "DOUBLE_QUOTE_INSIDE", "REGULAR_STRING_INSIDE", "VERBATIUM_INSIDE_STRING", 
+            "CLOSE_BRACE_INSIDE", "FORMAT_STRING", "DIRECTIVE_WHITESPACES", 
+            "DIGITS", "DEFINE", "UNDEF", "ELIF", "ENDIF", "LINE", "ERROR", 
+            "WARNING", "REGION", "ENDREGION", "PRAGMA", "DIRECTIVE_HIDDEN", 
+            "CONDITIONAL_SYMBOL", "DIRECTIVE_NEW_LINE", "TEXT", "DOUBLE_CURLY_CLOSE_INSIDE" ]
 
-    ruleNames = ["BYTE_ORDER_MARK", "SINGLE_LINE_DOC_COMMENT", "DELIMITED_DOC_COMMENT",
-                 "SINGLE_LINE_COMMENT", "DELIMITED_COMMENT", "WHITESPACES",
-                 "SHARP", "ABSTRACT", "ADD", "ALIAS", "ARGLIST", "AS",
-                 "ASCENDING", "ASYNC", "AWAIT", "BASE", "BOOL", "BREAK",
-                 "BY", "BYTE", "CASE", "CATCH", "CHAR", "CHECKED", "CLASS",
-                 "CONST", "CONTINUE", "DECIMAL", "DEFAULT", "DELEGATE",
-                 "DESCENDING", "DO", "DOUBLE", "DYNAMIC", "ELSE", "ENUM",
-                 "EQUALS", "EVENT", "EXPLICIT", "EXTERN", "FALSE", "FINALLY",
-                 "FIXED", "FLOAT", "FOR", "FOREACH", "FROM", "GET", "GOTO",
-                 "GROUP", "IF", "IMPLICIT", "IN", "INT", "INTERFACE", "INTERNAL",
-                 "INTO", "IS", "JOIN", "LET", "LOCK", "LONG", "NAMEOF",
-                 "NAMESPACE", "NEW", "NULL", "OBJECT", "ON", "OPERATOR",
-                 "ORDERBY", "OUT", "OVERRIDE", "PARAMS", "PARTIAL", "PRIVATE",
-                 "PROTECTED", "PUBLIC", "READONLY", "REF", "REMOVE", "RETURN",
-                 "SBYTE", "SEALED", "SELECT", "SET", "SHORT", "SIZEOF",
-                 "STACKALLOC", "STATIC", "STRING", "STRUCT", "SWITCH",
-                 "THIS", "THROW", "TRUE", "TRY", "TYPEOF", "UINT", "ULONG",
-                 "UNCHECKED", "UNSAFE", "USHORT", "USING", "VAR", "VIRTUAL",
-                 "VOID", "VOLATILE", "WHEN", "WHERE", "WHILE", "YIELD",
-                 "IDENTIFIER", "LITERAL_ACCESS", "INTEGER_LITERAL", "HEX_INTEGER_LITERAL",
-                 "REAL_LITERAL", "CHARACTER_LITERAL", "REGULAR_STRING",
-                 "VERBATIUM_STRING", "INTERPOLATED_REGULAR_STRING_START",
-                 "INTERPOLATED_VERBATIUM_STRING_START", "OPEN_BRACE", "CLOSE_BRACE",
-                 "OPEN_BRACKET", "CLOSE_BRACKET", "OPEN_PARENS", "CLOSE_PARENS",
-                 "DOT", "COMMA", "COLON", "SEMICOLON", "PLUS", "MINUS",
-                 "STAR", "DIV", "PERCENT", "AMP", "BITWISE_OR", "CARET",
-                 "BANG", "TILDE", "ASSIGNMENT", "LT", "GT", "INTERR", "DOUBLE_COLON",
-                 "OP_COALESCING", "OP_INC", "OP_DEC", "OP_AND", "OP_OR",
-                 "OP_PTR", "OP_EQ", "OP_NE", "OP_LE", "OP_GE", "OP_ADD_ASSIGNMENT",
-                 "OP_SUB_ASSIGNMENT", "OP_MULT_ASSIGNMENT", "OP_DIV_ASSIGNMENT",
-                 "OP_MOD_ASSIGNMENT", "OP_AND_ASSIGNMENT", "OP_OR_ASSIGNMENT",
-                 "OP_XOR_ASSIGNMENT", "OP_LEFT_SHIFT", "OP_LEFT_SHIFT_ASSIGNMENT",
-                 "DOUBLE_CURLY_INSIDE", "OPEN_BRACE_INSIDE", "REGULAR_CHAR_INSIDE",
-                 "VERBATIUM_DOUBLE_QUOTE_INSIDE", "DOUBLE_QUOTE_INSIDE",
-                 "REGULAR_STRING_INSIDE", "VERBATIUM_INSIDE_STRING", "DOUBLE_CURLY_CLOSE_INSIDE",
-                 "CLOSE_BRACE_INSIDE", "FORMAT_STRING", "DIRECTIVE_WHITESPACES",
-                 "DIGITS", "DIRECTIVE_TRUE", "DIRECTIVE_FALSE", "DEFINE",
-                 "UNDEF", "DIRECTIVE_IF", "ELIF", "DIRECTIVE_ELSE", "ENDIF",
-                 "LINE", "ERROR", "WARNING", "REGION", "ENDREGION", "PRAGMA",
-                 "DIRECTIVE_DEFAULT", "DIRECTIVE_HIDDEN", "DIRECTIVE_OPEN_PARENS",
-                 "DIRECTIVE_CLOSE_PARENS", "DIRECTIVE_BANG", "DIRECTIVE_OP_EQ",
-                 "DIRECTIVE_OP_NE", "DIRECTIVE_OP_AND", "DIRECTIVE_OP_OR",
-                 "DIRECTIVE_STRING", "CONDITIONAL_SYMBOL", "DIRECTIVE_SINGLE_LINE_COMMENT",
-                 "DIRECTIVE_NEW_LINE", "TEXT", "TEXT_NEW_LINE", "InputCharacter",
-                 "NewLineCharacter", "IntegerTypeSuffix", "ExponentPart",
-                 "CommonCharacter", "SimpleEscapeSequence", "HexEscapeSequence",
-                 "NewLine", "Whitespace", "UnicodeClassZS", "IdentifierOrKeyword",
-                 "IdentifierStartCharacter", "IdentifierPartCharacter",
-                 "LetterCharacter", "DecimalDigitCharacter", "ConnectingCharacter",
-                 "CombiningCharacter", "FormattingCharacter", "UnicodeEscapeSequence",
-                 "HexDigit", "UnicodeClassLU", "UnicodeClassLL", "UnicodeClassLT",
-                 "UnicodeClassLM", "UnicodeClassLO", "UnicodeClassNL",
-                 "UnicodeClassMN", "UnicodeClassMC", "UnicodeClassCF",
-                 "UnicodeClassPC", "UnicodeClassND"]
+    ruleNames = [ "BYTE_ORDER_MARK", "SINGLE_LINE_DOC_COMMENT", "DELIMITED_DOC_COMMENT", 
+                  "SINGLE_LINE_COMMENT", "DELIMITED_COMMENT", "WHITESPACES", 
+                  "SHARP", "ABSTRACT", "ADD", "ALIAS", "ARGLIST", "AS", 
+                  "ASCENDING", "ASYNC", "AWAIT", "BASE", "BOOL", "BREAK", 
+                  "BY", "BYTE", "CASE", "CATCH", "CHAR", "CHECKED", "CLASS", 
+                  "CONST", "CONTINUE", "DECIMAL", "DEFAULT", "DELEGATE", 
+                  "DESCENDING", "DO", "DOUBLE", "DYNAMIC", "ELSE", "ENUM", 
+                  "EQUALS", "EVENT", "EXPLICIT", "EXTERN", "FALSE", "FINALLY", 
+                  "FIXED", "FLOAT", "FOR", "FOREACH", "FROM", "GET", "GOTO", 
+                  "GROUP", "IF", "IMPLICIT", "IN", "INT", "INTERFACE", "INTERNAL", 
+                  "INTO", "IS", "JOIN", "LET", "LOCK", "LONG", "NAMEOF", 
+                  "NAMESPACE", "NEW", "NULL", "OBJECT", "ON", "OPERATOR", 
+                  "ORDERBY", "OUT", "OVERRIDE", "PARAMS", "PARTIAL", "PRIVATE", 
+                  "PROTECTED", "PUBLIC", "READONLY", "REF", "REMOVE", "RETURN", 
+                  "SBYTE", "SEALED", "SELECT", "SET", "SHORT", "SIZEOF", 
+                  "STACKALLOC", "STATIC", "STRING", "STRUCT", "SWITCH", 
+                  "THIS", "THROW", "TRUE", "TRY", "TYPEOF", "UINT", "ULONG", 
+                  "UNCHECKED", "UNSAFE", "USHORT", "USING", "VAR", "VIRTUAL", 
+                  "VOID", "VOLATILE", "WHEN", "WHERE", "WHILE", "YIELD", 
+                  "IDENTIFIER", "LITERAL_ACCESS", "INTEGER_LITERAL", "HEX_INTEGER_LITERAL", 
+                  "REAL_LITERAL", "CHARACTER_LITERAL", "REGULAR_STRING", 
+                  "VERBATIUM_STRING", "INTERPOLATED_REGULAR_STRING_START", 
+                  "INTERPOLATED_VERBATIUM_STRING_START", "OPEN_BRACE", "CLOSE_BRACE", 
+                  "OPEN_BRACKET", "CLOSE_BRACKET", "OPEN_PARENS", "CLOSE_PARENS", 
+                  "DOT", "COMMA", "COLON", "SEMICOLON", "PLUS", "MINUS", 
+                  "STAR", "DIV", "PERCENT", "AMP", "BITWISE_OR", "CARET", 
+                  "BANG", "TILDE", "ASSIGNMENT", "LT", "GT", "INTERR", "DOUBLE_COLON", 
+                  "OP_COALESCING", "OP_INC", "OP_DEC", "OP_AND", "OP_OR", 
+                  "OP_PTR", "OP_EQ", "OP_NE", "OP_LE", "OP_GE", "OP_ADD_ASSIGNMENT", 
+                  "OP_SUB_ASSIGNMENT", "OP_MULT_ASSIGNMENT", "OP_DIV_ASSIGNMENT", 
+                  "OP_MOD_ASSIGNMENT", "OP_AND_ASSIGNMENT", "OP_OR_ASSIGNMENT", 
+                  "OP_XOR_ASSIGNMENT", "OP_LEFT_SHIFT", "OP_LEFT_SHIFT_ASSIGNMENT", 
+                  "DOUBLE_CURLY_INSIDE", "OPEN_BRACE_INSIDE", "REGULAR_CHAR_INSIDE", 
+                  "VERBATIUM_DOUBLE_QUOTE_INSIDE", "DOUBLE_QUOTE_INSIDE", 
+                  "REGULAR_STRING_INSIDE", "VERBATIUM_INSIDE_STRING", "DOUBLE_CURLY_CLOSE_INSIDE", 
+                  "CLOSE_BRACE_INSIDE", "FORMAT_STRING", "DIRECTIVE_WHITESPACES", 
+                  "DIGITS", "DIRECTIVE_TRUE", "DIRECTIVE_FALSE", "DEFINE", 
+                  "UNDEF", "DIRECTIVE_IF", "ELIF", "DIRECTIVE_ELSE", "ENDIF", 
+                  "LINE", "ERROR", "WARNING", "REGION", "ENDREGION", "PRAGMA", 
+                  "DIRECTIVE_DEFAULT", "DIRECTIVE_HIDDEN", "DIRECTIVE_OPEN_PARENS", 
+                  "DIRECTIVE_CLOSE_PARENS", "DIRECTIVE_BANG", "DIRECTIVE_OP_EQ", 
+                  "DIRECTIVE_OP_NE", "DIRECTIVE_OP_AND", "DIRECTIVE_OP_OR", 
+                  "DIRECTIVE_STRING", "CONDITIONAL_SYMBOL", "DIRECTIVE_SINGLE_LINE_COMMENT", 
+                  "DIRECTIVE_NEW_LINE", "TEXT", "TEXT_NEW_LINE", "InputCharacter", 
+                  "NewLineCharacter", "IntegerTypeSuffix", "ExponentPart", 
+                  "CommonCharacter", "SimpleEscapeSequence", "HexEscapeSequence", 
+                  "NewLine", "Whitespace", "UnicodeClassZS", "IdentifierOrKeyword", 
+                  "IdentifierStartCharacter", "IdentifierPartCharacter", 
+                  "LetterCharacter", "DecimalDigitCharacter", "ConnectingCharacter", 
+                  "CombiningCharacter", "FormattingCharacter", "UnicodeEscapeSequence", 
+                  "HexDigit", "UnicodeClassLU", "UnicodeClassLL", "UnicodeClassLT", 
+                  "UnicodeClassLM", "UnicodeClassLO", "UnicodeClassNL", 
+                  "UnicodeClassMN", "UnicodeClassMC", "UnicodeClassCF", 
+                  "UnicodeClassPC", "UnicodeClassND" ]
 
     grammarFileName = "CSharpLexer.g4"
 
-    def __init__(self, input=None, output: TextIO = sys.stdout):
+    def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.1")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
 
-        self.interpolatedStringLevel: int
-        self.interpolatedVerbatiums = Stack < JBoolean > ()
-        self.curlyLevels = Stack < JInt > ()
-        self.verbatium: bool
+    private int interpolatedStringLevel;
+    private Stack<Boolean> interpolatedVerbatiums = new Stack<Boolean>();
+    private Stack<Integer> curlyLevels = new Stack<Integer>();
+    private boolean verbatium;
 
-        # private int interpolatedStringLevel;
-        # private Stack<Boolean> interpolatedVerbatiums = new Stack<Boolean>();
-        # private Stack<Integer> curlyLevels = new Stack<Integer>();
-        # private boolean verbatium;
 
-    def action(self, localctx: RuleContext, ruleIndex: int, actionIndex: int):
+    def action(self, localctx:RuleContext, ruleIndex:int, actionIndex:int):
         if self._actions is None:
             actions = dict()
-            actions[119] = self.INTERPOLATED_REGULAR_STRING_START_action
-            actions[120] = self.INTERPOLATED_VERBATIUM_STRING_START_action
-            actions[121] = self.OPEN_BRACE_action
-            actions[122] = self.CLOSE_BRACE_action
-            actions[129] = self.COLON_action
-            actions[167] = self.OPEN_BRACE_INSIDE_action
-            actions[170] = self.DOUBLE_QUOTE_INSIDE_action
-            actions[174] = self.CLOSE_BRACE_INSIDE_action
+            actions[119] = self.INTERPOLATED_REGULAR_STRING_START_action 
+            actions[120] = self.INTERPOLATED_VERBATIUM_STRING_START_action 
+            actions[121] = self.OPEN_BRACE_action 
+            actions[122] = self.CLOSE_BRACE_action 
+            actions[129] = self.COLON_action 
+            actions[167] = self.OPEN_BRACE_INSIDE_action 
+            actions[170] = self.DOUBLE_QUOTE_INSIDE_action 
+            actions[174] = self.CLOSE_BRACE_INSIDE_action 
             self._actions = actions
         action = self._actions.get(ruleIndex, None)
         if action is not None:
@@ -1439,69 +1432,82 @@ class CSharpLexer(Lexer):
         else:
             raise Exception("No registered action for:" + str(ruleIndex))
 
-    def INTERPOLATED_REGULAR_STRING_START_action(self, localctx: RuleContext, actionIndex: int):
+    def INTERPOLATED_REGULAR_STRING_START_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 0:
-            self.interpolatedStringLevel = self.interpolatedStringLevel + 1
-            self.interpolatedVerbatiums.push(False)
-            verbatium = False
+             interpolatedStringLevel++; interpolatedVerbatiums.push(false); verbatium = false; 
+     
 
-    def INTERPOLATED_VERBATIUM_STRING_START_action(self, localctx: RuleContext, actionIndex: int):
+    def INTERPOLATED_VERBATIUM_STRING_START_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 1:
-            self.interpolatedStringLevel = self.interpolatedStringLevel + 1
-            self.interpolatedVerbatiums.push(True)
-            self.verbatium = True
+             interpolatedStringLevel++; interpolatedVerbatiums.push(true); verbatium = true; 
+     
 
-    def OPEN_BRACE_action(self, localctx: RuleContext, actionIndex: int):
+    def OPEN_BRACE_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 2:
 
-            if self.interpolatedStringLevel > 0:
-                self.curlyLevels.push(self.curlyLevels.pop() + 1)
+            if (interpolatedStringLevel > 0)
+            {
+                curlyLevels.push(curlyLevels.pop() + 1);
+            }
+     
 
-    def CLOSE_BRACE_action(self, localctx: RuleContext, actionIndex: int):
+    def CLOSE_BRACE_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 3:
 
-            if self.interpolatedStringLevel > 0:
+            if (interpolatedStringLevel > 0)
+            {
+                curlyLevels.push(curlyLevels.pop() - 1);
+                if (curlyLevels.peek() == 0)
+                {
+                    curlyLevels.pop();
+                    skip();
+                    popMode();
+                }
+            }
 
-                self.curlyLevels.push(self.curlyLevels.pop() - 1);
+     
 
-                if self.curlyLevels.peek() == 0:
-                    self.curlyLevels.pop()
-                    self.skip()
-                    self.popMode()
-
-    def COLON_action(self, localctx: RuleContext, actionIndex: int):
+    def COLON_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 4:
 
-            if self.interpolatedStringLevel > 0:
-                ind = 1
-                switchToFormatString = True
-                while (self._input.LA(ind) != '}'):
+            if (interpolatedStringLevel > 0)
+            {
+                int ind = 1;
+                boolean switchToFormatString = true;
+                while ((char)_input.LA(ind) != '}')
+                {
+                    if (_input.LA(ind) == ':' || _input.LA(ind) == ')')
+                    {
+                        switchToFormatString = false;
+                        break;
+                    }
+                    ind++;
+                }
+                if (switchToFormatString)
+                {
+                    mode(INTERPOLATION_FORMAT);
+                }
+            }
 
-                    if (self._input.LA(ind) == ':') or (self._input.LA(ind) == ')'):
-                        switchToFormatString = False
-                        break
+     
 
-                    ind = ind + 1
-
-                if switchToFormatString:
-                    self.mode(CSharpLexer.INTERPOLATION_FORMAT)
-
-    def OPEN_BRACE_INSIDE_action(self, localctx: RuleContext, actionIndex: int):
+    def OPEN_BRACE_INSIDE_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 5:
-            self.curlyLevels.push(1)
+             curlyLevels.push(1); 
+     
 
-    def DOUBLE_QUOTE_INSIDE_action(self, localctx: RuleContext, actionIndex: int):
+    def DOUBLE_QUOTE_INSIDE_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 6:
-            self.interpolatedStringLevel=self.interpolatedStringLevel-1
-            self.interpolatedVerbatiums.pop()
-            self.verbatium = self.interpolatedVerbatiums.peek() if self.interpolatedVerbatiums.size()>0 else False
-            # (self.interpolatedVerbatiums.size() > 0 ? interpolatedVerbatiums.peek(): false);
+             interpolatedStringLevel--; interpolatedVerbatiums.pop();
+                verbatium = (interpolatedVerbatiums.size() > 0 ? interpolatedVerbatiums.peek() : false); 
+     
 
-    def CLOSE_BRACE_INSIDE_action(self, localctx: RuleContext, actionIndex: int):
+    def CLOSE_BRACE_INSIDE_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 7:
-            self.curlyLevels.pop()
+             curlyLevels.pop(); 
+     
 
-    def sempred(self, localctx: RuleContext, ruleIndex: int, predIndex: int):
+    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates is None:
             preds = dict()
             preds[168] = self.REGULAR_CHAR_INSIDE_sempred
@@ -1515,18 +1521,24 @@ class CSharpLexer(Lexer):
         else:
             raise Exception("No registered predicate for:" + str(ruleIndex))
 
-    def REGULAR_CHAR_INSIDE_sempred(self, localctx: RuleContext, predIndex: int):
-        if predIndex == 0:
-            return not self.verbatium
+    def REGULAR_CHAR_INSIDE_sempred(self, localctx:RuleContext, predIndex:int):
+            if predIndex == 0:
+                return  !verbatium 
+         
 
-    def VERBATIUM_DOUBLE_QUOTE_INSIDE_sempred(self, localctx: RuleContext, predIndex: int):
-        if predIndex == 1:
-            return self.verbatium
+    def VERBATIUM_DOUBLE_QUOTE_INSIDE_sempred(self, localctx:RuleContext, predIndex:int):
+            if predIndex == 1:
+                return   verbatium 
+         
 
-    def REGULAR_STRING_INSIDE_sempred(self, localctx: RuleContext, predIndex: int):
-        if predIndex == 2:
-            return  not self.verbatium
+    def REGULAR_STRING_INSIDE_sempred(self, localctx:RuleContext, predIndex:int):
+            if predIndex == 2:
+                return  !verbatium 
+         
 
-    def VERBATIUM_INSIDE_STRING_sempred(self, localctx: RuleContext, predIndex: int):
-        if predIndex == 3:
-            return self.verbatium
+    def VERBATIUM_INSIDE_STRING_sempred(self, localctx:RuleContext, predIndex:int):
+            if predIndex == 3:
+                return   verbatium 
+         
+
+
