@@ -1,11 +1,17 @@
+# --------------------------------------------
+# @File     : TestAntlr.py
+# @Time     :
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     : Generated Before I set template
+# --------------------------------------------
 import sys
 from antlr4 import *
 from antlr4.ListTokenSource import ListTokenSource
-from jpype import *
 from util.antlr4.recognizers.CSharpLexer import CSharpLexer
 from util.antlr4.recognizers.CSharpParser import CSharpParser
 from util.antlr4.recognizers.CSharpParserListener import CSharpParserListener
 from util.antlr4.recognizers.CSharpPreprocessorParser import CSharpPreprocessorParser
+
 
 class KeyPrinter(CSharpParserListener):
     def exitKey(self, ctx):
@@ -29,13 +35,13 @@ if __name__ == '__main__':
     lexer = CSharpLexer(input_stream)
     # 获取分词结果
     tokens=lexer.getAllTokens()
+
     # 分词结果流
     directive_token_stream=CommonTokenStream(lexer)
     # 预解析器
     preprocessor_parser=CSharpPreprocessorParser(directive_token_stream)
     # 监听器（目前暂时还未使用）
     listener= preprocessor_parser.getParseListeners()
-
     index = 0
     # TODO：添加注释
     compiled_tokens = True
@@ -45,7 +51,6 @@ if __name__ == '__main__':
     directive_tokens=[]
     # 代码型token列表
     code_tokens=[]
-
     while index < tokens.__len__():
         token = tokens[index]
         if token.type == CSharpLexer.SHARP:
@@ -53,8 +58,10 @@ if __name__ == '__main__':
             directiveTokenIndex = index + 1
 
             # Collect all preprocessor directive tokens.
-            while (directiveTokenIndex < tokens.Count and tokens[directiveTokenIndex].Type != CSharpLexer.TYPEOF and
-                   tokens[directiveTokenIndex].Type != CSharpLexer.DIRECTIVE_NEW_LINE and tokens[directiveTokenIndex].Type != CSharpLexer.SHARP):
+            while (directiveTokenIndex < tokens.__len__() and
+                   tokens[directiveTokenIndex].type != CSharpLexer.TYPEOF and
+                   tokens[directiveTokenIndex].type != CSharpLexer.DIRECTIVE_NEW_LINE and
+                   tokens[directiveTokenIndex].type != CSharpLexer.SHARP):
 
                 if tokens[directiveTokenIndex].Channel == CSharpLexer.COMMENTS_CHANNEL:
                     comment_tokens.append(tokens[directiveTokenIndex])
@@ -69,27 +76,46 @@ if __name__ == '__main__':
                 preprocessor_parser.reset()
                 # Parse condition in preprocessor directive(based on CSharpPreprocessorParser.g4 grammar).
                 directive = preprocessor_parser.preprocessor_directive()
+
                 # if true than next code is valid and not ignored.
                 compiled_tokens = directive.value
+                directiveStr = tokens.get(index + 1).getText().trim()
+                if directiveStr in ["line","error","warning","define","endregion","endif","pragma"]:
+                    compiled_tokens = True
+
+                conditionalSymbol = None
+                if "define"==tokens.get(index + 1).getText():
+                    conditionalSymbol = tokens.get(index + 2).getText()
+                    preprocessor_parser.ConditionalSymbols.add(conditionalSymbol)
+                if "undef"==tokens.get(index + 1).getText():
+                    conditionalSymbol = tokens.get(index + 2).getText()
+                    preprocessor_parser.ConditionalSymbols.remove(conditionalSymbol)
+
                 index = directiveTokenIndex - 1
 
-        elif token.Channel == lexer.COMMENTS_CHANNEL:
+        elif token.channel == lexer.COMMENTS_CHANNEL:
             # 当前token是注释
             comment_tokens.append(token)
-        elif token.Channel != Lexer.HIDDEN and token.Type != CSharpLexer.DIRECTIVE_NEW_LINE and compiled_tokens:
+        elif token.channel != Lexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE and compiled_tokens:
             # 当前token是代码类型
             code_tokens.append(token)
 
         index=index+1
 
     # At second stage tokens parsed in usual way.
-    codeTokenSource = ListTokenSource(tokens)
+    codeTokenSource = ListTokenSource(code_tokens)
     codeTokenStream = CommonTokenStream(codeTokenSource)
     parser = CSharpParser(codeTokenStream)
 
     # Parse syntax tree(CSharpParser.g4)
     compilationUnit = parser.compilation_unit()
 
+    childrenCount= compilationUnit.getChildCount()
+    printer = KeyPrinter()
+    compilationUnit.enterRule(printer)
+    # printer=KeyPrinter()
+    # walker=ParseTreeWalker()
+    # walker.walk(printer,compilationUnit)
     print("ll")
 
     # 开启虚拟机

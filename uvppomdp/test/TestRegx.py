@@ -1,3 +1,9 @@
+# --------------------------------------------
+# @File     : TestRegx.py
+# @Time     :
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     : Generated Before I set template
+# --------------------------------------------
 import re
 
 

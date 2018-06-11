@@ -1,3 +1,9 @@
+# --------------------------------------------
+# @File     : MethodBasedCodeDiffer.py
+# @Time     : 2018/6/9 21:14
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     :
+# --------------------------------------------
 import os
 import json
 from util.BasicUtil import BasicUtil

@@ -1,3 +1,9 @@
+# --------------------------------------------
+# @File     : TestDiff.py
+# @Time     :
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     : Generated Before I set template
+# --------------------------------------------
 import difflib
 from util.logreader.CompileLogReader import cmpl_reader
 from util.diffutil.NaiveCmplCodeDiffer import navie_differ

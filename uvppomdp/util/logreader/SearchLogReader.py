@@ -1,3 +1,9 @@
+# --------------------------------------------
+# @File     : SearchLogReader.py
+# @Time     : 2018/6/7 21:14
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     :
+# --------------------------------------------
 import os
 from util.BasicUtil import BasicUtil
 

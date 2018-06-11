@@ -1,3 +1,9 @@
+# --------------------------------------------
+# @File     : NaiveCmplCodeDiffer.py
+# @Time     : 2018/6/9 21:14
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     :
+# --------------------------------------------
 import difflib
 import os
 import json

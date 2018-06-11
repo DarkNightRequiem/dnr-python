@@ -1,3 +1,9 @@
+# --------------------------------------------
+# @File     : BasicUtil.py
+# @Time     : 2018/6/6 21:14
+# @Author   : Yanqing Wang (DarkNightRequiem)
+# @Note     :
+# --------------------------------------------
 import os
 import platform
 import yaml
