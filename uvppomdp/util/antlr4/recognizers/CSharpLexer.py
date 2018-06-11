@@ -3,11 +3,7 @@ from antlr4 import *
 from io import StringIO
 from typing import TextIO
 import sys
-
-from jpype import *
-import jpype
-
-Stack = JClass("java.util.Stack")
+from util.meta.Stack import Stack
 
 
 def serializedATN():
@@ -1411,10 +1407,10 @@ class CSharpLexer(Lexer):
         self._actions = None
         self._predicates = None
 
-        self.interpolatedStringLevel: int
-        self.interpolatedVerbatiums = Stack < JBoolean > ()
-        self.curlyLevels = Stack < JInt > ()
-        self.verbatium: bool
+        self.interpolatedStringLevel=0
+        self.interpolatedVerbatiums = Stack()
+        self.curlyLevels = Stack()
+        self.verbatium=False
 
         # private int interpolatedStringLevel;
         # private Stack<Boolean> interpolatedVerbatiums = new Stack<Boolean>();
@@ -1462,7 +1458,7 @@ class CSharpLexer(Lexer):
 
             if self.interpolatedStringLevel > 0:
 
-                self.curlyLevels.push(self.curlyLevels.pop() - 1);
+                self.curlyLevels.push(self.curlyLevels.pop() - 1)
 
                 if self.curlyLevels.peek() == 0:
                     self.curlyLevels.pop()
@@ -1492,9 +1488,9 @@ class CSharpLexer(Lexer):
 
     def DOUBLE_QUOTE_INSIDE_action(self, localctx: RuleContext, actionIndex: int):
         if actionIndex == 6:
-            self.interpolatedStringLevel=self.interpolatedStringLevel-1
+            self.interpolatedStringLevel = self.interpolatedStringLevel - 1
             self.interpolatedVerbatiums.pop()
-            self.verbatium = self.interpolatedVerbatiums.peek() if self.interpolatedVerbatiums.size()>0 else False
+            self.verbatium = self.interpolatedVerbatiums.peek() if self.interpolatedVerbatiums.size() > 0 else False
             # (self.interpolatedVerbatiums.size() > 0 ? interpolatedVerbatiums.peek(): false);
 
     def CLOSE_BRACE_INSIDE_action(self, localctx: RuleContext, actionIndex: int):
@@ -1525,7 +1521,7 @@ class CSharpLexer(Lexer):
 
     def REGULAR_STRING_INSIDE_sempred(self, localctx: RuleContext, predIndex: int):
         if predIndex == 2:
-            return  not self.verbatium
+            return not self.verbatium
 
     def VERBATIUM_INSIDE_STRING_sempred(self, localctx: RuleContext, predIndex: int):
         if predIndex == 3:
