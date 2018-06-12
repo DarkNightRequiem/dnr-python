@@ -5,24 +5,82 @@
 # @Note     : Generated Before I set template
 # --------------------------------------------
 import sys
+
+import chardet
 from antlr4 import *
 from antlr4.ListTokenSource import ListTokenSource
 from util.antlr4.recognizers.CSharpLexer import CSharpLexer
 from util.antlr4.recognizers.CSharpParser import CSharpParser
 from util.antlr4.recognizers.CSharpParserListener import CSharpParserListener
+from util.antlr4.recognizers.CSharpParserVisitor import CSharpParserVisitor
 from util.antlr4.recognizers.CSharpPreprocessorParser import CSharpPreprocessorParser
+from util.antlr4.csharpiutil.MbParserVistor import MbParserVistor
 
 
-class KeyPrinter(CSharpParserListener):
-    def exitKey(self, ctx):
-        print("Oh, a key!")
+class MyListener(CSharpParserListener):
+    def __init__(self):
+        CSharpParserListener.__init__(self)
+
+    def enterClass_body(self, ctx:CSharpParser.Class_bodyContext):
+        # 进入
+        text1=ctx.getText()
+        decl=ctx.class_member_declarations()
+        openbrace=ctx.OPEN_BRACE()
+        closebrace=ctx.CLOSE_BRACE()
+        altNumber=ctx.getAltNumber()
+        payLoad= ctx.getPayload()
+        ruleContext=ctx.getRuleContext()
+        # assignment_token= ctx.getToken(CSharpLexer.ASSIGNMENT,0)
+        print("entering Class_body")
+
+    def exitClass_body(self, ctx:CSharpParser.Class_bodyContext):
+        text2=ctx.getText()
+        decl = ctx.class_member_declarations()
+        print("exiting Class_body")
+
+    def enterKeyword(self, ctx:CSharpParser.KeywordContext):
+        print("entering Keyword")
+
+    def exitKeyword(self, ctx:CSharpParser.KeywordContext):
+        text= ctx.getText()
+        print("exiting Keyword")
+
+    def enterRank_specifier(self, ctx:CSharpParser.Rank_specifierContext):
+        print("entering Rank Specifier")
+
+    def exitRank_specifier(self, ctx:CSharpParser.Rank_specifierContext):
+        print("exiting Rank Specifier")
+
+def check_all_token(tokens):
+    identifiers=[]
+    if tokens.__len__()<=0:
+        return None
+    else:
+        for token in tokens:
+            if token.type==CSharpLexer.IDENTIFIER:
+                identifiers.append(tokens.text)
+                print("[IDENTIFIER]:", token.text)
+    return identifiers
+
 
 
 if __name__ == '__main__':
     # 直接通过路径读取
     # path="C:\\Users\\Eric.Apollo\\Desktop\\App.xaml.cs"
     path = "C:\\Users\\Administrator\\Desktop\\App.xaml.cs"
-    input_stream = FileStream(path,encoding='utf-8')
+
+
+
+    # 读取文件内容
+    file_bytes = open(path,"rb").read()
+
+    # 查看文件编码
+    encode = (chardet.detect(file_bytes))["encoding"] \
+        if (chardet.detect(file_bytes))["encoding"] is not None \
+        else "utf-8"
+
+    # 按照文件编码获取输入流
+    input_stream = FileStream(path,encoding=encode)
 
     """
     通过python 使用antlr4 对C# 代码进行解析主要分为三步
@@ -51,8 +109,29 @@ if __name__ == '__main__':
     directive_tokens=[]
     # 代码型token列表
     code_tokens=[]
+
+    # while index < tokens.__len__():
+    #     token = tokens[index]
+    #     if token.type==CSharpLexer.USING:
+    #         print("[USING]:",token.text)
+    #     if token.type==CSharpLexer.NAMESPACE:
+    #         print("[NAMESPACE]:",token.text)
+    #     if token.type==CSharpLexer.ASSIGNMENT:
+    #         print("[ASSIGNMENT]:", token.text)
+    #     if token.type==CSharpLexer.CLASS:
+    #         print("[CLASS]:", token.text)
+    #     if token.channel==CSharpLexer.DIRECTIVE:
+    #         print("[DIRECTIVE]:", token.text)
+    #     if token.type==CSharpLexer.DIRECTIVE_HIDDEN:
+    #         print("[DIRECTIVE_HIDDEN]:", token.text)
+    #     if token.type==CSharpLexer.IDENTIFIER:
+    #         print("[IDENTIFIER]:", token.text)
+    #     index=index+1
+
+    index=0
     while index < tokens.__len__():
         token = tokens[index]
+
         if token.type == CSharpLexer.SHARP:
             tokens.clear()
             directiveTokenIndex = index + 1
@@ -96,23 +175,32 @@ if __name__ == '__main__':
         elif token.channel == lexer.COMMENTS_CHANNEL:
             # 当前token是注释
             comment_tokens.append(token)
-        elif token.channel != Lexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE and compiled_tokens:
+
+        elif token.channel != lexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE and compiled_tokens:
             # 当前token是代码类型
             code_tokens.append(token)
 
         index=index+1
 
     # At second stage tokens parsed in usual way.
-    codeTokenSource = ListTokenSource(code_tokens)
-    codeTokenStream = CommonTokenStream(codeTokenSource)
-    parser = CSharpParser(codeTokenStream)
+    code_token_source = ListTokenSource(code_tokens)
+    code_token_stream = CommonTokenStream(code_token_source)
+    parser = CSharpParser(code_token_stream)
 
     # Parse syntax tree(CSharpParser.g4)
+
     compilationUnit = parser.compilation_unit()
 
-    childrenCount= compilationUnit.getChildCount()
-    printer = KeyPrinter()
-    compilationUnit.enterRule(printer)
+    # 使用监听器机制遍历
+    # listener=MyListener()
+    # walker=ParseTreeWalker()
+    # walker.walk(listener,compilationUnit)
+
+    # 使用访问者机制遍历
+    vistor=MbParserVistor()
+    vistor.visit(compilationUnit)
+
+
     # printer=KeyPrinter()
     # walker=ParseTreeWalker()
     # walker.walk(printer,compilationUnit)
@@ -123,3 +211,16 @@ if __name__ == '__main__':
     # startJVM(getDefaultJVMPath())
     # 关闭JVM
     # shutdownJVM()
+
+    # if token.type==CSharpLexer.USING:
+    #     print("[USING]:",token.text)
+    # if token.type==CSharpLexer.NAMESPACE:
+    #     print("[NAMESPACE]:",token.text)
+    # if token.type==CSharpLexer.ASSIGNMENT:
+    #     print("[ASSIGNMENT]:", token.text)
+    # if token.type==CSharpLexer.CLASS:
+    #     print("[CLASS]:", token.text)
+    # if token.channel==CSharpLexer.DIRECTIVE:
+    #     print("[DIRECTIVE]:", token.text)
+    # if token.type==CSharpLexer.DIRECTIVE_HIDDEN:
+    #     print("[DIRECTIVE_HIDDEN]:", token.text)
