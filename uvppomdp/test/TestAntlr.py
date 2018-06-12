@@ -51,14 +51,15 @@ class MyListener(CSharpParserListener):
     def exitRank_specifier(self, ctx:CSharpParser.Rank_specifierContext):
         print("exiting Rank Specifier")
 
-def check_all_token(tokens):
+
+def get_all_identifiers(tokens):
     identifiers=[]
     if tokens.__len__()<=0:
         return None
     else:
         for token in tokens:
             if token.type==CSharpLexer.IDENTIFIER:
-                identifiers.append(tokens.text)
+                identifiers.append(token.text)
                 print("[IDENTIFIER]:", token.text)
     return identifiers
 
@@ -187,9 +188,10 @@ if __name__ == '__main__':
     code_token_stream = CommonTokenStream(code_token_source)
     parser = CSharpParser(code_token_stream)
 
+    identifiers=get_all_identifiers(tokens)
     # Parse syntax tree(CSharpParser.g4)
 
-    compilationUnit = parser.compilation_unit()
+    # compilationUnit = parser.compilation_unit()
 
     # 使用监听器机制遍历
     # listener=MyListener()
@@ -197,8 +199,8 @@ if __name__ == '__main__':
     # walker.walk(listener,compilationUnit)
 
     # 使用访问者机制遍历
-    vistor=MbParserVistor()
-    vistor.visit(compilationUnit)
+    # vistor=MbParserVistor()
+    # vistor.visit(compilationUnit)
 
 
     # printer=KeyPrinter()
