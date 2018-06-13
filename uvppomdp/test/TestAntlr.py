@@ -64,11 +64,11 @@ def get_all_identifiers(tokens):
     return identifiers
 
 
-
 if __name__ == '__main__':
     # 直接通过路径读取
     # path="C:\\Users\\Eric.Apollo\\Desktop\\App.xaml.cs"
-    path = "C:\\Users\\Administrator\\Desktop\\App.xaml.cs"
+    # path = "C:\\Users\\Administrator\\Desktop\\App.xaml.cs"
+    path = "C:\\Users\\Administrator\\Desktop\\MyPassage.xaml.cs"
 
 
 

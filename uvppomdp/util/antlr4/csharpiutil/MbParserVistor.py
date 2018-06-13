@@ -2,7 +2,7 @@
 # @File     : MbParserVistor.py
 # @Time     : 2018/6/12 20:11
 # @Author   : Yanqing Wang (DarkNightRequiem)
-# @Note     : 
+# @Note     : This File is currently not in use
 # --------------------------------------------
 import chardet
 from antlr4 import *

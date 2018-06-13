@@ -11,13 +11,13 @@ class ColorfulLogger:
     def __init__(self):
         pass
 
-    def error(self,module_name,message):
+    def error(self,module_name="",message=""):
         logging.log(logging.ERROR, module_name + ": " + message)
 
-    def warning(self,module_name,message):
+    def warning(self,module_name="",message=""):
         logging.log(logging.WARNING, module_name+": "+message)
 
-    def critical(self,module_name,message):
+    def critical(self,module_name="",message=""):
         logging.log(logging.CRITICAL, module_name + ": " + message)
 
 

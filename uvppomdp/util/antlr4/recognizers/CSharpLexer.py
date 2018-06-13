@@ -1490,7 +1490,7 @@ class CSharpLexer(Lexer):
         if actionIndex == 6:
             self.interpolatedStringLevel = self.interpolatedStringLevel - 1
             self.interpolatedVerbatiums.pop()
-            self.verbatium = self.interpolatedVerbatiums.peek() if self.interpolatedVerbatiums.size() > 0 else False
+            self.verbatium = self.interpolatedVerbatiums.peek() if self.interpolatedVerbatiums.stack.__len__() > 0 else False
             # (self.interpolatedVerbatiums.size() > 0 ? interpolatedVerbatiums.peek(): false);
 
     def CLOSE_BRACE_INSIDE_action(self, localctx: RuleContext, actionIndex: int):

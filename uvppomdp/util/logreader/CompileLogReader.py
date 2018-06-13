@@ -7,9 +7,12 @@
 import os
 import chardet
 import zipfile
+from antlr4 import *
 from util.BasicUtil import BasicUtil
 from util.meta.ComplieFile import CompileFile
 from util.ColorfulLogger import logger
+from util.antlr4.recognizers.CSharpLexer import CSharpLexer
+from util.meta.ZipFileStream import ZipFileStream
 
 
 class ComplieLogReader(BasicUtil):
@@ -89,6 +92,52 @@ class ComplieLogReader(BasicUtil):
                 )
 
         return cmpllogs
+
+    def read_as_zipfilestreams(self, name):
+        """
+        将zip中的所有文件进行流式读取
+        :param name:
+        :return: zip文件中的所有文件的流的列表
+        """
+        streams=[]
+        try:
+            zip = zipfile.ZipFile(self.dir + "/" + name, "r")
+
+            # 内容为空
+            if 0 == zip.filelist.__len__():
+                return None
+
+            # 项目名称
+            folder = zip.filelist[0].filename.split("/")[0]
+
+            for entry in zip.filelist:
+                if entry.filename.find(folder + "/Properties") >= 0:
+                    # 忽略Properties文件夹
+                    continue
+                else:
+                    # 读取文件内容
+                    file_bytes = zip.read(entry.filename)
+
+                    # 查看文件编码
+                    encode = (chardet.detect(file_bytes))["encoding"] \
+                        if (chardet.detect(file_bytes))["encoding"] is not None \
+                        else "utf-8"
+
+                    # 加入列表
+                    stream=ZipFileStream(file_bytes=file_bytes,encoding=encode)
+                    streams.append(stream)
+        except zipfile.BadZipFile:
+            # 文件损坏
+            logger.error(str(self.__class__),"Broken File: "+ name)
+            return None
+        except TypeError:
+            # 无法解析文件编码
+            logger.error(str(self.__class__), "UnKnown File Encoding: " + name)
+            return None
+
+        return streams
+
+
 
 
 # 利用模块的导入机制实现单例模式

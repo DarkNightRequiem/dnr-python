@@ -2,10 +2,12 @@
 compile.log:
   dir: 'D:/redirectremove/uwp_coding_uploads'
   diff.dir:
-    # 简单代码比较结果存放目录（后继结果的基础）
+    # 简单代码比较结果存放目录
     naive: 'D:/redirectremove/naive_diff_results'
     # 基于方法的代码比较结果目录
     method: 'D:/redirectremove/mb_diff_results'
+    # 基于token的代码比较结果目录
+    token: 'D:/redirectremove/tb_diff_results'
 
 
 # 浏览日志相关配置

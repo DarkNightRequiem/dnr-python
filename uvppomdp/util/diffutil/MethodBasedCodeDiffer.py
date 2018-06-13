@@ -2,7 +2,7 @@
 # @File     : MethodBasedCodeDiffer.py
 # @Time     : 2018/6/9 21:14
 # @Author   : Yanqing Wang (DarkNightRequiem)
-# @Note     :
+# @Note     : 此方法好像有点写废了，目前转用TokenBasedDiffer
 # --------------------------------------------
 import os
 import json
@@ -101,6 +101,7 @@ class MethodBasedCodeDiffer(BasicUtil):
         return entry
 
     def extract_methods(self,lines):
+        # TODO: 实现
         return ["d","h","g"]
 
     def write_to_file(self,stuid,data):
