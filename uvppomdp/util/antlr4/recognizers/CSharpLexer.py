@@ -1439,7 +1439,7 @@ class CSharpLexer(Lexer):
         if actionIndex == 0:
             self.interpolatedStringLevel = self.interpolatedStringLevel + 1
             self.interpolatedVerbatiums.push(False)
-            verbatium = False
+            self.verbatium = False
 
     def INTERPOLATED_VERBATIUM_STRING_START_action(self, localctx: RuleContext, actionIndex: int):
         if actionIndex == 1:

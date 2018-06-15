@@ -22,10 +22,10 @@ from antlr4.InputStream import InputStream
 
 class ZipFileStream(InputStream):
 
-    def __init__(self,file_bytes:bytes, encoding:str='utf-8', errors:str='ignore'):
+    def __init__(self,file_bytes:bytes, encoding:str='utf-8', errors:str='strict'):
         super().__init__(self.decode(file_bytes,encoding,errors))
 
-    def decode(self, file_bytes:bytes, encoding:str, errors:str='ignore'):
+    def decode(self, file_bytes:bytes, encoding:str, errors:str='strict'):
         return codecs.decode(file_bytes, encoding, errors)
 
 

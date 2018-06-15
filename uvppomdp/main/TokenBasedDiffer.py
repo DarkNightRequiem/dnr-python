@@ -7,14 +7,10 @@
 import os
 import time
 import json
-
-from antlr4.ListTokenSource import ListTokenSource
-
-from util.antlr4.recognizers.CSharpParser import CSharpParser
 from util.diffutil.TokenBasedCodeDiffer import TokenBasedCodeDiffer
 from util.logreader.CompileLogReader import cmpl_reader
 from util.ColorfulLogger import logger
-from util.antlr4.recognizers.CSharpLexer import CSharpLexer, CommonTokenStream
+from util.antlr4.recognizers.CSharpLexer import CSharpLexer
 
 
 class TokenBasedDiffer(TokenBasedCodeDiffer):
@@ -47,7 +43,7 @@ class TokenBasedDiffer(TokenBasedCodeDiffer):
                 # 分词
                 lexer = CSharpLexer(stream)
                 tokens = lexer.getAllTokens()
-                code_tokens = self.get_code_tokens(tokens)
+                code_tokens = self.get_code_tokens(tokens,lexer)
                 all_code_tokens.append(code_tokens)
 
             # 抽取出所有的IDENTIFIER类型的token
@@ -86,15 +82,15 @@ class TokenBasedDiffer(TokenBasedCodeDiffer):
             file.write(json_content)
         file.close()
 
-    def get_code_tokens(self, tokens):
-        index = 0
+    def get_code_tokens(self, tokens:list,lexer:CSharpLexer):
         code_tokens = []
-
+        index = 0
         while index < tokens.__len__():
             token = tokens[index]
-            if token.channel != CSharpLexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE:
+            if token.channel != lexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE:
                 # 当前token是代码类型
                 code_tokens.append(token)
+
             index = index + 1
 
         return code_tokens

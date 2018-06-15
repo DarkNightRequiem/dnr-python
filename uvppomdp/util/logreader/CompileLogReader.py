@@ -111,7 +111,7 @@ class ComplieLogReader(BasicUtil):
             folder = zip.filelist[0].filename.split("/")[0]
 
             for entry in zip.filelist:
-                if entry.filename.find(folder + "/Properties") >= 0:
+                if entry.filename.find("/Properties") >= 0:
                     # 忽略Properties文件夹
                     continue
                 else:

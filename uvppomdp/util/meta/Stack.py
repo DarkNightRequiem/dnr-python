@@ -2,7 +2,7 @@
 
 
 class Stack:  # 堆栈类
-    def __init__(self, size=10000):
+    def __init__(self, size=30000):
         self.stack = []  # 堆栈列表
         self.size = size  # 堆栈大小
         self.top = -1  # 栈顶位置
