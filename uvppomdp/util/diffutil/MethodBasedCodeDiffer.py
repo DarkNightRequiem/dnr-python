@@ -6,13 +6,13 @@
 # --------------------------------------------
 import os
 import json
-from util.BasicUtil import BasicUtil
+from util.ConfigReader import ConfigReader
 from util.meta.MbCheckPoint import MbCheckPoint
 
 
-class MethodBasedCodeDiffer(BasicUtil):
+class MethodBasedCodeDiffer(ConfigReader):
     def __init__(self):
-        BasicUtil.__init__(self)
+        ConfigReader.__init__(self)
 
         # 简单对比结果的存放目录
         self.naive_dir = self.cfg.get("compile.log").get("diff.dir")["naive"]

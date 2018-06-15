@@ -5,12 +5,12 @@
 # @Note     :
 # --------------------------------------------
 import os
-from util.BasicUtil import BasicUtil
+from util.ConfigReader import ConfigReader
 
 
-class SearchLogReader(BasicUtil):
+class SearchLogReader(ConfigReader):
     def __init__(self):
-        BasicUtil.__init__(self)
+        ConfigReader.__init__(self)
 
         # 搜索日志存放目录
         self.dir=self.cfg.get("search.log")["dir"]

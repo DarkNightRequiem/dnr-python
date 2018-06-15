@@ -1,19 +1,21 @@
-# 编译日志相关配置
-compile.log:
-  dir: 'D:/redirectremove/uwp_coding_uploads'
-  # dir: 'D:/redirectremove/test'
-  diff.dir:
-    # 简单代码比较结果存放目录
-    naive: 'D:/redirectremove/naive_diff_results'
-    # 基于方法的代码比较结果目录
-    method: 'D:/redirectremove/mb_diff_results'
-    # 基于token的代码比较结果目录
-    token: 'D:/redirectremove/tb_diff_results'
+log:
+  # 编译日志相关配置
+  compile:
+    dir:
+      # 原始编译上传文件存放目录
+      uploads: 'D:/redirectremove/uwp_coding_uploads'
+      
+      # 简单代码比较结果存放目录
+      naive: 'D:/redirectremove/naive_diff_results'
+      # 基于方法的代码比较结果目录
+      method: 'D:/redirectremove/mb_diff_results'
+      # 基于token的代码比较结果目录
+      token: 'D:/redirectremove/tb_diff_results'
 
 
-# 浏览日志相关配置
-search.log:
-  dir: 'D:/redirectremove/log'
+  # 浏览日志相关配置
+  search:
+    dir: 'D:/redirectremove/log'
 
 # uwp使用的api文件
 uwp.api:

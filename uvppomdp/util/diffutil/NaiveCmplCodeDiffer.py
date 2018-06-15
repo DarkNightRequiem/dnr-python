@@ -8,12 +8,12 @@ import difflib
 import os
 import json
 import re
-from util.BasicUtil import BasicUtil
+from util.ConfigReader import ConfigReader
 
 
-class NaiveCmplCodeDiffer(BasicUtil):
+class NaiveCmplCodeDiffer(ConfigReader):
     def __init__(self):
-        BasicUtil.__init__(self)
+        ConfigReader.__init__(self)
 
         # 简单比较结果输出的目录
         self.output_path = self.cfg.get("compile.log").get("diff.dir")["naive"]

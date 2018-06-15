@@ -1,36 +1,40 @@
 # --------------------------------------------
-# @File     : TokenBasedDiffer.py
-# @Time     : 2018/6/13 16:17
+# @File     : TokenBasedPreprocessor.py
+# @Time     : 2018/6/15 21:12
 # @Author   : Yanqing Wang (DarkNightRequiem)
-# @Note     : 
+# @Note     : TokenBasedPreprocessor
 # --------------------------------------------
 import os
 import time
-import json
-from util.diffutil.TokenBasedCodeDiffer import TokenBasedCodeDiffer
-from util.logreader.CompileLogReader import cmpl_reader
+
+from datashape import json
+
 from util.ColorfulLogger import logger
+from util.ConfigReader import config_reader
 from util.antlr4.recognizers.CSharpLexer import CSharpLexer
+from util.logreader.CompileLogReader import cmpl_reader
 
 
-class TokenBasedDiffer(TokenBasedCodeDiffer):
-    def __init__(self):
-        TokenBasedCodeDiffer.__init__(self)
+class TokenBasedPreprocessor:
+    def __init__(self, uploads_dir="",output_dir=""):
+        # 原始编译日志存放目录
+        self.uploads_dir = uploads_dir
+
+        # 预处理结果输出目录
+        self.output_dir=output_dir
+
         # 学生学号表
         self.stuid_list = []
 
         # 计数器
         self.count = 0
 
-    def pre_process(self,output=True):
-        # 编译日志存放目录
-        uploads_dir = cmpl_reader.dir
-
-        if not os.path.exists(uploads_dir):
+    def pre_process(self):
+        if not os.path.exists(self.uploads_dir):
             logger.error(message="No available uploads directory found")
             exit(0)
 
-        file_names = cmpl_reader.files_names
+        file_names = os.listdir(self.uploads_dir)
         for filename in file_names:
             # 对应学号和时间信息
             stuid, date, timestamp = self.get_info(filename)
@@ -38,12 +42,12 @@ class TokenBasedDiffer(TokenBasedCodeDiffer):
             streams = cmpl_reader.read_as_zipfilestreams(filename)
             if streams is None: continue
 
-            all_code_tokens=[]
+            all_code_tokens = []
             for stream in streams:
                 # 分词
                 lexer = CSharpLexer(stream)
                 tokens = lexer.getAllTokens()
-                code_tokens = self.get_code_tokens(tokens,lexer)
+                code_tokens = self.get_code_tokens(tokens, lexer)
                 all_code_tokens.append(code_tokens)
 
             # 抽取出所有的IDENTIFIER类型的token
@@ -53,17 +57,55 @@ class TokenBasedDiffer(TokenBasedCodeDiffer):
             if stuid not in self.stuid_list:
                 self.stuid_list.append(stuid)
 
-            identifier_based_contents={
-                    "sequenceId": self.count,
-                    "stuid": stuid,
-                    "timestamp": timestamp,
-                    "tokens": identifiers_tokens_text
-                }
+            identifier_based_contents = {
+                "sequenceId": self.count,
+                "stuid": stuid,
+                "timestamp": timestamp,
+                "tokens": identifiers_tokens_text
+            }
 
             # 写入结果
-            if output:
-                self.write_as_json(identifier_based_contents,filename.replace(".zip","")+".json")
+            self.write_as_json(identifier_based_contents, filename.replace(".zip", "") + ".json")
             self.count = self.count + 1
+
+    def get_info(self,filename):
+        """
+        解析文件名所含有的信息
+        """
+        # 获取学号和日期字符串
+        stuid, suffix = filename.split('-', 1)
+
+        # 解析日期信息
+        date = time.strptime(suffix.replace(".zip", ""), "%Y-%m-%d-%H-%M-%S")
+        timestamp = time.mktime(date)
+
+        return stuid, date, timestamp
+
+    def get_code_tokens(self, tokens:list,lexer:CSharpLexer):
+        code_tokens = []
+        index = 0
+        while index < tokens.__len__():
+            token = tokens[index]
+            if token.channel != lexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE:
+                # 当前token是代码类型
+                code_tokens.append(token)
+
+            index = index + 1
+
+        return code_tokens
+
+    def get_identifiers_tokens_text(self, tokens: []):
+        identifiers_tokens_text = []
+        for sublist in tokens:
+            for token in sublist:
+                if (token.type == CSharpLexer.IDENTIFIER) and \
+                        (token.text not in identifiers_tokens_text) and\
+                        (token.text not in ["i","j","k","e","d","x"]):
+                    identifiers_tokens_text.append(token.text)
+
+        return identifiers_tokens_text \
+            if identifiers_tokens_text.__len__() > 0 \
+            else None
 
     def write_as_json(self,json_recognizable,filename):
         """
@@ -82,54 +124,13 @@ class TokenBasedDiffer(TokenBasedCodeDiffer):
             file.write(json_content)
         file.close()
 
-    def get_code_tokens(self, tokens:list,lexer:CSharpLexer):
-        code_tokens = []
-        index = 0
-        while index < tokens.__len__():
-            token = tokens[index]
-            if token.channel != lexer.HIDDEN and token.type != CSharpLexer.DIRECTIVE_NEW_LINE:
-                # 当前token是代码类型
-                code_tokens.append(token)
-
-            index = index + 1
-
-        return code_tokens
-
-    def diff_all(self):
-        # TODO: 实现
-        pass
-
-    def get_identifiers_tokens_text(self, tokens: []):
-        identifiers_tokens_text = []
-        for sublist in tokens:
-            for token in sublist:
-                if (token.type == CSharpLexer.IDENTIFIER) and \
-                        (token.text not in identifiers_tokens_text) and\
-                        (token.text not in ["i","j","k","e","d","x"]):
-                    identifiers_tokens_text.append(token.text)
-
-        return identifiers_tokens_text \
-            if identifiers_tokens_text.__len__() > 0 \
-            else None
-
-    def get_info(self, filename):
-        """
-        解析文件名所含有的信息
-        """
-        # 获取学号和日期字符串
-        stuid, suffix = filename.split('-', 1)
-
-        # 解析日期信息
-        date = time.strptime(suffix.replace(".zip", ""), "%Y-%m-%d-%H-%M-%S")
-        timestamp = time.mktime(date)
-
-        return stuid, date, timestamp
 
 
 if __name__ == '__main__':
-    tbdiffer = TokenBasedDiffer()
+    # 编译日志存放目录
+    uploads_dir = config_reader.uploads_dir
+    output_dir = config_reader.get("compile.log").get("diff.dir")["token"]
+    # 进行预处理
+    preprocessor=TokenBasedPreprocessor(uploads_dir,output_dir)
 
-    # 预处理
-    tbdiffer.pre_process()
-
-    print("OK")
+    preprocessor.pre_process()

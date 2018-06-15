@@ -8,16 +8,16 @@ import os
 import chardet
 import zipfile
 from antlr4 import *
-from util.BasicUtil import BasicUtil
+from util.ConfigReader import ConfigReader
 from util.meta.ComplieFile import CompileFile
 from util.ColorfulLogger import logger
 from util.antlr4.recognizers.CSharpLexer import CSharpLexer
 from util.meta.ZipFileStream import ZipFileStream
 
 
-class ComplieLogReader(BasicUtil):
+class ComplieLogReader(ConfigReader):
     def __init__(self):
-        BasicUtil.__init__(self)
+        ConfigReader.__init__(self)
 
         # 编译日志存放目录
         self.dir = self.cfg.get("compile.log")["dir"]
@@ -136,8 +136,6 @@ class ComplieLogReader(BasicUtil):
             return None
 
         return streams
-
-
 
 
 # 利用模块的导入机制实现单例模式
