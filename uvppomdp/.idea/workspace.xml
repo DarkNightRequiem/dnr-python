@@ -10,138 +10,50 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TokenBasedDiffer.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedDiffer.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1725">
-                  <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#219#228#0" expanded="true" />
-                    <marker date="1529071002820" expanded="true" signature="523:2204" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TokenBasedPreprocessor.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedPreprocessor.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="310">
-                  <caret line="121" column="18" lean-forward="true" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
-                  <folding>
-                    <element signature="e#247#256#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/__init__.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="config.yaml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config.yaml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-150">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestYamlIO.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/TestYamlIO.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MethodBasedCodeDiffer.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/util/diffutil/MethodBasedCodeDiffer.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MethodBasedDiffer.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main/mbpomdp/MethodBasedDiffer.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ConfigReader.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/util/ConfigReader.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="275">
-                  <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CompileLogReader.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/util/logreader/CompileLogReader.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-90">
-                  <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#748#2177#0" expanded="false" />
-                    <element signature="e#2210#2701#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="NaiveCmplCodeDiffer.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/util/diffutil/NaiveCmplCodeDiffer.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="CompileLogReader.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/util/logreader/CompileLogReader.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-569">
-                  <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#217#226#0" expanded="true" />
-                    <element signature="e#748#2177#0" expanded="false" />
-                    <element signature="e#2210#2701#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TokenBasedMerger.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedMerger.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <element signature="e#235#244#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TokenBasedPreprocessor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedPreprocessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-375">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MethodBasedCodeDiffer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/diffutil/MethodBasedCodeDiffer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NaiveCmplCodeDiffer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/diffutil/NaiveCmplCodeDiffer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3600">
+              <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -169,8 +81,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/util/logutil/BrowseLogReader.py" />
-        <option value="$PROJECT_DIR$/util/printutil/ColorPrinter.py" />
         <option value="$PROJECT_DIR$/util/printutil/ColorLogPrinter.py" />
         <option value="$PROJECT_DIR$/util/printutil/ColorfulLogger.py" />
         <option value="$PROJECT_DIR$/util/logutil/BasicUtil.py" />
@@ -211,15 +121,17 @@
         <option value="$PROJECT_DIR$/util/BasicUtil.py" />
         <option value="$PROJECT_DIR$/main/nvpomdp.py" />
         <option value="$PROJECT_DIR$/main/__init__.py" />
-        <option value="$PROJECT_DIR$/main/tbpomdp/TokenBasedDiffer.py" />
         <option value="$PROJECT_DIR$/util/diffutil/TokenBasedCodeDiffer.py" />
         <option value="$PROJECT_DIR$/test/TestYamlIO.py" />
         <option value="$PROJECT_DIR$/util/diffutil/NaiveCmplCodeDiffer.py" />
         <option value="$PROJECT_DIR$/util/diffutil/MethodBasedCodeDiffer.py" />
-        <option value="$PROJECT_DIR$/config.yaml" />
-        <option value="$PROJECT_DIR$/util/ConfigReader.py" />
         <option value="$PROJECT_DIR$/util/logreader/CompileLogReader.py" />
         <option value="$PROJECT_DIR$/main/tbpomdp/TokenBasedPreprocessor.py" />
+        <option value="$PROJECT_DIR$/main/tbpomdp/__init__.py" />
+        <option value="$PROJECT_DIR$/config.yaml" />
+        <option value="$PROJECT_DIR$/util/ConfigReader.py" />
+        <option value="$PROJECT_DIR$/main/tbpomdp/TokenBasedDiffer.py" />
+        <option value="$PROJECT_DIR$/main/tbpomdp/TokenBasedMerger.py" />
       </list>
     </option>
   </component>
@@ -569,11 +481,6 @@
           <line>208</line>
           <option name="timeStamp" value="330" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main/tbpomdp/TokenBasedDiffer.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="377" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -596,21 +503,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/TestRegx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/TestDiff.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -715,13 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3356">
           <caret line="900" column="0" lean-forward="true" selection-start-line="900" selection-start-column="0" selection-end-line="900" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/antlr4/recognizers/CSharpParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-476800">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -869,38 +754,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/mbpomdp/MethodBasedDiffer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedDiffer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1725">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="e#219#228#0" expanded="true" />
-            <marker date="1529071002820" expanded="true" signature="523:2204" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util/diffutil/TokenBasedCodeDiffer.py" />
     <entry file="file://$PROJECT_DIR$/test/TestYamlIO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/diffutil/NaiveCmplCodeDiffer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+        <state relative-caret-position="700">
+          <caret line="30" column="47" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -921,17 +779,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/ConfigReader.py">
+    <entry file="file://$PROJECT_DIR$/main/tbpomdp/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+        <state relative-caret-position="250">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/antlr4/recognizers/CSharpParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/util/logreader/CompileLogReader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
+        <state relative-caret-position="300">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#748#2177#0" expanded="false" />
@@ -942,18 +808,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
+        <state relative-caret-position="331">
+          <caret line="30" column="68" lean-forward="true" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/ConfigReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="45" column="94" lean-forward="true" selection-start-line="45" selection-start-column="94" selection-end-line="45" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/mbpomdp/MethodBasedDiffer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedDiffer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#219#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/diffutil/NaiveCmplCodeDiffer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3600">
+          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedPreprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="121" column="18" lean-forward="true" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
+        <state relative-caret-position="-375">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/tbpomdp/TokenBasedMerger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="e#247#256#0" expanded="true" />
+            <element signature="e#235#244#0" expanded="true" />
           </folding>
         </state>
       </provider>
