@@ -15,7 +15,7 @@ class MethodBasedCodeDiffer(ConfigReader):
         ConfigReader.__init__(self)
 
         # 简单对比结果的存放目录
-        self.naive_dir = self.cfg.get("compile.log").get("diff.dir")["naive"]
+        self.naive_dir = self.nb_naivediffer_output_dir
 
         # 简单对比结果文件列表
         self.filelist = os.listdir(self.naive_dir)
@@ -24,7 +24,7 @@ class MethodBasedCodeDiffer(ConfigReader):
         self.mbdiff_dict = {}
 
         # 对比结果输出目录
-        self.output_path = self.cfg.get("compile.log")["diff.dir"]["method"]
+        self.output_path = self.mb_methodbaseddiffer_output_dir
 
         # 对比结果写入缓冲区，在每个新的学生记录开始时清空
         self.wirtebuffer=[]

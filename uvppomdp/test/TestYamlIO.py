@@ -28,6 +28,7 @@ if __name__== '__main__':
     cfg=yaml.load(open(cfgFile,"rb"))
 
     # 编译日志目录
+    x=cfg["log"]["compile"]["dir"]["uploads"]  # 这样写也行
     cmpl_dir=cfg.get("compile.log")["dir"]
     cmpl_files=os.listdir(cmpl_dir)
 

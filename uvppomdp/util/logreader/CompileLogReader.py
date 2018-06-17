@@ -8,19 +8,17 @@ import os
 import chardet
 import zipfile
 from antlr4 import *
-from util.ConfigReader import ConfigReader
+from util.ConfigReader import config_reader
 from util.meta.ComplieFile import CompileFile
 from util.ColorfulLogger import logger
 from util.antlr4.recognizers.CSharpLexer import CSharpLexer
 from util.meta.ZipFileStream import ZipFileStream
 
 
-class ComplieLogReader(ConfigReader):
+class ComplieLogReader:
     def __init__(self):
-        ConfigReader.__init__(self)
-
         # 编译日志存放目录
-        self.dir = self.cfg.get("compile.log")["dir"]
+        self.dir = config_reader.compile_logs_uploads_dir
 
         # 编译日志文件名列表
         self.files_names = os.listdir(self.dir)
@@ -93,15 +91,15 @@ class ComplieLogReader(ConfigReader):
 
         return cmpllogs
 
-    def read_as_zipfilestreams(self, name):
+    def read_as_zipfilestreams(self, path):
         """
         将zip中的所有文件进行流式读取
-        :param name:
+        :param path: 文件路径，如 D:/11111.zip
         :return: zip文件中的所有文件的流的列表
         """
         streams=[]
         try:
-            zip = zipfile.ZipFile(self.dir + "/" + name, "r")
+            zip = zipfile.ZipFile(path, "r")
 
             # 内容为空
             if 0 == zip.filelist.__len__():
@@ -128,11 +126,11 @@ class ComplieLogReader(ConfigReader):
                     streams.append(stream)
         except zipfile.BadZipFile:
             # 文件损坏
-            logger.error(str(self.__class__),"Broken File: "+ name)
+            logger.error(str(self.__class__),"Broken File: "+ path)
             return None
         except TypeError:
             # 无法解析文件编码
-            logger.error(str(self.__class__), "UnKnown File Encoding: " + name)
+            logger.error(str(self.__class__), "UnKnown File Encoding: " + path)
             return None
 
         return streams

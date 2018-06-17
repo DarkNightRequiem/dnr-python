@@ -1,23 +1,33 @@
-log:
-  # 编译日志相关配置
-  compile:
-    dir:
-      # 原始编译上传文件存放目录
-      uploads: 'D:/redirectremove/uwp_coding_uploads'
-      
-      # 简单代码比较结果存放目录
-      naive: 'D:/redirectremove/naive_diff_results'
-      # 基于方法的代码比较结果目录
-      method: 'D:/redirectremove/mb_diff_results'
-      # 基于token的代码比较结果目录
-      token: 'D:/redirectremove/tb_diff_results'
+# 原始数据相关配置
+raw:
+  # 原始编译上传文件目录
+  compilelogs.uploads.dir: 'D:/redirectremove/uwp_coding_uploads'
+
+  # 所有学生的搜索日志目录
+  searchlogs.dir: 'D:/redirectremove/log'
+
+  # 爬取的uwp相关的api文件路径
+  uwp.api.path: 'D:/redirectremove/uwp_api/api.json'
 
 
-  # 浏览日志相关配置
-  search:
-    dir: 'D:/redirectremove/log'
+# 基于简单比较的PODMP相关配置
+nbpomdp:
+  # 简单代码比较结果存放目录
+  naivediffer.output.dir: 'D:/redirectremove/naive_diff_results'
 
-# uwp使用的api文件
-uwp.api:
-  path: 'D:/redirectremove/uwp_api/api.json'
+
+# 基于Method的PODMP的相关配置
+mbpomdp:
+  # 基于方法
+  methodbaseddiffer.output.dir: 'D:/redirectremove/mb_diff_results'
+
+
+# 基于Token的PODMP的相关配置
+tbpomdp:
+  # 预处理结果存放目录
+  tokenbasedpreprocessor.output.dir: 'D:/redirectremove/tb_preprocessed_results'
+
+  # 基于token的代码比较结果目录
+  tokenbaseddiffer.output.dir: 'D:/redirectremove/tb_diff_results'
+
 

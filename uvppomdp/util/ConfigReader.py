@@ -2,12 +2,11 @@
 # @File     : ConfigReader.py
 # @Time     : 2018/6/6 21:14
 # @Author   : Yanqing Wang (DarkNightRequiem)
-# @Note     : 此文件用于读取config.yaml中的配置
+# @Note     : config.yaml配置文件读取器
 # --------------------------------------------
 import os
 import platform
 import yaml
-import abc
 
 
 class ConfigReader:
@@ -30,8 +29,23 @@ class ConfigReader:
                 open(self.root + "/config.yaml", "rb")
             )
 
-        # 所有的编译日志（zip）的存放目录
-        self.uploads_dir=self.cfg.get("compile.log")["dir"]
+        # 原始数据的相关配置
+        self.compile_logs_uploads_dir=self.cfg["raw"]["compilelogs.uploads.dir"]
+        self.search_logs_dir=self.cfg["raw"]["searchlogs.dir"]
+        self.uwp_api_path=self.cfg["raw"]["uwp.api.path"]
+
+        # 基于简单比较的POMDP的相关配置
+        self.nb_naivediffer_output_dir=self.cfg["nbpomdp"]["naivediffer.output.dir"]
+
+        # 基于Method的POMDP的相关配置
+        self.mb_methodbaseddiffer_output_dir=self.cfg["mbpomdp"]["methodbaseddiffer.output.dir"]
+
+        # 基于Token的POMDP的相关配置
+        self.tb_tokenbasedpreprocessor_output_dir=self.cfg["tbpomdp"]["tokenbasedpreprocessor.output.dir"]
+        self.tb_tokenbaseddiffer_output_dir=self.cfg["tbpomdp"]["tokenbaseddiffer.output.dir"]
+
+
+
 
 
 

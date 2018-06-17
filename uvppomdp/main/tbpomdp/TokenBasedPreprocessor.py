@@ -6,8 +6,7 @@
 # --------------------------------------------
 import os
 import time
-
-from datashape import json
+import json
 
 from util.ColorfulLogger import logger
 from util.ConfigReader import config_reader
@@ -39,7 +38,7 @@ class TokenBasedPreprocessor:
             # 对应学号和时间信息
             stuid, date, timestamp = self.get_info(filename)
             # 一名学生的一个压缩文件
-            streams = cmpl_reader.read_as_zipfilestreams(filename)
+            streams = cmpl_reader.read_as_zipfilestreams(self.uploads_dir+"/"+filename)
             if streams is None: continue
 
             all_code_tokens = []
@@ -112,11 +111,11 @@ class TokenBasedPreprocessor:
          写入json文件
         """
         json_content = json.dumps(json_recognizable, indent=4)
-        if not os.path.exists(tbdiffer.output_path):
-            os.mkdir(tbdiffer.output_path)
+        if not os.path.exists(self.output_dir):
+            os.mkdir(self.output_dir)
         with open(
                 os.path.join(
-                    tbdiffer.output_path, filename
+                    self.output_dir, filename
                 ),
                 "w",
                 encoding="utf-8"
@@ -125,12 +124,11 @@ class TokenBasedPreprocessor:
         file.close()
 
 
-
 if __name__ == '__main__':
-    # 编译日志存放目录
-    uploads_dir = config_reader.uploads_dir
-    output_dir = config_reader.get("compile.log").get("diff.dir")["token"]
+    # 获取配置
+    uploads_dir = config_reader.compile_logs_uploads_dir
+    output_dir = config_reader.tb_tokenbasedpreprocessor_output_dir
+
     # 进行预处理
     preprocessor=TokenBasedPreprocessor(uploads_dir,output_dir)
-
     preprocessor.pre_process()

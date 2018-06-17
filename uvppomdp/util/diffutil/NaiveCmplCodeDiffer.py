@@ -16,7 +16,7 @@ class NaiveCmplCodeDiffer(ConfigReader):
         ConfigReader.__init__(self)
 
         # 简单比较结果输出的目录
-        self.output_path = self.cfg.get("compile.log").get("diff.dir")["naive"]
+        self.output_path = self.nb_naivediffer_output_dir
         if not os.path.exists(self.output_path):
             os.mkdir(self.output_path)
 
