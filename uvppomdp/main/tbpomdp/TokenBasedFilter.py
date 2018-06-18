@@ -12,9 +12,10 @@ from util.ColorfulLogger import logger
 
 class TokenBasedFilter:
 
-    def __init__(self,input_dir,output_dir):
+    def __init__(self,input_dir,output_dir,api_path):
         self.input_dir=input_dir
         self.output_dir=output_dir
+        self.api_path=api_path
 
         if not os.path.exists(output_dir):
             os.mkdir(self.output_dir)
@@ -36,17 +37,21 @@ class TokenBasedFilter:
             file.close()
 
     def builtApiSet(self):
-        pass
+        # TODO: 实现
+        with open(self.api_path) as api_file:
+            pass
+        api_file.close()
 
 
 if __name__ == '__main__':
     # 获取配置信息
     input_dir = config_reader.tb_tokenbasedmerger_output_dir
     output_dir = config_reader.tb_tokenbasedfilter_ouput_dir
+    api_path=config_reader.uwp_api_path
 
     # 建立标识符集合
 
     # 过滤
-    tbfilter=TokenBasedFilter(input_dir,output_dir)
+    tbfilter=TokenBasedFilter(input_dir,output_dir,api_path)
     tbfilter.filter()
 
