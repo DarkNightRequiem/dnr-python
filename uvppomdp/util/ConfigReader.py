@@ -42,8 +42,10 @@ class ConfigReader:
 
         # 基于Token的POMDP的相关配置
         self.tb_tokenbasedpreprocessor_output_dir=self.cfg["tbpomdp"]["tokenbasedpreprocessor.output.dir"]
+        self.tb_tokenbasedfilter_ouput_dir=self.cfg["tbpomdp"]["tokenbasedfilter.output.dir"]
+        self.tb_tokenbasedmerger_output_dir = self.cfg["tbpomdp"]["tokenbasedmerger.output.dir"]
         self.tb_tokenbaseddiffer_output_dir=self.cfg["tbpomdp"]["tokenbaseddiffer.output.dir"]
-        self.tb_tokenbasedmerger_output_dir=self.cfg["tbpomdp"]["tokenbasedmerger.output.dir"]
+
 
 
 

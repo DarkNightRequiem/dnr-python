@@ -30,6 +30,9 @@ tbpomdp:
   # 将预处理结果进行去重合并的结果存放目录
   tokenbasedmerger.output.dir: 'D:/redirectremove/tb_merged_results'
 
+  # 对整合的结果进行过滤的结果存放目录
+  tokenbasedfilter.output.dir: 'D:/redirectremove/tb_filtered_results'
+
   # 基于token的代码比较结果目录
   tokenbaseddiffer.output.dir: 'D:/redirectremove/tb_diff_results'
 

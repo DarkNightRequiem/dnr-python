@@ -7,6 +7,7 @@
 """
 运行顺序：
 1. TokenBasedPreprocessor.py        对编译日志的预处理
-2. TokenBasedDiffer.py              对预处理结果基于官方API进行比较
-3. ...
+2. TokenBasedMerger.py              对预处理的结果进行整合去冗余文件
+3. TokenBasedFilter.py              对整合的结果进行过滤
+4. TokenBasedDiffer.py              基于过滤结果进行基于Token的比较
 """
