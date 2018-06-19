@@ -85,6 +85,7 @@ class TokenBasedMerger:
         """
          写入json文件
         """
+        del json_recognizable["filename"]
         json_content = json.dumps(json_recognizable, indent=4)
         if not os.path.exists(self.output_dir):
             os.mkdir(self.output_dir)
@@ -98,7 +99,7 @@ class TokenBasedMerger:
 
 if __name__ == '__main__':
     # 获取配置信息
-    input_dir = config_reader.tb_tokenbasedpreprocessor_output_dir
+    input_dir = config_reader.tb_tokenbasedfilter_ouput_dir
     output_dir = config_reader.tb_tokenbasedmerger_output_dir
 
     # 进行合并

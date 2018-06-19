@@ -20,11 +20,7 @@ def isjunk(line):
     return False
 
 
-if __name__=='__main__':
-    """
-    测试代码比对中使用的正则表达式
-    """
-
+def test1():
     lines=[
         "    ",
         "   { ",
@@ -55,12 +51,32 @@ if __name__=='__main__':
 
     ]
 
-    # TODO: 注意抽取方法时只关心能在官方的api中能匹配到的，其他的暂时忽略，可能还得写一个UwpApiHelper类帮助检索啥的
     pattern=re.compile(r"[a-zA-Z0-9].[a-zA-Z0-9]*")
-
     for line in lines2:
         it=re.finditer(pattern,line)
         it2=re.findall(pattern,line)
         print("kk")
 
+
+def test2():
+    """
+    测试去除泛型
+    """
+    protos=[
+        "IAsyncOperation<TResult>",
+        "IAsyncOperation<TResult<ASDVFFFFF>>",
+        "IAsyncddddd<TResult<DDDDD<FFFFF<lll>>>"
+    ]
+    pattern=re.compile(r"<.*>")
+
+    for proto in protos:
+        proto=re.sub(pattern,"",proto)
+        print(proto)
+
+
+if __name__=='__main__':
+    """
+    测试代码比对中使用的正则表达式
+    """
+    test2()
 
