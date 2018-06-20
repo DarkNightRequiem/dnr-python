@@ -9,6 +9,7 @@
 1. TokenBasedPreprocessor.py        对编译日志的预处理
 2. TokenBasedFilter.py              对预处理的结果进行过滤
 3. TokenBasedMerger.py              对过滤的结果进行整合去冗余文件
-4. TokenBasedDiffer.py              基于整合结果进行基于Token的比较
+4. SearchLogProcessor.py            对用户搜索日志进行处理
+5. TokenBasedDiffer.py              基于整合结果进行基于Token的比较
 ...
 """
