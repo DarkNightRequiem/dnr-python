@@ -81,6 +81,11 @@ class TokenBasedMerger:
 
             current_file.close()
 
+        # 将最后一组数据写入
+        if buffer.__len__()>0:
+            for data in buffer:
+                self.write_as_json(data, data["filename"])
+
     def write_as_json(self,json_recognizable,filename):
         """
          写入json文件
