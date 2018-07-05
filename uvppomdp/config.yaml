@@ -33,6 +33,9 @@ tbpomdp:
   # 将过滤结果进行去重合并的结果存放目录
   tokenbasedmerger.output.dir: 'D:/redirectremove/tb_merged_results'
 
+  # 针对合并结果提取出Mediaplayer任务的结果存放目录
+  tokenbasedextractor.mediaplayer.output.dir: 'D:/redirectremove/tb_extracted_results'
+
   # 基于token的代码比较结果目录
   tokenbaseddiffer.output.dir: 'D:/redirectremove/tb_diff_results'
 
