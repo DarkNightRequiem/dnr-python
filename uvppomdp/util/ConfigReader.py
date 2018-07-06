@@ -45,7 +45,9 @@ class ConfigReader:
         self.tb_tokenbasedfilter_ouput_dir = self.cfg["tbpomdp"]["tokenbasedfilter.output.dir"]
         self.tb_tokenbasedmerger_output_dir = self.cfg["tbpomdp"]["tokenbasedmerger.output.dir"]
         self.tb_tokenbaseddiffer_output_dir = self.cfg["tbpomdp"]["tokenbaseddiffer.output.dir"]
-        self.tb_tokenbasedextractor_mediapalyer_output_dir = self.cfg["tbpomdp"]["tokenbasedextractor.mediaplayer.output.dir"]
+        self.tb_tokenbasedextractor_mediaplayer_output_dir = self.cfg["tbpomdp"]["tokenbasedextractor.mediaplayer.output.dir"]
+        self.tb_tokenbasedextractor_zip_mediaplayer_output_dir=self.cfg["tbpomdp"]["tokenbasedextractor.zip.mediaplayer.output.dir"]
+        self.tb_tokenbasedlogshrinker_output_dir=self.cfg["tbpomdp"]["tokenbasedlogshrinker.output.dir"]
 
 
 config_reader = ConfigReader()
