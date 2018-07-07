@@ -34,13 +34,16 @@ tbpomdp:
   tokenbasedmerger.output.dir: 'D:/redirectremove/tb_merged_results'
 
   # 针对合并结果提取出Mediaplayer任务的结果存放目录
-  tokenbasedextractor.mediaplayer.output.dir: 'D:/redirectremove/tb_extracted_results'
+  extractor.mediaplayer.output.dir: 'D:/redirectremove/tb_extracted_results'
 
   # 从上传的编译日志中提取出MediaPlayer任务的提交的结果存放目录
-  tokenbasedextractor.zip.mediaplayer.output.dir: 'D:/redirectremove/tb_mediaplayer_uploads'
+  extractor.zip.mediaplayer.output.dir: 'D:/redirectremove/tb_mediaplayer_uploads'
 
   # 将学生搜索日志缩减至MediaPlayer期间的结果的存放目录
-  tokenbasedlogshrinker.output.dir: 'D:/redirectremove/tb_shrinked_log'
+  logshrinker.output.dir: 'D:/redirectremove/tb_shrinked_log'
+
+  # 对缩减后的日志提取只和serp有关的部分的结果存放目录
+  searchsessionextractor.output.dir: 'D:/redirectremove/tb_extracted_serps_log'
 
   # 基于token的代码比较结果目录
   tokenbaseddiffer.output.dir: 'D:/redirectremove/tb_diff_results'

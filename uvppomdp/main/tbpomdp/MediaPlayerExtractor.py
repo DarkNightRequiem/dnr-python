@@ -81,7 +81,7 @@ class MediaPlayerExtractor:
 
 if __name__ == '__main__':
     input_dir = config_reader.tb_tokenbasedmerger_output_dir
-    output_dir = config_reader.tb_tokenbasedextractor_mediaplayer_output_dir
+    output_dir = config_reader.tb_mediaplayer_extractor_output_dir
     uploads_dir = config_reader.compile_logs_uploads_dir
 
     extractor = MediaPlayerExtractor(input_dir, output_dir, uploads_dir)

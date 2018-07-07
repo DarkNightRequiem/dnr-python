@@ -11,6 +11,7 @@
 3. TokenBasedMerger.py              对过滤的结果进行整合去冗余文件
 4. MediaPlayerExtractor.py          对整合结果抽取出是MediaPlayer任务的json文件
 5. MediaPlayerZipExtractor.py       对编译日志提取出是MediaPlayer任务的提交
-#######5. TokenBasedDiffer.py              基于整合结果进行基于Token的比较
+6. LogShrinker.py                   将用户的搜索日志缩减至MediaPlayer任务期间
+7. SearchSessionExtractor.py     对缩减后的日志提取只和serp有关的部分
 ...
 """
