@@ -49,5 +49,7 @@ class ConfigReader:
         self.tb_mediaplayer_zipextractor__output_dir=self.cfg["tbpomdp"]["extractor.zip.mediaplayer.output.dir"]
         self.tb_logshrinker_output_dir=self.cfg["tbpomdp"]["logshrinker.output.dir"]
         self.tb_searchsessionextractor_output_dir=self.cfg["tbpomdp"]["searchsessionextractor.output.dir"]
+        self.tb_requestactivemerger_output_dir=self.cfg["tbpomdp"]["requestactivemerger.output.dir"]
+
 
 config_reader = ConfigReader()

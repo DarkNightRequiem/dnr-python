@@ -32,42 +32,38 @@ class LogShrinker:
             with open(search_logs_dir + "/" + name, "rb")as file:
                 # 查看文件编码
                 data=file.read()
-                # encode = (chardet.detect(data))["encoding"] \
-                #     if (chardet.detect(data))["encoding"] is not None \
-                #     else "utf-8"
-
-                session_list = json.loads(data)
-                shrinked_list=[]
-                for session in session_list:
-                    # 隐式session略过
-                    if session["mergedAction"]=="latentSession":
-                        continue
-
-                    shrinked_session = {"mergedAction": session["mergedAction"],
-                                        "mergedActions":[]}
-                    merged_actions=session["mergedActions"]
-                    for action in merged_actions:
-                        timestamp=action["timestamp"]
-                        time_tuple=time.gmtime(timestamp/1000)
-
-                        # 在Media课程范围内的保留
-                        if time_tuple.tm_mon==4:
-                            shrinked_session["mergedActions"].append(action)
-
-                    # 加入压缩后的list
-                    if shrinked_session["mergedActions"].__len__()>0:
-                        shrinked_list.append(shrinked_session)
-
-                # 写入新文件
-                self.write_as_json(shrinked_list,name)
             file.close()
-        pass
+
+            session_list = json.loads(data)
+            shrinked_list=[]
+            for session in session_list:
+                # 隐式session略过
+                if session["mergedAction"]=="latentSession":
+                    continue
+
+                shrinked_session = {"mergedAction": session["mergedAction"],
+                                    "mergedActions":[]}
+                merged_actions=session["mergedActions"]
+                for action in merged_actions:
+                    timestamp=action["timestamp"]
+                    time_tuple=time.gmtime(timestamp/1000)
+
+                    # 在Media课程范围内的保留
+                    if time_tuple.tm_mon==4:
+                        shrinked_session["mergedActions"].append(action)
+
+                # 加入压缩后的list
+                if shrinked_session["mergedActions"].__len__()>0:
+                    shrinked_list.append(shrinked_session)
+
+            # 写入新文件
+            self.write_as_json(shrinked_list,name)
 
     def write_as_json(self,json_recognizable,filename):
         """
          写入json文件
         """
-        json_content = json.dumps(json_recognizable, indent=2)
+        json_content = json.dumps(json_recognizable, indent=2,ensure_ascii=False)
         if not os.path.exists(self.output_dir):
             os.mkdir(self.output_dir)
         with open(

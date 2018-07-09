@@ -45,6 +45,9 @@ tbpomdp:
   # 对缩减后的日志提取只和serp有关的部分的结果存放目录
   searchsessionextractor.output.dir: 'D:/redirectremove/tb_extracted_serps_log'
 
+  # 对提取的serp部分中的request和active进行融合计算时间
+  requestactivemerger.output.dir: 'D:/redirectremove/tb_merged_serps'
+
   # 基于token的代码比较结果目录
   tokenbaseddiffer.output.dir: 'D:/redirectremove/tb_diff_results'
 
