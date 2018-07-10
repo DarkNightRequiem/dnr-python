@@ -8,6 +8,7 @@ import os, shutil
 import json
 import time
 import chardet
+import operator
 
 from util.ColorfulLogger import logger
 from util.ConfigReader import config_reader
@@ -44,7 +45,7 @@ class RequestActiveMerger:
                                 "rank": serp["urls"].index(req_act["url"]),
                                 "startTimestamp":req_act["timestamp"],
                                 "endTimestamp": req_act["timestamp"],
-                                "msDuration":req_act["timestamp"]-serp["timestamp"]
+                                "msDuration":0
                             }
                     else:
                         # 更新
@@ -55,9 +56,20 @@ class RequestActiveMerger:
                             clicks[req_act["url"]]["msDuration"]=\
                                 clicks[req_act["url"]]["msDuration"]+new_endstamp-old_endstamp
 
-                serp["clicks"]=clicks
+                serp["clicks"]=list(clicks.values())
                 del serp["requestActives"]
-            self.write_as_json(serp_list,name)
+
+            # 去重（属于极少数的情况）
+            clean_serp_list=[]
+            serp_dict={}
+            for serp_node in serp_list:
+                url=serp_node["url"]
+                query=serp_node["query"]
+                if (url,query)not in serp_dict.keys():
+                    serp_dict[(url,query)]=serp_node["timestamp"]
+                    clean_serp_list.append(serp_node)
+
+            self.write_as_json(clean_serp_list,name)
 
     def write_as_json(self,json_recognizable,filename):
         """
