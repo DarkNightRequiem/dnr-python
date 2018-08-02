@@ -24,6 +24,9 @@ mbpomdp:
 
 # 基于Token的PODMP的相关配置
 tbpomdp:
+  statistics:
+    mediaplayerquerystats.output.path: 'D:/redirectremove/tb_stats_mediaplayer_queries.json'
+
   # 预处理结果存放目录
   tokenbasedpreprocessor.output.dir: 'D:/redirectremove/tb_preprocessed_results'
 

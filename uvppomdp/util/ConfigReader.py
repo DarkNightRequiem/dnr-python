@@ -41,6 +41,7 @@ class ConfigReader:
         self.mb_methodbaseddiffer_output_dir = self.cfg["mbpomdp"]["methodbaseddiffer.output.dir"]
 
         # 基于Token的POMDP的相关配置
+        self.tb_mpquerystats_output_path=self.cfg["tbpomdp"]["statistics"]["mediaplayerquerystats.output.path"]
         self.tb_tokenbasedpreprocessor_output_dir = self.cfg["tbpomdp"]["tokenbasedpreprocessor.output.dir"]
         self.tb_tokenbasedfilter_ouput_dir = self.cfg["tbpomdp"]["tokenbasedfilter.output.dir"]
         self.tb_tokenbasedmerger_output_dir = self.cfg["tbpomdp"]["tokenbasedmerger.output.dir"]
