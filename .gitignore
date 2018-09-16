@@ -1,1 +1,2 @@
 git rm --cached --ignore-unmatch document/uvp_course_arrangement/*.mhtml
+git rm --cached --ignore-unmatch document/uvp_course_arrangement/*.txt
